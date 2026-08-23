@@ -566,10 +566,12 @@
 
   function update(){
     const scrollY = window.scrollY + 100;
+    const atBottom = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
     let current = sections[0];
     for(const s of sections){
       if(s.el.offsetTop <= scrollY) current = s;
     }
+    if(atBottom) current = sections[sections.length - 1];
     links.forEach(a => a.classList.remove('active'));
     if(current) current.link.classList.add('active');
   }

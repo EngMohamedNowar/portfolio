@@ -1,0 +1,186 @@
+Using launch settings from D:\GymManagementSystem\GymManagementSystem\GymManagement\Properties\launchSettings.json...
+Building...
+warn: Microsoft.EntityFrameworkCore.Model.Validation[10625]
+      The foreign key property 'Session.CategoryId1' was created in shadow state because a conflicting property with the simple name 'CategoryId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'Height' on entity type 'HealthRecord'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'weight' on entity type 'HealthRecord'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [MigrationId], [ProductVersion]
+      FROM [__EFMigrationsHistory]
+      ORDER BY [MigrationId];
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Plans] AS [p]) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5050
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\GymManagementSystem\GymManagementSystem\GymManagement
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [m].[Id], [m].[StartAt], [m].[DiscountAmount], [m].[DiscountCode], [m].[EndDate], [m].[MemberId], [m].[PlanId], [m].[Status], [m].[UpdatedAt], [m0].[Id], [m0].[JoinDate], [m0].[DateOfBirth], [m0].[Email], [m0].[Gender], [m0].[HealthId], [m0].[Name], [m0].[Phone], [m0].[Photo], [m0].[UpdatedAt], [m0].[BuildingNumber], [m0].[City], [m0].[Street], [p].[Id], [p].[CreatedAt], [p].[Description], [p].[DurationDays], [p].[IsActive], [p].[Name], [p].[Price], [p].[UpdatedAt]
+      FROM [MemberShips] AS [m]
+      INNER JOIN [Members] AS [m0] ON [m].[MemberId] = [m0].[Id]
+      INNER JOIN [Plans] AS [p] ON [m].[PlanId] = [p].[Id]
+      ORDER BY [m].[StartAt] DESC
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[Amount], [p].[CreatedAt], [p].[MembershipId], [p].[Method], [p].[Notes], [p].[PaymentDate], [p].[Reference], [p].[UpdatedAt]
+      FROM [Payments] AS [p]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Members] AS [m]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (9ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [MemberShips] AS [m]
+      WHERE [m].[EndDate] > @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Trainers] AS [t]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[StartDate] > @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[StartDate] <= @now AND [s].[EndDate] >= @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[EndDate] < @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Payments] AS [p]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [m].[Id], [m].[StartAt], [m].[DiscountAmount], [m].[DiscountCode], [m].[EndDate], [m].[MemberId], [m].[PlanId], [m].[Status], [m].[UpdatedAt]
+      FROM [MemberShips] AS [m]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [m].[Id], [m].[StartAt], [m].[DiscountAmount], [m].[DiscountCode], [m].[EndDate], [m].[MemberId], [m].[PlanId], [m].[Status], [m].[UpdatedAt], [m0].[Id], [m0].[JoinDate], [m0].[DateOfBirth], [m0].[Email], [m0].[Gender], [m0].[HealthId], [m0].[Name], [m0].[Phone], [m0].[Photo], [m0].[UpdatedAt], [m0].[BuildingNumber], [m0].[City], [m0].[Street], [p].[Id], [p].[CreatedAt], [p].[Description], [p].[DurationDays], [p].[IsActive], [p].[Name], [p].[Price], [p].[UpdatedAt]
+      FROM [MemberShips] AS [m]
+      INNER JOIN [Members] AS [m0] ON [m].[MemberId] = [m0].[Id]
+      INNER JOIN [Plans] AS [p] ON [m].[PlanId] = [p].[Id]
+      ORDER BY [m].[StartAt] DESC
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[Amount], [p].[CreatedAt], [p].[MembershipId], [p].[Method], [p].[Notes], [p].[PaymentDate], [p].[Reference], [p].[UpdatedAt]
+      FROM [Payments] AS [p]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Members] AS [m]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [MemberShips] AS [m]
+      WHERE [m].[EndDate] > @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Trainers] AS [t]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[StartDate] > @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[StartDate] <= @now AND [s].[EndDate] >= @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[EndDate] < @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Payments] AS [p]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [m].[Id], [m].[StartAt], [m].[DiscountAmount], [m].[DiscountCode], [m].[EndDate], [m].[MemberId], [m].[PlanId], [m].[Status], [m].[UpdatedAt], [m0].[Id], [m0].[JoinDate], [m0].[DateOfBirth], [m0].[Email], [m0].[Gender], [m0].[HealthId], [m0].[Name], [m0].[Phone], [m0].[Photo], [m0].[UpdatedAt], [m0].[BuildingNumber], [m0].[City], [m0].[Street], [p].[Id], [p].[CreatedAt], [p].[Description], [p].[DurationDays], [p].[IsActive], [p].[Name], [p].[Price], [p].[UpdatedAt]
+      FROM [MemberShips] AS [m]
+      INNER JOIN [Members] AS [m0] ON [m].[MemberId] = [m0].[Id]
+      INNER JOIN [Plans] AS [p] ON [m].[PlanId] = [p].[Id]
+      ORDER BY [m].[StartAt] DESC
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [p].[Id], [p].[Amount], [p].[CreatedAt], [p].[MembershipId], [p].[Method], [p].[Notes], [p].[PaymentDate], [p].[Reference], [p].[UpdatedAt]
+      FROM [Payments] AS [p]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Members] AS [m]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [MemberShips] AS [m]
+      WHERE [m].[EndDate] > @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Trainers] AS [t]
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[StartDate] > @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[StartDate] <= @now AND [s].[EndDate] >= @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@now='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Sessions] AS [s]
+      WHERE [s].[EndDate] < @now
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*)
+      FROM [Payments] AS [p]

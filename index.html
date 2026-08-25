@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Nowar — Backend Developer</title>
+<title>MN — .NET Backend Developer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='16' width='100' height='100' fill='%2312151b'/><text x='50' y='62' text-anchor='middle' font-family='monospace' font-weight='800' font-size='44' fill='%23e8a33d'>MN</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -48,9 +49,37 @@
     border-bottom:1px solid var(--border);
   }
   nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
-  .logo{font-family:var(--mono); font-weight:800; font-size:17px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text);}
-  .logo .tld{color:var(--amber); text-shadow:0 0 12px rgba(232,163,61,0.45);}
-  .logo:hover .tld{text-shadow:0 0 16px rgba(232,163,61,0.7);}
+  /* LOGO */
+  .logo-wrap{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .logo-hex{
+    width:40px; height:40px; position:relative;
+    clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:linear-gradient(135deg, var(--amber) 0%, #c07a20 100%);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; transition:transform .3s, box-shadow .3s;
+  }
+  .logo-hex::before{
+    content:''; position:absolute; inset:2px;
+    clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:var(--bg);
+  }
+  .logo-hex span{
+    position:relative; z-index:1;
+    font-family:var(--mono); font-weight:800; font-size:14px;
+    color:var(--amber); letter-spacing:1px;
+  }
+  .logo-wrap:hover .logo-hex{
+    transform:rotate(30deg) scale(1.08);
+  }
+  .logo-wrap:hover .logo-hex::after{
+    content:''; position:absolute; inset:-6px;
+    clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:linear-gradient(135deg, var(--amber), transparent);
+    opacity:.25; z-index:-1;
+  }
+  .logo-text{font-family:var(--mono); font-weight:800; font-size:17px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text);}
+  .logo-text .tld{color:var(--amber); text-shadow:0 0 12px rgba(232,163,61,0.45);}
+  .logo-wrap:hover .logo-text .tld{text-shadow:0 0 16px rgba(232,163,61,0.7);}
   .navlinks{display:flex; gap:28px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
   .navlinks a{transition:color .2s;}
   .navlinks a:hover{color:var(--text);}
@@ -126,7 +155,7 @@
   .stack-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
   .stack-card{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:20px 22px;}
   .stack-card .sk{font-family:var(--mono); font-size:12px; color:var(--purple); margin-bottom:12px; display:flex; align-items:center; gap:6px;}
-  .stack-card .sk::before{content:'"'; color:var(--text-dimmer);}
+  .stack-card .sk::before{content:'"', color:var(--text-dimmer);}
   .tags{display:flex; flex-wrap:wrap; gap:8px;}
   .tag{
     font-family:var(--mono); font-size:12px; padding:5px 10px;
@@ -224,7 +253,10 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo">Nowar<span class="tld">.dev</span></div>
+    <a href="#" class="logo-wrap">
+      <div class="logo-hex"><span>MN</span></div>
+      <div class="logo-text">Nowar<span class="tld">.dev</span></div>
+    </a>
     <div class="navlinks">
       <a href="#about">about</a>
       <a href="#stack">stack</a>
@@ -323,6 +355,7 @@
         <div class="sk">auth &amp; security</div>
         <div class="tags">
           <span class="tag">JWT</span><span class="tag">Token-Based Auth</span><span class="tag">Role-Based Authorization</span>
+          <span class="tag">ASP.NET Identity</span><span class="tag">Rate Limiting</span><span class="tag">CSRF</span>
         </div>
       </div>
       <div class="stack-card">
@@ -330,6 +363,20 @@
         <div class="tags">
           <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">Visual Studio</span>
           <span class="tag">Data Structures</span><span class="tag">Algorithms</span><span class="tag">OOP</span><span class="tag">SCRUM</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="sk">payments &amp; integrations</div>
+        <div class="tags">
+          <span class="tag">Stripe</span><span class="tag">Stripe Checkout</span><span class="tag">Webhooks</span>
+          <span class="tag">AutoMapper</span><span class="tag">QRCoder</span><span class="tag">Chart.js</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="sk">frontend &amp; UI</div>
+        <div class="tags">
+          <span class="tag">Bootstrap 5</span><span class="tag">Razor Views</span><span class="tag">Inter Font</span>
+          <span class="tag">Dark Theme</span><span class="tag">Localization</span><span class="tag">RTL</span>
         </div>
       </div>
     </div>
@@ -410,9 +457,10 @@
           <span class="status">200 shipped</span>
         </div>
         <div class="ep-body">
-          <p>Full ASP.NET Core MVC system for member management, trainer scheduling, session booking, and membership plans. Three-layer architecture (Presentation / Business Logic / Data Access) with Repository Pattern, Unit of Work, and DI. AutoMapper for ViewModel↔Entity mapping, ASP.NET Core Identity with role-based access, and business rules for session capacity, booking eligibility, and membership lifecycle.</p>
+          <p>Full ASP.NET Core 10.0 MVC system for member management, trainer scheduling, session booking, and membership plans. Three-layer architecture (Presentation / Business Logic / Data Access) with Repository Pattern, Unit of Work, and DI. AutoMapper for ViewModel↔Entity mapping, ASP.NET Core Identity with role-based access (SuperAdmin, Admin, Member), and business rules for session capacity, booking eligibility, and membership lifecycle. Registration with auto Member profile creation. Stripe Checkout integration for membership payments with webhook verification. Professional dark-themed UI with animated hero, scroll-triggered navbar, grouped admin dropdowns, and responsive mobile design. English + Arabic localization with RTL support. QR code check-ins, audit logging, body measurement tracking, notification system with bell icon, and 40+ Razor views with a consistent design system.</p>
           <div class="tags">
-            <span class="tag">C#</span><span class="tag">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span><span class="tag">Bootstrap</span>
+            <span class="tag">C#</span><span class="tag">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
+            <span class="tag">Bootstrap</span><span class="tag">Stripe</span><span class="tag">Identity</span><span class="tag">AutoMapper</span><span class="tag">QR Code</span>
           </div>
           <p><a class="repo-link" href="https://github.com/EngMohamedNowar/GymManagementSystem_MVC" target="_blank">→ view repository on GitHub</a></p>
         </div>

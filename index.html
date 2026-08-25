@@ -211,14 +211,14 @@
 
   /* CONTACT */
   .contact-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:28px 30px;
+    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:28px 30px; overflow:hidden;
   }
   .contact-card .ep-head{padding:0 0 16px; border-bottom:1px solid var(--border); margin-bottom:16px;}
   .contact-fields{font-family:var(--mono); font-size:14px;}
-  .cf{display:flex; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border);}
+  .cf{display:flex; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border); min-width:0;}
   .cf:last-child{border-bottom:none;}
-  .cf .k{color:var(--blue); min-width:110px;}
-  .cf .v{color:var(--text-dim);}
+  .cf .k{color:var(--blue); min-width:110px; flex-shrink:0;}
+  .cf .v{color:var(--text-dim); word-break:break-all; min-width:0;}
   .cf a.v:hover{color:var(--amber);}
 
   footer{padding:36px 0 50px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-dimmer);}
@@ -230,6 +230,9 @@
     .navlinks a:last-child{border-bottom:none;}
     .navlinks a::before{display:none;}
     .hamburger{display:flex !important;}
+    .contact-card{padding:20px 16px;}
+    .cf{flex-direction:column; gap:2px;}
+    .cf .k{min-width:0;}
     h1.name{font-size:32px;}
     .about-grid{grid-template-columns:1fr;}
     .stack-grid{grid-template-columns:1fr;}

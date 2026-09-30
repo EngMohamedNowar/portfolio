@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Nowar — Backend Developer | ASP.NET Core &amp; Django APIs</title>
-<meta name="description" content="Mohamed Nowar — Backend Developer in Cairo, Egypt. Building robust, scalable REST APIs with Python, Django REST Framework, C# and ASP.NET Core. Clean Architecture, JWT auth, SQL Server &amp; PostgreSQL. Open to remote work.">
+<title>Mohamed Nowar — .NET Backend Developer | ASP.NET Core &amp; Clean Architecture</title>
+<meta name="description" content="Mohamed Nowar — .NET Backend Developer in Cairo, Egypt. Building robust, scalable REST APIs with C#, ASP.NET Core, Entity Framework Core and SQL Server — Clean Architecture, JWT auth, unit testing. Python/Django as a secondary stack. Open to remote work.">
 <meta name="author" content="Mohamed Nowar">
 <meta name="theme-color" content="#12151b">
 <link rel="canonical" href="https://engmohamednowar.github.io/portfolio/">
 
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Mohamed Nowar — Backend Developer">
-<meta property="og:description" content="Backend Developer building scalable REST APIs with ASP.NET Core, Django &amp; Clean Architecture. Open to remote.">
+<meta property="og:description" content=".NET Backend Developer building scalable REST APIs with ASP.NET Core, EF Core &amp; Clean Architecture. Open to remote.">
 <meta property="og:url" content="https://engmohamednowar.github.io/portfolio/">
 <meta property="og:image" content="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mohamed Nowar — Backend Developer">
-<meta name="twitter:description" content="Backend Developer building scalable REST APIs with ASP.NET Core, Django &amp; Clean Architecture.">
+<meta name="twitter:description" content=".NET Backend Developer building scalable REST APIs with ASP.NET Core, EF Core &amp; Clean Architecture.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312151b'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='15' fill='%23e8a33d'%3EMN%3C/text%3E%3C/svg%3E">
@@ -42,7 +42,7 @@
     "https://github.com/EngMohamedNowar",
     "https://www.linkedin.com/in/mohamednowar/"
   ],
-  "knowsAbout": ["ASP.NET Core", "Django", "Django REST Framework", "Clean Architecture", "REST APIs", "SQL Server", "PostgreSQL", "JWT"]
+  "knowsAbout": [".NET", "ASP.NET Core", "C#", "Entity Framework Core", "Clean Architecture", "REST APIs", "SQL Server", "PostgreSQL", "JWT", "Unit Testing", "Django REST Framework"]
 }
 </script>
 
@@ -89,11 +89,27 @@
   /* NAV */
   nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(18,21,27,.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
+    background:rgba(18,21,27,.7);
+    backdrop-filter:blur(14px) saturate(150%);
+    -webkit-backdrop-filter:blur(14px) saturate(150%);
+    border-bottom:1px solid rgba(42,50,66,.6);
+    transition:transform .35s cubic-bezier(.4,0,.2,1), background .3s, border-color .3s, box-shadow .3s;
   }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px;}
+  nav.scrolled{
+    background:rgba(12,14,19,.94);
+    border-bottom-color:var(--border);
+    box-shadow:0 18px 40px -28px rgba(0,0,0,1);
+  }
+  nav.hidden{transform:translateY(-101%);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px; transition:height .3s ease;}
+  nav.scrolled .wrap{height:56px;}
+  .scroll-progress{position:absolute; left:0; right:0; bottom:-1px; height:2px; overflow:hidden; pointer-events:none;}
+  .scroll-progress span{
+    display:block; height:100%; width:100%;
+    transform:scaleX(0); transform-origin:0 50%;
+    background:linear-gradient(90deg, #c07a20, var(--amber), #ffd27a);
+    box-shadow:0 0 12px rgba(232,163,61,.55);
+  }
   .logo-wrap{display:flex; align-items:center; gap:12px;}
   .logo-hex{
     width:38px; height:38px; position:relative;
@@ -112,12 +128,20 @@
   .logo-text{font-family:var(--mono); font-weight:800; font-size:16px; letter-spacing:1.5px; text-transform:uppercase;}
   .logo-text .tld{color:var(--amber);}
 
-  .nav-right{display:flex; align-items:center; gap:8px;}
-  .navlinks{display:flex; gap:4px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
-  .navlinks a{padding:6px 10px; border-radius:6px; transition:color .2s, background .2s;}
-  .navlinks a::before{content:'/'; color:var(--text-dimmer); margin-right:4px;}
-  .navlinks a:hover{color:var(--text); background:rgba(255,255,255,.04);}
-  .navlinks a.active{color:var(--text); background:rgba(232,163,61,.12);}
+  .nav-right{display:flex; align-items:center; gap:10px;}
+  .navlinks{display:flex; gap:2px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
+  .navlinks a{position:relative; padding:8px 12px; border-radius:8px; transition:color .2s, background .2s;}
+  .navlinks a::before{content:'/'; color:var(--text-dimmer); margin-right:4px; transition:color .2s;}
+  .navlinks a::after{
+    content:''; position:absolute; left:12px; right:12px; bottom:5px; height:1.5px;
+    background:var(--amber); transform:scaleX(0); transform-origin:left center;
+    transition:transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .navlinks a:hover{color:var(--text); background:rgba(255,255,255,.05);}
+  .navlinks a:hover::after,
+  .navlinks a.active::after{transform:scaleX(1);}
+  .navlinks a.active{color:var(--text); background:rgba(232,163,61,.1);}
+  .navlinks a.active::before{color:var(--amber);}
 
   .btn{
     display:inline-flex; align-items:center; gap:8px;
@@ -131,6 +155,15 @@
   .btn.primary{background:var(--amber); border-color:var(--amber); color:#12151b;}
   .btn.primary:hover{background:#f2b455;}
   .btn.ghost{background:transparent;}
+  .nav-cta{
+    padding:7px 14px; font-size:12.5px; line-height:1.4; border-radius:7px; white-space:nowrap;
+    animation:ctaPulse 3s ease-out infinite; will-change:box-shadow;
+  }
+  @keyframes ctaPulse{
+    0%{box-shadow:0 0 0 0 rgba(232,163,61,.4);}
+    70%{box-shadow:0 0 0 12px rgba(232,163,61,0);}
+    100%{box-shadow:0 0 0 0 rgba(232,163,61,0);}
+  }
 
   .hamburger{display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none;}
   .hamburger span{display:block; width:22px; height:2px; background:var(--text-dim); border-radius:2px; transition:transform .3s, opacity .3s;}
@@ -317,9 +350,37 @@
   footer{padding:36px 0 48px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-dimmer); border-top:1px solid var(--border);}
   footer a{color:var(--amber);}
 
-  /* REVEAL */
-  .js .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
-  .js .reveal.in{opacity:1; transform:none;}
+  /* SCROLL REVEAL */
+  .js .reveal{
+    opacity:0; transform:translateY(30px); filter:blur(8px);
+    transition:
+      opacity .8s cubic-bezier(.22,1,.36,1),
+      transform .8s cubic-bezier(.22,1,.36,1),
+      filter .7s ease;
+    transition-delay:var(--d, 0ms);
+    will-change:opacity, transform;
+  }
+  .js .reveal.in{opacity:1; transform:none; filter:none; will-change:auto;}
+  .js .sec-head .rule{
+    transform:scaleX(0); transform-origin:left center;
+    transition:transform 1.1s cubic-bezier(.22,1,.36,1) .3s;
+  }
+  .js .sec-head.in .rule{transform:scaleX(1);}
+
+  /* HERO ENTRANCE */
+  @keyframes heroIn{
+    from{opacity:0; transform:translateY(26px); filter:blur(8px);}
+    to{opacity:1; transform:none; filter:none;}
+  }
+  @keyframes termIn{
+    from{opacity:0; transform:translateY(34px) scale(.985); filter:blur(14px);}
+    to{opacity:1; transform:none; filter:none;}
+  }
+  .js .hero .term{animation:termIn .95s cubic-bezier(.22,1,.36,1) both;}
+  .js .hero h1.name{animation:heroIn .9s cubic-bezier(.22,1,.36,1) .12s both;}
+  .js .hero .role{animation:heroIn .9s cubic-bezier(.22,1,.36,1) .22s both;}
+  .js .hero .hero-cta{animation:heroIn .9s cubic-bezier(.22,1,.36,1) .32s both;}
+  .js .hero .hero-meta{animation:heroIn .9s cubic-bezier(.22,1,.36,1) .42s both;}
 
   a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
 
@@ -333,19 +394,42 @@
     .cert-grid{grid-template-columns:1fr;}
   }
   @media(max-width:720px){
+    nav.scrolled .wrap{height:64px;}
     .hamburger{display:flex;}
     .nav-cta{display:none;}
     .navlinks{
-      display:none; position:absolute; top:64px; left:0; right:0;
-      background:rgba(14,16,21,.98); backdrop-filter:blur(12px);
-      flex-direction:column; align-items:stretch; gap:0; padding:8px 0;
-      border-bottom:1px solid var(--border);
+      display:flex; position:fixed; top:64px; left:0; right:0; bottom:0;
+      flex-direction:column; align-items:stretch; gap:0;
+      padding:14px 0 40px; overflow-y:auto;
+      background:rgba(10,12,16,.97);
+      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      opacity:0; visibility:hidden; transform:translateY(-10px);
+      transition:opacity .28s ease, transform .28s ease, visibility .28s;
+      z-index:60;
     }
-    .navlinks.open{display:flex;}
-    .navlinks a{padding:13px 24px; border-radius:0; font-size:14.5px; border-bottom:1px solid var(--border);}
+    .navlinks.open{opacity:1; visibility:visible; transform:none;}
+    .navlinks a{
+      padding:17px 26px; font-size:16px; letter-spacing:.4px;
+      border-bottom:1px solid var(--border);
+      opacity:0; transform:translateX(-16px);
+      transition:opacity .35s ease, transform .35s ease, background .2s, color .2s;
+    }
+    .navlinks.open a{opacity:1; transform:none;}
+    .navlinks.open a:nth-child(1){transition-delay:.05s;}
+    .navlinks.open a:nth-child(2){transition-delay:.1s;}
+    .navlinks.open a:nth-child(3){transition-delay:.15s;}
+    .navlinks.open a:nth-child(4){transition-delay:.2s;}
+    .navlinks.open a:nth-child(5){transition-delay:.25s;}
+    .navlinks.open a:nth-child(6){transition-delay:.3s;}
+    .navlinks.open a:nth-child(7){transition-delay:.35s;}
     .navlinks a:last-child{border-bottom:none;}
     .navlinks a::before{display:none;}
-    .navlinks a.active{background:rgba(232,163,61,.1);}
+    .navlinks a::after{display:none;}
+    .navlinks a.active{
+      background:rgba(232,163,61,.1);
+      box-shadow:inset 3px 0 0 var(--amber);
+    }
+    body.menu-open{overflow:hidden;}
     .contact-card{padding:20px 16px;}
     .cf{flex-wrap:wrap;}
     .cf .k{min-width:90px;}
@@ -357,7 +441,12 @@
   @media (prefers-reduced-motion: reduce){
     .caret{animation:none;}
     html{scroll-behavior:auto;}
-    .js .reveal{opacity:1; transform:none; transition:none;}
+    .js .reveal{opacity:1; transform:none; filter:none; transition:none;}
+    .js .sec-head .rule{transform:none !important; transition:none !important;}
+    .js .hero .term, .js .hero h1.name, .js .hero .role,
+    .js .hero .hero-cta, .js .hero .hero-meta{animation:none !important;}
+    nav, nav .wrap, .navlinks a{transition:none !important;}
+    .nav-cta{animation:none;}
     *{scroll-snap-type:none !important;}
   }
 </style>
@@ -388,6 +477,7 @@
       <a class="btn primary nav-cta" href="#contact">hire me</a>
     </div>
   </div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
 </nav>
 
 <header class="hero" id="main">
@@ -402,8 +492,9 @@
         <div class="term-out"><span class="status-200">HTTP/1.1 200 OK</span>
 <span class="json-punc">{</span>
   <span class="json-key">"name"</span><span class="json-punc">:</span> <span class="json-str">"Mohamed Nowar"</span><span class="json-punc">,</span>
-  <span class="json-key">"role"</span><span class="json-punc">:</span> <span class="json-str">"Backend Developer"</span><span class="json-punc">,</span>
-  <span class="json-key">"stack"</span><span class="json-punc">:</span> <span class="json-punc">[</span><span class="json-str">"ASP.NET Core"</span><span class="json-punc">,</span> <span class="json-str">"Django"</span><span class="json-punc">]</span><span class="json-punc">,</span>
+  <span class="json-key">"role"</span><span class="json-punc">:</span> <span class="json-punc">[</span><span class="json-str">".NET Backend Developer"</span><span class="json-punc">]</span><span class="json-punc">,</span>
+  <span class="json-key">"stack"</span><span class="json-punc">:</span> <span class="json-punc">[</span><span class="json-str">"ASP.NET Core"</span><span class="json-punc">,</span> <span class="json-str">"EF Core"</span><span class="json-punc">,</span> <span class="json-str">"SQL Server"</span><span class="json-punc">]</span><span class="json-punc">,</span>
+  <span class="json-key">"secondary"</span><span class="json-punc">:</span> <span class="json-str">"Python / Django"</span><span class="json-punc">,</span>
   <span class="json-key">"location"</span><span class="json-punc">:</span> <span class="json-str">"Cairo, Egypt"</span><span class="json-punc">,</span>
   <span class="json-key">"open_to_remote"</span><span class="json-punc">:</span> <span class="json-str">true</span>
 <span class="json-punc">}</span><span class="caret"></span></div>
@@ -411,7 +502,7 @@
     </div>
 
     <h1 class="name">Mohamed Nowar</h1>
-    <p class="role">Backend Developer building <span class="hl">scalable REST APIs</span> with Python, Django &amp; ASP.NET Core — Clean Architecture, tested and production-ready.</p>
+    <p class="role"><span class="hl">.NET Backend Developer</span> — building scalable, tested REST APIs with ASP.NET Core, C#, EF Core &amp; SQL Server. Clean Architecture, always.</p>
 
     <div class="hero-cta">
       <a class="btn primary" href="#projects">→ view projects</a>
@@ -429,13 +520,13 @@
     <div class="stats">
       <div class="stat"><b>7+</b><span>shipped projects</span></div>
       <div class="stat"><b>1</b><span>live in production</span></div>
-      <div class="stat"><b>2</b><span>backend stacks (.NET / Python)</span></div>
-      <div class="stat"><b>50</b><span>unit tests written</span></div>
+      <div class="stat"><b>.NET</b><span>primary stack · Django secondary</span></div>
+      <div class="stat"><b>385+</b><span>unit &amp; integration tests</span></div>
     </div>
   </div>
 </header>
 
-<section id="about" class="reveal">
+<section id="about">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">01</span>
@@ -444,15 +535,15 @@
     </div>
     <div class="about-grid">
       <div class="about">
-        <p>Backend-focused developer specializing in <strong>robust, scalable REST APIs</strong> built with Python, Django REST Framework, C#, and ASP.NET Core.</p>
-        <p>Comfortable across the full backend surface: <strong>Clean Architecture</strong>, relational schema design on SQL Server &amp; PostgreSQL, JWT/token authentication, permissions, pagination, filtering and search — grounded in solid OOP and data structures.</p>
+        <p>Backend developer specializing in <strong>robust, scalable REST APIs built with C#, ASP.NET Core and Entity Framework Core</strong> — Clean Architecture, JWT auth, and SQL Server / PostgreSQL schema design.</p>
+        <p>Comfortable across the full backend surface: <strong>relational schema design</strong>, role-based permissions, pagination, filtering and search — grounded in solid OOP and data structures. Python / Django REST Framework as a secondary stack.</p>
         <p>Every project below shipped end-to-end: domain modeling → data access → business logic → clean, maintainable API delivery — with <strong>unit tests (xUnit + NSubstitute)</strong> on core business logic.</p>
         <p>Currently expanding into <strong>microservices, messaging and CI/CD</strong> through Elevate's Backend Advanced Bootcamp (.NET track).</p>
       </div>
       <div class="layers">
         <div class="layer presentation">
           <span class="lname">Presentation</span>
-          <span class="ldesc">Django Views · DRF ViewSets · Serializers · ASP.NET Controllers</span>
+          <span class="ldesc">ASP.NET Controllers · Razor Views · DRF ViewSets · Serializers</span>
         </div>
         <div class="layer business">
           <span class="lname">Business Logic</span>
@@ -460,14 +551,14 @@
         </div>
         <div class="layer data">
           <span class="lname">Data Access</span>
-          <span class="ldesc">Django ORM · EF Core · Repository · SQL Server · PostgreSQL</span>
+          <span class="ldesc">EF Core · Repository · Unit of Work · SQL Server · PostgreSQL · Django ORM</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="stack" class="reveal">
+<section id="stack">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">02</span>
@@ -476,12 +567,12 @@
     </div>
     <div class="stack-grid">
       <div class="stack-card">
-        <div class="sk">backend core</div>
+        <div class="sk">backend · .NET first</div>
         <div class="tags">
-          <span class="tag core">C#</span><span class="tag core">ASP.NET Core Web API</span><span class="tag core">ASP.NET Core MVC</span>
-          <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag core">Django REST Framework</span>
-          <span class="tag">EF Core</span><span class="tag">Django ORM</span><span class="tag">LINQ</span>
+          <span class="tag core">C#</span><span class="tag core">.NET 8</span><span class="tag core">ASP.NET Core Web API</span><span class="tag core">ASP.NET Core MVC</span>
+          <span class="tag core">EF Core</span><span class="tag">LINQ</span><span class="tag">WPF</span>
           <span class="tag">Clean Architecture</span><span class="tag">Repository Pattern</span><span class="tag">Unit of Work</span>
+          <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">Django ORM</span>
         </div>
       </div>
       <div class="stack-card">
@@ -508,7 +599,7 @@
         <div class="sk">tooling</div>
         <div class="tags">
           <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">Visual Studio</span>
-          <span class="tag">xUnit</span><span class="tag">SCRUM</span>
+          <span class="tag">Docker</span><span class="tag">Swagger</span><span class="tag">xUnit</span><span class="tag">SCRUM</span>
         </div>
       </div>
       <div class="stack-card">
@@ -537,7 +628,7 @@
   </div>
 </section>
 
-<section id="experience" class="reveal">
+<section id="experience">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">03</span>
@@ -591,7 +682,7 @@
   </div>
 </section>
 
-<section id="projects" class="reveal">
+<section id="projects">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">04</span>
@@ -602,21 +693,49 @@
 
       <article class="endpoint featured">
         <div class="ep-head">
+          <span class="method post">POST</span>
+          <span class="path">/projects/<span class="slug">coffee-store-api</span></span>
+          <span class="status">200 in progress</span>
+        </div>
+        <div class="ep-body">
+          <p class="desc">Coffee-store catalogue &amp; basket API built with <strong style="color:var(--text)">.NET 10</strong> and Clean Architecture — <strong style="color:var(--text)">currently in active development</strong>.</p>
+          <ul class="highlights">
+            <li><b>Strict dependency flow</b>: Api → Infrastructure → Application → Domain, with Repository + Unit of Work, the Specification pattern, and a Result type instead of exceptions</li>
+            <li><b>Two DbContexts</b> (catalogue + ASP.NET Identity) with per-context migrations, soft delete via global query filters, FluentValidation and JWT bearer auth</li>
+            <li><b>SQL Server + Redis</b> (cache &amp; baskets) orchestrated with <b>docker-compose</b>, Swagger, user-secrets and healthchecked services</li>
+            <li><b>xUnit suite</b> covering the specification evaluator, Result type and product services against an in-memory database</li>
+          </ul>
+          <div class="tags">
+            <span class="tag core">C#</span><span class="tag core">.NET 10</span><span class="tag core">ASP.NET Core Web API</span>
+            <span class="tag">Clean Architecture</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
+            <span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">JWT</span><span class="tag">FluentValidation</span><span class="tag">xUnit</span>
+          </div>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/CoffeeStore" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="endpoint featured">
+        <div class="ep-head">
           <span class="method get">GET</span>
           <span class="path">/projects/<span class="slug">restaurant-desktop-app</span></span>
           <span class="status prod">200 live in production</span>
         </div>
         <div class="ep-body">
-          <p class="desc">Desktop restaurant management system in C# / WPF — <strong style="color:var(--text)">deployed and in daily use at a real restaurant</strong>, covering orders, billing, held orders, and menu management.</p>
+          <p class="desc"><strong style="color:var(--text)">NAPOLI Pizza POS</strong> — a production-ready restaurant point-of-sale desktop app built with C# / WPF / <strong style="color:var(--text)">.NET 10</strong> and SQLite, <strong style="color:var(--text)">deployed and in daily use at a real restaurant</strong>. Offline-first, MIT-licensed.</p>
           <ul class="highlights">
-            <li><b>Custom ESC/POS printing pipeline</b> for the Epson TM-T88V with automatic printer detection and multi-tier fallback</li>
-            <li><b>Raw Win32 printer API</b> integration plus a length-sorted Arabic→English translation layer for reliable receipts</li>
-            <li><b>Arabic receipt rendering</b> fixed via codepage initialization + a length-sorted Arabic→English translation layer</li>
-            <li><b>Floyd–Steinberg dithered logo</b> converted to ESC/POS raster format</li>
-            <li><b>Unit tests</b> on data models, UI helpers and the user service layer with Coverlet coverage tracking</li>
+            <li><b>Full POS flow</b>: dine-in / takeaway / delivery, held orders, discounts, tax &amp; service fee, real-time order summary</li>
+            <li><b>Recipe-driven inventory</b> with auto product costing, stock movements, low-stock alerts and automatic deduction on checkout</li>
+            <li><b>Shifts &amp; accounting</b>: open/close workflow, cash-drawer reconciliation, profit/loss reports, below-cost sale detection, Excel export (ClosedXML)</li>
+            <li><b>Security</b>: hardware-bound license keys (HMAC-SHA256 + WMI fingerprint), PIN login with salted PBKDF2, Admin/Cashier roles</li>
+            <li><b>ESC/POS thermal printing</b>: Epson TM-T88V auto-detect, cash-drawer kick, Arabic receipts via a translation layer, Floyd–Steinberg dithered logo</li>
+            <li><b>385+ unit &amp; integration tests</b> (xUnit + Coverlet): checkout atomicity, migrations &amp; seeding, reporting math, license validation</li>
           </ul>
           <div class="tags">
-            <span class="tag core">C#</span><span class="tag core">WPF</span><span class="tag">.NET</span><span class="tag">ESC/POS</span><span class="tag">Win32 API</span><span class="tag">xUnit</span>
+            <span class="tag core">C#</span><span class="tag core">.NET 10</span><span class="tag core">WPF</span>
+            <span class="tag">SQLite</span><span class="tag">MVVM</span><span class="tag">ESC/POS</span><span class="tag">Win32 API</span>
+            <span class="tag">ClosedXML</span><span class="tag">xUnit</span><span class="tag">Coverlet</span>
           </div>
           <div class="ep-links">
             <a class="repo-link" href="https://github.com/EngMohamedNowar/RestaurantPOS_DesktopApplication" target="_blank" rel="noopener">→ view repository on GitHub</a>
@@ -714,7 +833,7 @@
         <div class="ep-body">
           <p class="desc">Python/Django backend for a web/mobile app that detects plant diseases from user-uploaded images via an AI classification model, with REST endpoints for care tips, reminders, and a seed store.</p>
           <div class="tags">
-            <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag">Django REST Framework</span><span class="tag">AI Integration</span>
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">AI Integration</span>
           </div>
           <div class="ep-links">
             <a class="repo-link" href="https://github.com/EngMohamedNowar/PlantCareSystem" target="_blank" rel="noopener">→ view repository on GitHub</a>
@@ -731,7 +850,7 @@
         <div class="ep-body">
           <p class="desc">Python/Django REST API for movie schedules, seat selection, and ticket booking — JWT authentication with role-based permissions and a relational schema modeling users, movies, screenings, seats, and reservations.</p>
           <div class="tags">
-            <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">SQL Server</span>
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">SQL Server</span>
           </div>
           <div class="ep-links">
             <a class="repo-link" href="https://github.com/EngMohamedNowar/CinemaTicketsReservationAPI" target="_blank" rel="noopener">→ view repository on GitHub</a>
@@ -748,7 +867,7 @@
         <div class="ep-body">
           <p class="desc">Python/Django REST API for meal rating with token-based authentication and custom permission classes, plus pagination, filtering, and search for optimized data retrieval.</p>
           <div class="tags">
-            <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag">Django REST Framework</span><span class="tag">Token Auth</span>
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">Token Auth</span>
           </div>
           <div class="ep-links">
             <a class="repo-link" href="https://github.com/EngMohamedNowar/MealsRater_API" target="_blank" rel="noopener">→ view repository on GitHub</a>
@@ -760,7 +879,7 @@
   </div>
 </section>
 
-<section id="education" class="reveal">
+<section id="education">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">05</span>
@@ -775,7 +894,7 @@
   </div>
 </section>
 
-<section id="certificates" class="reveal">
+<section id="certificates">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">06</span>
@@ -824,7 +943,7 @@
   </div>
 </section>
 
-<section id="contact" class="reveal">
+<section id="contact">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">07</span>
@@ -860,19 +979,58 @@
 
 <script>
 (function(){
+  var navEl = document.querySelector('nav');
+  var bar = document.querySelector('.scroll-progress span');
   var burger = document.querySelector('.hamburger');
   var links = document.getElementById('navlinks');
+
+  function setMenu(open){
+    burger.setAttribute('aria-expanded', String(open));
+    links.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    if(open) navEl.classList.remove('hidden');
+  }
   burger.addEventListener('click', function(){
-    var open = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!open));
-    links.classList.toggle('open', !open);
+    setMenu(burger.getAttribute('aria-expanded') !== 'true');
   });
   links.addEventListener('click', function(e){
-    if(e.target.tagName === 'A' && window.innerWidth <= 720){
-      burger.setAttribute('aria-expanded','false');
-      links.classList.remove('open');
-    }
+    if(e.target.tagName === 'A') setMenu(false);
   });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') setMenu(false);
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 720) setMenu(false);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){ navEl.classList.remove('hidden'); });
+  });
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var termEl = document.querySelector('.term');
+  var termReady = !!reduceMotion;
+  if(termEl && !reduceMotion){
+    termEl.addEventListener('animationend', function(){
+      termEl.style.animation = 'none';
+      termReady = true;
+    }, {once:true});
+  }
+
+  var lastY = window.pageYOffset;
+  function onScroll(){
+    var y = window.pageYOffset;
+    navEl.classList.toggle('scrolled', y > 8);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    if(!document.body.classList.contains('menu-open')){
+      if(y > lastY && y > 180) navEl.classList.add('hidden');
+      else navEl.classList.remove('hidden');
+    }
+    if(termReady && termEl && !reduceMotion && window.innerWidth > 720 && y < window.innerHeight * 1.3){
+      termEl.style.transform = 'translate3d(0,' + (y * 0.07).toFixed(1) + 'px,0)';
+    }
+    lastY = y;
+  }
 
   var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.navlinks a'));
   var sections = navAnchors.map(function(a){
@@ -886,22 +1044,68 @@
       if(sections[i].el.getBoundingClientRect().top <= window.innerHeight * 0.4) current = sections[i];
     }
     if((window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 60)) current = sections[sections.length-1];
-    navAnchors.forEach(function(a){ a.classList.remove('active'); });
-    if(current) current.link.classList.add('active');
+    navAnchors.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+    if(current){
+      current.link.classList.add('active');
+      current.link.setAttribute('aria-current','true');
+    }
   }
-  window.addEventListener('scroll', updateNav, {passive:true});
-  window.addEventListener('resize', updateNav);
-  updateNav();
 
-  if('IntersectionObserver' in window){
+  function onAnyScroll(){ onScroll(); updateNav(); }
+  window.addEventListener('scroll', onAnyScroll, {passive:true});
+  window.addEventListener('resize', onAnyScroll);
+  onAnyScroll();
+
+  function stagger(containerSel, itemSel, step){
+    document.querySelectorAll(containerSel).forEach(function(box){
+      var items = itemSel ? box.querySelectorAll(itemSel) : [box];
+      items.forEach(function(el, i){
+        el.classList.add('reveal');
+        el.style.setProperty('--d', (i * (step || 80)) + 'ms');
+      });
+    });
+  }
+  stagger('.sec-head', null, 0);
+  stagger('.stats', '.stat', 90);
+  stagger('.about-grid', '.about', 120);
+  stagger('.layers', '.layer', 70);  stagger('.stack-grid', '.stack-card', 70);
+  stagger('.gitlog', '.commit', 90);
+  stagger('.endpoints', '.endpoint', 60);
+  stagger('.gallery', 'figure', 70);
+  stagger('.cert-grid', '.cert-card', 55);
+  stagger('.edu-card', null, 0);
+  stagger('.contact-card', null, 0);
+
+  function countUp(el){
+    if(reduceMotion || !el.classList.contains('stat')) return;
+    var b = el.querySelector('b');
+    if(!b) return;
+    var m = b.textContent.match(/^(\d+)(\+?)$/);
+    if(!m) return;
+    var target = parseInt(m[1], 10), suffix = m[2], start = 0, dur = 1400;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      b.textContent = Math.round(target * eased) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
-        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+        if(!en.isIntersecting) return;
+        en.target.classList.add('in');
+        countUp(en.target);
+        io.unobserve(en.target);
       });
-    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    }, {threshold:0.08, rootMargin:'0px 0px -50px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
   } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    revealEls.forEach(function(el){ el.classList.add('in'); });
   }
 
   document.querySelectorAll('.copy-btn').forEach(function(btn){

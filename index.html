@@ -130,18 +130,21 @@
 
   .nav-right{display:flex; align-items:center; gap:10px;}
   .navlinks{display:flex; gap:2px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
-  .navlinks a{position:relative; padding:8px 12px; border-radius:8px; transition:color .2s, background .2s;}
-  .navlinks a::before{content:'/'; color:var(--text-dimmer); margin-right:4px; transition:color .2s;}
-  .navlinks a::after{
+  .navlinks .idx{display:none;}
+  .m-foot{display:none;}
+  body.menu-open{overflow:hidden;}
+  .navlinks > a{position:relative; padding:8px 12px; border-radius:8px; transition:color .2s, background .2s;}
+  .navlinks > a::before{content:'/'; color:var(--text-dimmer); margin-right:4px; transition:color .2s;}
+  .navlinks > a::after{
     content:''; position:absolute; left:12px; right:12px; bottom:5px; height:1.5px;
     background:var(--amber); transform:scaleX(0); transform-origin:left center;
     transition:transform .3s cubic-bezier(.4,0,.2,1);
   }
-  .navlinks a:hover{color:var(--text); background:rgba(255,255,255,.05);}
-  .navlinks a:hover::after,
-  .navlinks a.active::after{transform:scaleX(1);}
-  .navlinks a.active{color:var(--text); background:rgba(232,163,61,.1);}
-  .navlinks a.active::before{color:var(--amber);}
+  .navlinks > a:hover{color:var(--text); background:rgba(255,255,255,.05);}
+  .navlinks > a:hover::after,
+  .navlinks > a.active::after{transform:scaleX(1);}
+  .navlinks > a.active{color:var(--text); background:rgba(232,163,61,.1);}
+  .navlinks > a.active::before{color:var(--amber);}
 
   .btn{
     display:inline-flex; align-items:center; gap:8px;
@@ -398,38 +401,71 @@
     .hamburger{display:flex;}
     .nav-cta{display:none;}
     .navlinks{
-      display:flex; position:fixed; top:64px; left:0; right:0; bottom:0;
+      display:flex; position:absolute; top:100%; left:0; right:0;
+      height:calc(100vh - 64px); height:calc(100dvh - 64px);
       flex-direction:column; align-items:stretch; gap:0;
-      padding:14px 0 40px; overflow-y:auto;
-      background:rgba(10,12,16,.97);
-      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
-      opacity:0; visibility:hidden; transform:translateY(-10px);
-      transition:opacity .28s ease, transform .28s ease, visibility .28s;
+      padding:10px 0 0; overflow-y:auto;
+      background:linear-gradient(180deg, rgba(10,12,16,.98), rgba(15,17,23,.99));
+      backdrop-filter:blur(20px) saturate(140%); -webkit-backdrop-filter:blur(20px) saturate(140%);
+      opacity:0; visibility:hidden; transform:translateY(-12px);
+      transition:opacity .3s ease, transform .3s ease, visibility .3s;
       z-index:60;
+      overscroll-behavior:contain;
     }
     .navlinks.open{opacity:1; visibility:visible; transform:none;}
-    .navlinks a{
-      padding:17px 26px; font-size:16px; letter-spacing:.4px;
+    .navlinks > a{
+      display:flex; align-items:center; gap:16px;
+      padding:17px 26px; font-size:17px; font-weight:500; letter-spacing:.3px;
       border-bottom:1px solid var(--border);
-      opacity:0; transform:translateX(-16px);
-      transition:opacity .35s ease, transform .35s ease, background .2s, color .2s;
+      opacity:0; transform:translateX(-22px);
+      transition:opacity .4s cubic-bezier(.22,1,.36,1), transform .4s cubic-bezier(.22,1,.36,1), background .2s, color .2s;
     }
-    .navlinks.open a{opacity:1; transform:none;}
-    .navlinks.open a:nth-child(1){transition-delay:.05s;}
-    .navlinks.open a:nth-child(2){transition-delay:.1s;}
-    .navlinks.open a:nth-child(3){transition-delay:.15s;}
-    .navlinks.open a:nth-child(4){transition-delay:.2s;}
-    .navlinks.open a:nth-child(5){transition-delay:.25s;}
-    .navlinks.open a:nth-child(6){transition-delay:.3s;}
-    .navlinks.open a:nth-child(7){transition-delay:.35s;}
-    .navlinks a:last-child{border-bottom:none;}
-    .navlinks a::before{display:none;}
-    .navlinks a::after{display:none;}
-    .navlinks a.active{
+    .navlinks.open > a{opacity:1; transform:none;}
+    .navlinks.open > a:nth-child(1){transition-delay:.06s;}
+    .navlinks.open > a:nth-child(2){transition-delay:.12s;}
+    .navlinks.open > a:nth-child(3){transition-delay:.18s;}
+    .navlinks.open > a:nth-child(4){transition-delay:.24s;}
+    .navlinks.open > a:nth-child(5){transition-delay:.3s;}
+    .navlinks.open > a:nth-child(6){transition-delay:.36s;}
+    .navlinks.open > a:nth-child(7){transition-delay:.42s;}
+    .navlinks > a::before{display:none;}
+    .navlinks > a::after{display:none;}
+    .navlinks > a .idx{
+      display:inline-block; min-width:26px; font-size:11px; font-weight:600;
+      color:var(--text-dimmer); transition:color .2s;
+    }
+    .navlinks > a:active{background:rgba(255,255,255,.07);}
+    .navlinks > a.active{
       background:rgba(232,163,61,.1);
       box-shadow:inset 3px 0 0 var(--amber);
+      color:var(--text);
     }
-    body.menu-open{overflow:hidden;}
+    .navlinks > a.active .idx{color:var(--amber);}
+    .m-foot{
+      display:flex; flex-direction:column; gap:16px;
+      margin-top:auto; padding:24px 26px 44px;
+      border-top:1px solid var(--border);
+      background:rgba(0,0,0,.25);
+      opacity:0; transform:translateY(16px);
+      transition:opacity .45s ease .48s, transform .45s cubic-bezier(.22,1,.36,1) .48s;
+    }
+    .navlinks.open .m-foot{opacity:1; transform:none;}
+    .m-foot .btn.primary{justify-content:center; padding:14px; font-size:14.5px; letter-spacing:.5px;}
+    .m-socials{display:flex; flex-wrap:wrap; gap:10px;}
+    .m-socials a{
+      flex:1 1 44%; text-align:center; font-family:var(--mono); font-size:12.5px;
+      color:var(--text-dim); border:1px solid var(--border);
+      background:var(--surface); padding:11px 10px; border-radius:9px;
+      transition:border-color .2s, color .2s, transform .15s;
+    }
+    .m-socials a:active{transform:scale(.97);}
+    .m-socials a:hover, .m-socials a:focus-visible{border-color:var(--amber); color:var(--amber);}
+    .m-status{display:flex; align-items:center; gap:9px; font-family:var(--mono); font-size:11.5px; color:var(--teal);}
+    .m-status::before{
+      content:''; width:7px; height:7px; border-radius:50%;
+      background:var(--teal); box-shadow:0 0 8px var(--teal);
+      animation:blink 2s ease-in-out infinite;
+    }
     .contact-card{padding:20px 16px;}
     .cf{flex-wrap:wrap;}
     .cf .k{min-width:90px;}
@@ -447,6 +483,7 @@
     .js .hero .hero-cta, .js .hero .hero-meta{animation:none !important;}
     nav, nav .wrap, .navlinks a{transition:none !important;}
     .nav-cta{animation:none;}
+    .m-status::before{animation:none;}
     *{scroll-snap-type:none !important;}
   }
 </style>
@@ -466,13 +503,23 @@
         <span></span><span></span><span></span>
       </button>
       <div class="navlinks" id="navlinks">
-        <a href="#about">about</a>
-        <a href="#stack">stack</a>
-        <a href="#experience">experience</a>
-        <a href="#projects">projects</a>
-        <a href="#education">education</a>
-        <a href="#certificates">certificates</a>
-        <a href="#contact">contact</a>
+        <a href="#about"><span class="idx">01</span>about</a>
+        <a href="#stack"><span class="idx">02</span>stack</a>
+        <a href="#experience"><span class="idx">03</span>experience</a>
+        <a href="#projects"><span class="idx">04</span>projects</a>
+        <a href="#education"><span class="idx">05</span>education</a>
+        <a href="#certificates"><span class="idx">06</span>certificates</a>
+        <a href="#contact"><span class="idx">07</span>contact</a>
+        <div class="m-foot">
+          <a class="btn primary" href="#contact">hire me →</a>
+          <div class="m-socials">
+            <a href="mailto:mohamednowar2002@gmail.com">email</a>
+            <a href="tel:+201557722675">phone</a>
+            <a href="https://github.com/EngMohamedNowar" target="_blank" rel="noopener">github</a>
+            <a href="https://www.linkedin.com/in/mohamednowar/" target="_blank" rel="noopener">linkedin</a>
+          </div>
+          <span class="m-status">Open to remote · Cairo, Egypt</span>
+        </div>
       </div>
       <a class="btn primary nav-cta" href="#contact">hire me</a>
     </div>
@@ -985,10 +1032,18 @@
   var links = document.getElementById('navlinks');
 
   function setMenu(open){
+    var wasOpen = burger.getAttribute('aria-expanded') === 'true';
+    if(wasOpen === open) return;
     burger.setAttribute('aria-expanded', String(open));
     links.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
-    if(open) navEl.classList.remove('hidden');
+    if(open){
+      navEl.classList.remove('hidden');
+      var first = links.querySelector('a');
+      if(first) first.focus({preventScroll:true});
+    } else {
+      burger.focus({preventScroll:true});
+    }
   }
   burger.addEventListener('click', function(){
     setMenu(burger.getAttribute('aria-expanded') !== 'true');
@@ -1032,7 +1087,7 @@
     lastY = y;
   }
 
-  var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.navlinks a'));
+  var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.navlinks > a'));
   var sections = navAnchors.map(function(a){
     var el = document.getElementById(a.getAttribute('href').slice(1));
     return el ? {el:el, link:a} : null;

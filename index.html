@@ -1,14 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MN — Backend Developer</title>
+<title>Mohamed Nowar — Backend Developer | ASP.NET Core &amp; Django APIs</title>
+<meta name="description" content="Mohamed Nowar — Backend Developer in Cairo, Egypt. Building robust, scalable REST APIs with Python, Django REST Framework, C# and ASP.NET Core. Clean Architecture, JWT auth, SQL Server &amp; PostgreSQL. Open to remote work.">
+<meta name="author" content="Mohamed Nowar">
+<meta name="theme-color" content="#12151b">
+<link rel="canonical" href="https://engmohamednowar.github.io/portfolio/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Mohamed Nowar — Backend Developer">
+<meta property="og:description" content="Backend Developer building scalable REST APIs with ASP.NET Core, Django &amp; Clean Architecture. Open to remote.">
+<meta property="og:url" content="https://engmohamednowar.github.io/portfolio/">
+<meta property="og:image" content="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mohamed Nowar — Backend Developer">
+<meta name="twitter:description" content="Backend Developer building scalable REST APIs with ASP.NET Core, Django &amp; Clean Architecture.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png">
+
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312151b'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='15' fill='%23e8a33d'%3EMN%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%2312151b'/%3E%3Ctext x='90' y='120' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='80' fill='%23e8a33d'%3EMN%3C/text%3E%3C/svg%3E">
-<meta name="theme-color" content="#12151b">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.replace('no-js','js');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohamed Nowar",
+  "jobTitle": "Backend Developer",
+  "email": "mailto:mohamednowar2002@gmail.com",
+  "telephone": "+201557722675",
+  "url": "https://engmohamednowar.github.io/portfolio/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
+  "sameAs": [
+    "https://github.com/EngMohamedNowar",
+    "https://www.linkedin.com/in/mohamednowar/"
+  ],
+  "knowsAbout": ["ASP.NET Core", "Django", "Django REST Framework", "Clean Architecture", "REST APIs", "SQL Server", "PostgreSQL", "JWT"]
+}
+</script>
+
 <style>
   :root{
     --bg:#12151b;
@@ -24,149 +61,164 @@
     --blue:#5b8dd9;
     --red:#d9634f;
     --purple:#a488d9;
-    --mono:'JetBrains Mono', monospace;
-    --sans:'Inter', sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --sans:'Inter', system-ui, sans-serif;
+    --radius:10px;
+    --shadow:0 30px 60px -20px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-padding-top:84px;}
   body{
     background:var(--bg);
     color:var(--text);
     font-family:var(--sans);
-    line-height:1.6;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
     background-image:
-      radial-gradient(circle at 15% 0%, rgba(91,141,217,0.06), transparent 40%),
-      radial-gradient(circle at 85% 20%, rgba(232,163,61,0.05), transparent 40%);
+      radial-gradient(circle at 15% 0%, rgba(91,141,217,.06), transparent 40%),
+      radial-gradient(circle at 85% 20%, rgba(232,163,61,.05), transparent 40%);
   }
   ::selection{background:var(--amber); color:#12151b;}
-
   a{color:inherit; text-decoration:none;}
-  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+
+  .skip{position:absolute; left:-9999px; top:0; background:var(--amber); color:#12151b; padding:10px 16px; z-index:200; font-family:var(--mono); font-size:13px;}
+  .skip:focus{left:12px; top:12px;}
 
   /* NAV */
   nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(18,21,27,0.85);
+    background:rgba(18,21,27,.88);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
-  /* LOGO */
-  .logo-wrap{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px;}
+  .logo-wrap{display:flex; align-items:center; gap:12px;}
   .logo-hex{
-    width:40px; height:40px; position:relative;
+    width:38px; height:38px; position:relative;
     clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     background:linear-gradient(135deg, var(--amber) 0%, #c07a20 100%);
     display:flex; align-items:center; justify-content:center;
-    flex-shrink:0; transition:transform .3s, box-shadow .3s;
+    flex-shrink:0; transition:transform .3s;
   }
   .logo-hex::before{
     content:''; position:absolute; inset:2px;
     clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     background:var(--bg);
   }
-  .logo-hex span{
-    position:relative; z-index:1;
-    font-family:var(--mono); font-weight:800; font-size:14px;
-    color:var(--amber); letter-spacing:1px;
-  }
-  .logo-wrap:hover .logo-hex{
-    transform:rotate(30deg) scale(1.08);
-  }
-  .logo-wrap:hover .logo-hex::after{
-    content:''; position:absolute; inset:-6px;
-    clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    background:linear-gradient(135deg, var(--amber), transparent);
-    opacity:.25; z-index:-1;
-  }
-  .logo-text{font-family:var(--mono); font-weight:800; font-size:17px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text);}
-  .logo-text .tld{color:var(--amber); text-shadow:0 0 12px rgba(232,163,61,0.45);}
-  .logo-wrap:hover .logo-text .tld{text-shadow:0 0 16px rgba(232,163,61,0.7);}
-  .navlinks{display:flex; gap:28px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
-  .navlinks a{transition:color .2s;}
-  .navlinks a:hover{color:var(--text);}
+  .logo-hex span{position:relative; z-index:1; font-family:var(--mono); font-weight:800; font-size:13px; color:var(--amber); letter-spacing:1px;}
+  .logo-wrap:hover .logo-hex{transform:rotate(30deg) scale(1.08);}
+  .logo-text{font-family:var(--mono); font-weight:800; font-size:16px; letter-spacing:1.5px; text-transform:uppercase;}
+  .logo-text .tld{color:var(--amber);}
+
+  .nav-right{display:flex; align-items:center; gap:8px;}
+  .navlinks{display:flex; gap:4px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
+  .navlinks a{padding:6px 10px; border-radius:6px; transition:color .2s, background .2s;}
   .navlinks a::before{content:'/'; color:var(--text-dimmer); margin-right:4px;}
+  .navlinks a:hover{color:var(--text); background:rgba(255,255,255,.04);}
+  .navlinks a.active{color:var(--text); background:rgba(232,163,61,.12);}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:13px; font-weight:600;
+    padding:9px 16px; border-radius:8px; border:1px solid var(--border);
+    background:var(--surface-2); color:var(--text);
+    transition:border-color .2s, transform .2s, background .2s;
+    cursor:pointer;
+  }
+  .btn:hover{border-color:var(--amber); transform:translateY(-1px);}
+  .btn.primary{background:var(--amber); border-color:var(--amber); color:#12151b;}
+  .btn.primary:hover{background:#f2b455;}
+  .btn.ghost{background:transparent;}
+
+  .hamburger{display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none;}
+  .hamburger span{display:block; width:22px; height:2px; background:var(--text-dim); border-radius:2px; transition:transform .3s, opacity .3s;}
+  .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg); background:var(--amber);}
+  .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg); background:var(--amber);}
 
   /* HERO */
-  header.hero{padding:90px 0 70px;}
+  header.hero{padding:76px 0 56px;}
   .term{
     background:var(--surface);
     border:1px solid var(--border);
-    border-radius:10px;
+    border-radius:var(--radius);
     overflow:hidden;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+    box-shadow:var(--shadow);
   }
-  .term-bar{
-    display:flex; align-items:center; gap:8px;
-    padding:11px 16px;
-    background:var(--surface-2);
-    border-bottom:1px solid var(--border);
-  }
+  .term-bar{display:flex; align-items:center; gap:8px; padding:11px 16px; background:var(--surface-2); border-bottom:1px solid var(--border);}
   .dot{width:10px; height:10px; border-radius:50%;}
   .dot.r{background:#e05a4e;} .dot.y{background:#e0b04e;} .dot.g{background:#4ea06a;}
   .term-title{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-dimmer);}
-  .term-body{padding:26px 28px; font-family:var(--mono); font-size:14px;}
+  .term-body{padding:24px 26px; font-family:var(--mono); font-size:13.5px; overflow-x:auto;}
   .term-line{color:var(--text-dim); margin-bottom:4px;}
   .term-line .prompt{color:var(--teal);}
   .term-line .cmd{color:var(--text);}
-  .term-out{color:var(--text-dim); margin:2px 0 18px; white-space:pre-wrap;}
+  .term-out{color:var(--text-dim); margin-top:2px; white-space:pre-wrap;}
   .json-key{color:var(--blue);}
   .json-str{color:var(--amber);}
   .json-punc{color:var(--text-dimmer);}
   .status-200{color:var(--teal); font-weight:700;}
-  .caret{display:inline-block; width:8px; height:16px; background:var(--teal); vertical-align:middle; animation:blink 1s step-end infinite;}
+  .caret{display:inline-block; width:8px; height:15px; background:var(--teal); vertical-align:-2px; animation:blink 1s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
 
-  h1.name{
-    font-family:var(--mono); font-weight:800; font-size:44px;
-    margin:34px 0 6px; letter-spacing:-1px;
-  }
-  .role{font-size:18px; color:var(--text-dim); margin-bottom:22px;}
+  h1.name{font-family:var(--mono); font-weight:800; font-size:clamp(30px,6vw,44px); margin:30px 0 6px; letter-spacing:-1px; line-height:1.15;}
+  .role{font-size:17px; color:var(--text-dim); max-width:640px;}
   .role .hl{color:var(--amber); font-weight:600;}
-  .hero-meta{display:flex; flex-wrap:wrap; gap:18px; font-size:13px; color:var(--text-dimmer); font-family:var(--mono);}
-  .hero-meta a:hover{color:var(--text);}
 
-  /* SECTION HEADERS */
-  section{padding:64px 0;}
-  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:34px;}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin:26px 0 22px;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:8px 18px; font-size:13px; color:var(--text-dimmer); font-family:var(--mono);}
+  .hero-meta a{border-bottom:1px solid transparent; transition:color .2s, border-color .2s;}
+  .hero-meta a:hover{color:var(--amber); border-color:var(--amber);}
+
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:34px;}
+  .stat{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px;}
+  .stat b{display:block; font-family:var(--mono); font-size:24px; font-weight:800; color:var(--amber); line-height:1.2;}
+  .stat span{font-size:12.5px; color:var(--text-dimmer);}
+
+  /* SECTIONS */
+  section{padding:58px 0;}
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:32px;}
   .sec-tag{font-family:var(--mono); font-size:13px; color:var(--text-dimmer);}
-  .sec-title{font-family:var(--mono); font-size:22px; font-weight:700;}
+  .sec-title{font-family:var(--mono); font-size:21px; font-weight:700; white-space:nowrap;}
   .sec-title .path{color:var(--text-dimmer); font-weight:400;}
   .rule{flex:1; height:1px; background:var(--border);}
 
   /* ABOUT */
-  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:start;}
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:44px; align-items:start;}
   .about p{color:var(--text-dim); font-size:15.5px; margin-bottom:14px;}
   .about strong{color:var(--text); font-weight:600;}
 
-  .layers{border:1px solid var(--border); border-radius:10px; overflow:hidden;}
-  .layer{padding:16px 18px; font-family:var(--mono); font-size:12.5px; border-bottom:1px solid var(--border); position:relative;}
+  .layers{border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--surface);}
+  .layer{padding:15px 18px; font-family:var(--mono); font-size:12.5px; border-bottom:1px solid var(--border); position:relative;}
   .layer:last-child{border-bottom:none;}
   .layer .lname{font-weight:700; display:block; margin-bottom:4px;}
-  .layer .ldesc{color:var(--text-dimmer); font-size:11.5px;}
-  .layer.presentation{background:rgba(91,141,217,0.07);}
-  .layer.presentation .lname{color:var(--blue);}
-  .layer.business{background:rgba(232,163,61,0.07);}
-  .layer.business .lname{color:var(--amber);}
-  .layer.data{background:rgba(75,179,160,0.07);}
-  .layer.data .lname{color:var(--teal);}
-  .layer::after{content:'↓'; position:absolute; right:16px; top:16px; color:var(--text-dimmer); font-size:11px;}
-  .layer:last-child::after{content:'';}
+  .layer .ldesc{color:var(--text-dimmer); font-size:11.5px; line-height:1.7;}
+  .layer.presentation{background:rgba(91,141,217,.07);} .layer.presentation .lname{color:var(--blue);}
+  .layer.business{background:rgba(232,163,61,.07);} .layer.business .lname{color:var(--amber);}
+  .layer.data{background:rgba(75,179,160,.07);} .layer.data .lname{color:var(--teal);}
 
   /* STACK */
-  .stack-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
-  .stack-card{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:20px 22px;}
-  .stack-card .sk{font-family:var(--mono); font-size:12px; color:var(--purple); margin-bottom:12px; display:flex; align-items:center; gap:6px;}
-  .stack-card .sk::before{content:'"', color:var(--text-dimmer);}
-  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .stack-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  .stack-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px;}
+  .stack-card .sk{font-family:var(--mono); font-size:12px; color:var(--purple); margin-bottom:12px; display:flex; align-items:center; gap:8px;}
+  .stack-card .sk::before{content:'"'; color:var(--text-dimmer);}
+  .stack-card .sk::after{content:''; flex:1; height:1px; background:var(--border);}
+  .tags{display:flex; flex-wrap:wrap; gap:7px;}
   .tag{
     font-family:var(--mono); font-size:12px; padding:5px 10px;
     background:var(--surface-2); border:1px solid var(--border); border-radius:6px; color:var(--text-dim);
+    transition:border-color .2s, color .2s;
   }
+  .tag:hover{border-color:var(--text-dimmer); color:var(--text);}
+  .tag.core{border-color:rgba(232,163,61,.4); color:#ffd27a; background:rgba(232,163,61,.08);}
+  .stack-note{margin-top:14px; font-family:var(--mono); font-size:12.5px; color:var(--text-dimmer);}
+  .stack-note b{color:var(--text-dim); font-weight:600;}
 
-  /* EXPERIENCE — GIT LOG */
+  /* EXPERIENCE */
   .gitlog{border-left:2px solid var(--border); margin-left:6px;}
-  .commit{position:relative; padding:0 0 30px 26px;}
+  .commit{position:relative; padding:0 0 28px 26px;}
   .commit:last-child{padding-bottom:0;}
   .commit::before{
     content:''; position:absolute; left:-7px; top:4px;
@@ -181,51 +233,76 @@
   .commit li{position:relative; padding-left:16px; margin-bottom:4px;}
   .commit li::before{content:'+'; position:absolute; left:0; color:var(--teal);}
 
-  /* PROJECTS — ENDPOINTS */
-  .endpoints{display:flex; flex-direction:column; gap:14px;}
+  /* PROJECTS */
+  .endpoints{display:flex; flex-direction:column; gap:16px;}
   .endpoint{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
     overflow:hidden; transition:border-color .2s;
   }
   .endpoint:hover{border-color:var(--text-dimmer);}
-  .ep-head{display:flex; align-items:center; gap:14px; padding:16px 20px; cursor:default;}
-  .method{
-    font-family:var(--mono); font-weight:800; font-size:11px; padding:5px 9px; border-radius:5px; letter-spacing:0.5px;
-  }
-  .method.get{background:rgba(91,141,217,0.15); color:var(--blue);}
-  .method.post{background:rgba(75,179,160,0.15); color:var(--teal);}
-  .method.put{background:rgba(232,163,61,0.15); color:var(--amber);}
-  .path{font-family:var(--mono); font-size:14px; color:var(--text); flex:1;}
-  .path .slug{color:#ffd27a; font-weight:700; font-size:16px; text-transform:capitalize;}
-  .status{font-family:var(--mono); font-size:11px; color:var(--teal); border:1px solid rgba(75,179,160,0.3); padding:3px 8px; border-radius:20px;}
+  .endpoint.featured{border-color:rgba(232,163,61,.45); box-shadow:0 0 0 1px rgba(232,163,61,.12);}
+  .ep-head{display:flex; align-items:center; gap:14px; padding:15px 20px; flex-wrap:wrap;}
+  .method{font-family:var(--mono); font-weight:800; font-size:11px; padding:5px 9px; border-radius:5px; letter-spacing:.5px;}
+  .method.get{background:rgba(91,141,217,.15); color:var(--blue);}
+  .method.post{background:rgba(75,179,160,.15); color:var(--teal);}
+  .method.put{background:rgba(232,163,61,.15); color:var(--amber);}
+  .path{font-family:var(--mono); font-size:14px; flex:1; min-width:200px;}
+  .path .slug{color:#ffd27a; font-weight:700; font-size:15.5px;}
+  .status{font-family:var(--mono); font-size:11px; color:var(--teal); border:1px solid rgba(75,179,160,.3); padding:3px 9px; border-radius:20px; white-space:nowrap;}
+  .status.prod{color:var(--amber); border-color:rgba(232,163,61,.4); background:rgba(232,163,61,.08);}
+
   .ep-body{padding:0 20px 20px; border-top:1px solid var(--border);}
-  .ep-body p{color:var(--text-dim); font-size:14px; margin:14px 0 12px;}
-  .ep-body .repo-link{font-family:var(--mono); font-size:12.5px; color:var(--amber);}
-  .ep-body .repo-link:hover{text-decoration:underline;}
+  .ep-body p.desc{color:var(--text-dim); font-size:14.5px; margin:16px 0 14px;}
+  .highlights{list-style:none; margin:14px 0 16px; display:grid; gap:7px;}
+  .highlights li{position:relative; padding-left:18px; color:var(--text-dim); font-size:14px;}
+  .highlights li::before{content:'→'; position:absolute; left:0; color:var(--teal); font-family:var(--mono); font-size:12px;}
+  .highlights li b{color:var(--text); font-weight:600;}
+  .ep-links{display:flex; flex-wrap:wrap; gap:18px; margin-top:14px;}
+  .repo-link{font-family:var(--mono); font-size:12.5px; color:var(--amber); border-bottom:1px solid transparent; transition:border-color .2s;}
+  .repo-link:hover{border-color:var(--amber);}
+
+  .gallery{
+    display:flex; gap:12px; margin-top:18px; overflow-x:auto; padding-bottom:10px;
+    scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:var(--border) transparent;
+  }
+  .gallery::-webkit-scrollbar{height:8px;}
+  .gallery::-webkit-scrollbar-thumb{background:var(--border); border-radius:8px;}
+  .gallery figure{flex:0 0 min(76%, 330px); scroll-snap-align:start;}
+  .gallery img{
+    width:100%; height:190px; object-fit:cover; object-position:top;
+    border-radius:8px; border:1px solid var(--border); background:var(--surface-2);
+    transition:transform .25s, border-color .25s;
+  }
+  .gallery a:hover img{transform:translateY(-3px); border-color:var(--amber);}
+  .gallery figcaption{font-family:var(--mono); font-size:11px; color:var(--text-dimmer); margin-top:7px;}
 
   /* EDUCATION */
-  .edu-card{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:22px 24px;}
+  .edu-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px;}
   .edu-card .deg{font-family:var(--mono); font-weight:700; font-size:15.5px; margin-bottom:4px;}
   .edu-card .sch{color:var(--text-dim); font-size:14px;}
   .edu-card .yr{font-family:var(--mono); font-size:12px; color:var(--text-dimmer); margin-top:8px;}
 
   /* CONTACT */
-  .contact-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:28px 30px; overflow:hidden;
-  }
+  .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:26px 28px; overflow:hidden;}
   .contact-card .ep-head{padding:0 0 16px; border-bottom:1px solid var(--border); margin-bottom:16px;}
   .contact-fields{font-family:var(--mono); font-size:14px;}
-  .cf{display:flex; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border); min-width:0;}
+  .cf{display:flex; gap:10px; padding:9px 0; border-bottom:1px dashed var(--border); min-width:0; align-items:center;}
   .cf:last-child{border-bottom:none;}
   .cf .k{color:var(--blue); min-width:110px; flex-shrink:0;}
   .cf .v{color:var(--text-dim); word-break:break-all; min-width:0;}
   .cf a.v:hover{color:var(--amber);}
+  .copy-btn{
+    margin-left:auto; font-family:var(--mono); font-size:11px; padding:4px 9px;
+    background:var(--surface-2); border:1px solid var(--border); border-radius:6px;
+    color:var(--text-dimmer); cursor:pointer; transition:color .2s, border-color .2s;
+  }
+  .copy-btn:hover{color:var(--amber); border-color:var(--amber);}
 
   /* CERTIFICATES */
   .cert-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
   .cert-card{
     display:block; background:var(--surface); border:1px solid var(--border);
-    border-radius:10px; overflow:hidden; transition:border-color .2s, transform .2s;
+    border-radius:var(--radius); overflow:hidden; transition:border-color .2s, transform .2s;
   }
   .cert-card:hover{border-color:var(--amber); transform:translateY(-3px);}
   .cert-img{aspect-ratio:16/11; overflow:hidden; background:#f2f2f2; border-bottom:1px solid var(--border);}
@@ -233,92 +310,87 @@
   .cert-meta{padding:12px 14px;}
   .cert-title{font-family:var(--mono); font-size:13px; font-weight:700;}
   .cert-issuer{font-size:12px; color:var(--text-dimmer); margin-top:3px;}
-  .cert-all{margin-top:20px; font-family:var(--mono); font-size:13px;}
-  .cert-all a{color:var(--amber);}
-  .cert-all a:hover{text-decoration:underline;}
+  .cert-all{margin-top:22px; font-family:var(--mono); font-size:13px;}
+  .cert-all a{color:var(--amber); border-bottom:1px solid transparent; transition:border-color .2s;}
+  .cert-all a:hover{border-color:var(--amber);}
 
-  /* SCROLL REVEAL */
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1; transform:none;}
-  @media (prefers-reduced-motion: reduce){.reveal{opacity:1; transform:none; transition:none;}}
+  footer{padding:36px 0 48px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-dimmer); border-top:1px solid var(--border);}
+  footer a{color:var(--amber);}
 
-  footer{padding:36px 0 50px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-dimmer);}
+  /* REVEAL */
+  .js .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .js .reveal.in{opacity:1; transform:none;}
 
-  @media(max-width:720px){
-    .navlinks{display:none; position:fixed; top:64px; left:0; right:0; background:rgba(18,21,27,0.97); backdrop-filter:blur(12px); flex-direction:column; align-items:center; gap:0; padding:16px 0; border-bottom:1px solid var(--border); z-index:100;}
-    .navlinks.open{display:flex;}
-    .navlinks a{padding:14px 0; width:100%; text-align:center; font-size:15px; border-bottom:1px solid var(--border);}
-    .navlinks a:last-child{border-bottom:none;}
-    .navlinks a::before{display:none;}
-    .hamburger{display:flex !important;}
-    .contact-card{padding:20px 16px;}
-    .cf{flex-direction:column; gap:2px;}
-    .cf .k{min-width:0;}
-    h1.name{font-size:32px;}
-    .about-grid{grid-template-columns:1fr;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+
+  @media(max-width:820px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr; gap:30px;}
     .stack-grid{grid-template-columns:1fr;}
     .cert-grid{grid-template-columns:repeat(2,1fr);}
   }
   @media(max-width:480px){
     .cert-grid{grid-template-columns:1fr;}
   }
+  @media(max-width:720px){
+    .hamburger{display:flex;}
+    .nav-cta{display:none;}
+    .navlinks{
+      display:none; position:absolute; top:64px; left:0; right:0;
+      background:rgba(14,16,21,.98); backdrop-filter:blur(12px);
+      flex-direction:column; align-items:stretch; gap:0; padding:8px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:13px 24px; border-radius:0; font-size:14.5px; border-bottom:1px solid var(--border);}
+    .navlinks a:last-child{border-bottom:none;}
+    .navlinks a::before{display:none;}
+    .navlinks a.active{background:rgba(232,163,61,.1);}
+    .contact-card{padding:20px 16px;}
+    .cf{flex-wrap:wrap;}
+    .cf .k{min-width:90px;}
+    section{padding:46px 0;}
+    .gallery figure{flex:0 0 82%;}
+    .gallery img{height:170px;}
+  }
 
-  /* SMOOTH SCROLL OFFSET FOR NAV */
-  html{scroll-padding-top:80px;}
-
-  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
   @media (prefers-reduced-motion: reduce){
     .caret{animation:none;}
     html{scroll-behavior:auto;}
+    .js .reveal{opacity:1; transform:none; transition:none;}
+    *{scroll-snap-type:none !important;}
   }
-
-  /* ACTIVE NAV LINK */
-  .navlinks a{
-    transition:color .2s, background .2s;
-    padding:4px 10px;
-    border-radius:6px;
-  }
-  .navlinks a.active{
-    color:var(--text);
-    background:rgba(232,163,61,0.12);
-  }
-
-  /* HAMBURGER */
-  .hamburger{
-    display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none; z-index:110;
-  }
-  .hamburger span{
-    display:block; width:22px; height:2px; background:var(--text-dim); border-radius:2px; transition:transform .3s, opacity .3s;
-  }
-  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg); background:var(--amber);}
-  .hamburger.open span:nth-child(2){opacity:0;}
-  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg); background:var(--amber);}
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <nav>
   <div class="wrap">
-    <a href="#" class="logo-wrap">
-      <div class="logo-hex"><span>MN</span></div>
+    <a href="#" class="logo-wrap" aria-label="Nowar.dev — home">
+      <div class="logo-hex" aria-hidden="true"><span>MN</span></div>
       <div class="logo-text">Nowar<span class="tld">.dev</span></div>
     </a>
-    <button class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.navlinks').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="navlinks" onclick="if(window.innerWidth<=720){document.querySelector('.hamburger').classList.remove('open');this.classList.remove('open')}">
-      <a href="#about">about</a>
-      <a href="#stack">stack</a>
-      <a href="#experience">experience</a>
-      <a href="#projects">projects</a>
-      <a href="#education">education</a>
-      <a href="#certificates">certificates</a>
-      <a href="#contact">contact</a>
+    <div class="nav-right">
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="navlinks" id="navlinks">
+        <a href="#about">about</a>
+        <a href="#stack">stack</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#education">education</a>
+        <a href="#certificates">certificates</a>
+        <a href="#contact">contact</a>
+      </div>
+      <a class="btn primary nav-cta" href="#contact">hire me</a>
     </div>
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero" id="main">
   <div class="wrap">
     <div class="term">
       <div class="term-bar">
@@ -331,24 +403,39 @@
 <span class="json-punc">{</span>
   <span class="json-key">"name"</span><span class="json-punc">:</span> <span class="json-str">"Mohamed Nowar"</span><span class="json-punc">,</span>
   <span class="json-key">"role"</span><span class="json-punc">:</span> <span class="json-str">"Backend Developer"</span><span class="json-punc">,</span>
+  <span class="json-key">"stack"</span><span class="json-punc">:</span> <span class="json-punc">[</span><span class="json-str">"ASP.NET Core"</span><span class="json-punc">,</span> <span class="json-str">"Django"</span><span class="json-punc">]</span><span class="json-punc">,</span>
   <span class="json-key">"location"</span><span class="json-punc">:</span> <span class="json-str">"Cairo, Egypt"</span><span class="json-punc">,</span>
-  <span class="json-key">"remote"</span><span class="json-punc">:</span> <span class="json-str">true</span>
+  <span class="json-key">"open_to_remote"</span><span class="json-punc">:</span> <span class="json-str">true</span>
 <span class="json-punc">}</span><span class="caret"></span></div>
       </div>
     </div>
 
     <h1 class="name">Mohamed Nowar</h1>
-    <div class="role">Building <span class="hl">RESTful APIs</span> with Python, Django &amp; ASP.NET Core — Clean Architecture, always.</div>
+    <p class="role">Backend Developer building <span class="hl">scalable REST APIs</span> with Python, Django &amp; ASP.NET Core — Clean Architecture, tested and production-ready.</p>
+
+    <div class="hero-cta">
+      <a class="btn primary" href="#projects">→ view projects</a>
+      <a class="btn" href="#contact">GET /contact</a>
+      <a class="btn ghost" href="https://github.com/EngMohamedNowar" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/mohamednowar/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+
     <div class="hero-meta">
       <span>📍 Cairo, Egypt · Open to Remote</span>
       <a href="tel:+201557722675">+20 155 772 2675</a>
       <a href="mailto:mohamednowar2002@gmail.com">mohamednowar2002@gmail.com</a>
-      <a href="https://github.com/EngMohamedNowar" target="_blank">github.com/EngMohamedNowar</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>7+</b><span>shipped projects</span></div>
+      <div class="stat"><b>1</b><span>live in production</span></div>
+      <div class="stat"><b>2</b><span>backend stacks (.NET / Python)</span></div>
+      <div class="stat"><b>50</b><span>unit tests written</span></div>
     </div>
   </div>
 </header>
 
-<section id="about">
+<section id="about" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">01</span>
@@ -358,8 +445,9 @@
     <div class="about-grid">
       <div class="about">
         <p>Backend-focused developer specializing in <strong>robust, scalable REST APIs</strong> built with Python, Django REST Framework, C#, and ASP.NET Core.</p>
-        <p>Comfortable across the full backend surface: <strong>Clean Architecture</strong>, SQL Server and PostgreSQL schema design, JWT/token authentication, permissions, pagination, filtering, search, and REST API design — backed by a solid grounding in OOP and data structures.</p>
-        <p>Every project below shipped end-to-end: domain modeling → data access → business logic → clean, maintainable API delivery. Currently sharpening these skills further through Route Academy's Back-End ASP.NET Core training, with additional hands-on Python/Django API experience.</p>
+        <p>Comfortable across the full backend surface: <strong>Clean Architecture</strong>, relational schema design on SQL Server &amp; PostgreSQL, JWT/token authentication, permissions, pagination, filtering and search — grounded in solid OOP and data structures.</p>
+        <p>Every project below shipped end-to-end: domain modeling → data access → business logic → clean, maintainable API delivery — with <strong>unit tests (xUnit + NSubstitute)</strong> on core business logic.</p>
+        <p>Currently expanding into <strong>microservices, messaging and CI/CD</strong> through Elevate's Backend Advanced Bootcamp (.NET track).</p>
       </div>
       <div class="layers">
         <div class="layer presentation">
@@ -379,7 +467,7 @@
   </div>
 </section>
 
-<section id="stack">
+<section id="stack" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">02</span>
@@ -388,52 +476,68 @@
     </div>
     <div class="stack-grid">
       <div class="stack-card">
-        <div class="sk">backend</div>
+        <div class="sk">backend core</div>
         <div class="tags">
-          <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">C#</span><span class="tag">.NET Core</span><span class="tag">ASP.NET Core Web API</span>
-          <span class="tag">ASP.NET MVC</span><span class="tag">EF Core</span><span class="tag">Django ORM</span><span class="tag">LINQ</span>
+          <span class="tag core">C#</span><span class="tag core">ASP.NET Core Web API</span><span class="tag core">ASP.NET Core MVC</span>
+          <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag core">Django REST Framework</span>
+          <span class="tag">EF Core</span><span class="tag">Django ORM</span><span class="tag">LINQ</span>
           <span class="tag">Clean Architecture</span><span class="tag">Repository Pattern</span><span class="tag">Unit of Work</span>
         </div>
       </div>
       <div class="stack-card">
         <div class="sk">databases</div>
         <div class="tags">
-          <span class="tag">SQL Server</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
+          <span class="tag core">SQL Server</span><span class="tag core">PostgreSQL</span><span class="tag">Redis</span><span class="tag">SQLite</span>
         </div>
       </div>
       <div class="stack-card">
         <div class="sk">auth &amp; security</div>
         <div class="tags">
-          <span class="tag">JWT</span><span class="tag">Token-Based Auth</span><span class="tag">DRF Permissions</span><span class="tag">Role-Based Authorization</span>
-          <span class="tag">ASP.NET Identity</span><span class="tag">Rate Limiting</span><span class="tag">CSRF</span>
-        </div>
-      </div>
-      <div class="stack-card">
-        <div class="sk">tools &amp; fundamentals</div>
-        <div class="tags">
-          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">Visual Studio</span>
-          <span class="tag">Data Structures</span><span class="tag">Algorithms</span><span class="tag">OOP</span><span class="tag">SCRUM</span>
+          <span class="tag core">JWT</span><span class="tag">Token-Based Auth</span><span class="tag">DRF Permissions</span>
+          <span class="tag">Role-Based Authorization</span><span class="tag">ASP.NET Identity</span><span class="tag">Rate Limiting</span><span class="tag">CSRF</span>
         </div>
       </div>
       <div class="stack-card">
         <div class="sk">payments &amp; integrations</div>
         <div class="tags">
-          <span class="tag">Stripe</span><span class="tag">Stripe Checkout</span><span class="tag">Webhooks</span>
-          <span class="tag">AutoMapper</span><span class="tag">QRCoder</span><span class="tag">Chart.js</span>
+          <span class="tag core">Stripe Checkout</span><span class="tag">Webhooks</span><span class="tag">AutoMapper</span>
+          <span class="tag">QRCoder</span><span class="tag">ESC/POS Printing</span>
         </div>
       </div>
       <div class="stack-card">
-        <div class="sk">frontend &amp; UI</div>
+        <div class="sk">tooling</div>
         <div class="tags">
-          <span class="tag">Bootstrap 5</span><span class="tag">Razor Views</span><span class="tag">Inter Font</span>
-          <span class="tag">Dark Theme</span><span class="tag">Localization</span><span class="tag">RTL</span>
+          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">Visual Studio</span>
+          <span class="tag">xUnit</span><span class="tag">SCRUM</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="sk">fundamentals</div>
+        <div class="tags">
+          <span class="tag">OOP</span><span class="tag">Data Structures</span><span class="tag">Algorithms</span>
+          <span class="tag">REST Design</span><span class="tag">Relational Modeling</span><span class="tag">Dependency Injection</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="sk">testing</div>
+        <div class="tags">
+          <span class="tag core">xUnit</span><span class="tag core">NSubstitute</span><span class="tag">Unit Testing</span>
+          <span class="tag">Coverlet</span><span class="tag">Code Coverage</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="sk">currently learning</div>
+        <div class="tags">
+          <span class="tag core">Microservices</span><span class="tag">RabbitMQ</span><span class="tag">Azure Service Bus</span>
+          <span class="tag">Distributed Caching</span><span class="tag">CI/CD (Azure DevOps)</span><span class="tag">SignalR</span><span class="tag">Swagger</span>
         </div>
       </div>
     </div>
+    <p class="stack-note"><b>UI when needed:</b> Bootstrap 5 · Razor Views · English/Arabic localization with RTL support</p>
   </div>
 </section>
 
-<section id="experience">
+<section id="experience" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">03</span>
@@ -441,6 +545,17 @@
       <div class="rule"></div>
     </div>
     <div class="gitlog">
+      <div class="commit">
+        <div><span class="commit-hash">#HEAD</span><span class="commit-date">Aug 2026 – Present</span></div>
+        <div class="commit-msg">Backend Advanced Bootcamp — .NET Track</div>
+        <div class="commit-org">Elevate <span style="color:var(--amber)">· in progress</span></div>
+        <ul>
+          <li>Microservices architecture: modular monolith vs. microservices, bounded contexts, aggregates, strategic design</li>
+          <li>Messaging patterns with RabbitMQ / Azure Service Bus and Redis-based caching strategies</li>
+          <li>CI/CD pipelines with Azure DevOps, plus Agile/Scrum (sprint planning, backlog grooming, story points)</li>
+          <li>Three capstone projects: microservices e-commerce (Redis + Paymob + SignalR), LMS exam system, event-driven fitness platform</li>
+        </ul>
+      </div>
       <div class="commit">
         <div><span class="commit-hash">#a1c9e02</span><span class="commit-date">Dec 2025 – Jul 2026</span></div>
         <div class="commit-msg">Back-End ASP.NET Core Training</div>
@@ -476,7 +591,7 @@
   </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">04</span>
@@ -485,145 +600,167 @@
     </div>
     <div class="endpoints">
 
-      <div class="endpoint">
+      <article class="endpoint featured">
+        <div class="ep-head">
+          <span class="method get">GET</span>
+          <span class="path">/projects/<span class="slug">restaurant-desktop-app</span></span>
+          <span class="status prod">200 live in production</span>
+        </div>
+        <div class="ep-body">
+          <p class="desc">Desktop restaurant management system in C# / WPF — <strong style="color:var(--text)">deployed and in daily use at a real restaurant</strong>, covering orders, billing, held orders, and menu management.</p>
+          <ul class="highlights">
+            <li><b>Custom ESC/POS printing pipeline</b> for the Epson TM-T88V with automatic printer detection and multi-tier fallback</li>
+            <li><b>Raw Win32 printer API</b> integration plus a length-sorted Arabic→English translation layer for reliable receipts</li>
+            <li><b>Arabic receipt rendering</b> fixed via codepage initialization + a length-sorted Arabic→English translation layer</li>
+            <li><b>Floyd–Steinberg dithered logo</b> converted to ESC/POS raster format</li>
+            <li><b>Unit tests</b> on data models, UI helpers and the user service layer with Coverlet coverage tracking</li>
+          </ul>
+          <div class="tags">
+            <span class="tag core">C#</span><span class="tag core">WPF</span><span class="tag">.NET</span><span class="tag">ESC/POS</span><span class="tag">Win32 API</span><span class="tag">xUnit</span>
+          </div>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/RestaurantPOS_DesktopApplication" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
+          <div class="gallery">
+            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" alt="Restaurant POS — admin point of sale screen"></a><figcaption>POS Admin</figcaption></figure>
+            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" alt="Restaurant POS — daily report"></a><figcaption>Daily Report</figcaption></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="endpoint featured">
+        <div class="ep-head">
+          <span class="method put">PUT</span>
+          <span class="path">/projects/<span class="slug">gym-management-system</span></span>
+          <span class="status">200 live demo</span>
+        </div>
+        <div class="ep-body">
+          <p class="desc">Full ASP.NET Core 10.0 MVC system for member management, trainer scheduling, session booking, and membership plans — three-layer architecture with Repository Pattern, Unit of Work and DI.</p>
+          <ul class="highlights">
+            <li><b>Stripe Checkout</b> for membership payments with webhook verification</li>
+            <li><b>ASP.NET Core Identity</b> with SuperAdmin / Admin / Member roles and business rules for capacity, booking eligibility and membership lifecycle</li>
+            <li><b>QR code check-ins</b>, audit logging, notifications, body-measurement tracking across 40+ Razor views</li>
+            <li><b>English + Arabic</b> localization with full RTL support and a consistent dark design system</li>
+          </ul>
+          <div class="tags">
+            <span class="tag core">C#</span><span class="tag core">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
+            <span class="tag">Bootstrap</span><span class="tag">Stripe</span><span class="tag">Identity</span><span class="tag">AutoMapper</span><span class="tag">QR Code</span>
+          </div>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/GymManagementSystem_MVC" target="_blank" rel="noopener">→ view repository on GitHub</a>
+            <a class="repo-link" href="https://fitgym.runasp.net/" target="_blank" rel="noopener">→ live demo ↗</a>
+          </div>
+          <div class="gallery">
+            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" alt="Gym management system — home page"></a><figcaption>Home Page</figcaption></figure>
+            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" alt="Gym management system — admin dashboard"></a><figcaption>Admin Dashboard</figcaption></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="endpoint">
         <div class="ep-head">
           <span class="method post">POST</span>
           <span class="path">/projects/<span class="slug">ecommerce-api</span></span>
           <span class="status">200 shipped</span>
         </div>
         <div class="ep-body">
-          <p>RESTful e-commerce API covering product catalog, shopping cart, order processing, and inventory management. JWT authentication with role-based authorization for customer and admin roles. Clean architecture with the repository pattern; EF Core + SQL Server for persistence.</p>
+          <p class="desc">RESTful e-commerce API covering product catalog, shopping cart, order processing, and inventory management.</p>
+          <ul class="highlights">
+            <li><b>JWT authentication</b> with role-based authorization for customer and admin roles</li>
+            <li><b>Clean Architecture</b> with the repository pattern; EF Core + SQL Server for persistence</li>
+            <li><b>Unit tests for core business logic</b> (order creation, payment processing) with xUnit + NSubstitute mocking</li>
+          </ul>
           <div class="tags">
-            <span class="tag">C#</span><span class="tag">ASP.NET Core Web API</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
+            <span class="tag core">C#</span><span class="tag core">ASP.NET Core Web API</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
+            <span class="tag">xUnit</span><span class="tag">NSubstitute</span>
           </div>
-          <p><a class="repo-link" href="https://github.com/EngMohamedNowar/ECommerce_API" target="_blank">→ view repository on GitHub</a></p>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/ECommerce_API" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
         </div>
-      </div>
+      </article>
 
-      <div class="endpoint">
-        <div class="ep-head">
-          <span class="method put">PUT</span>
-          <span class="path">/projects/<span class="slug">gym-management-system</span></span>
-          <span class="status">200 shipped</span>
-        </div>
-        <div class="ep-body">
-          <p>Full ASP.NET Core 10.0 MVC system for member management, trainer scheduling, session booking, and membership plans. Three-layer architecture with Repository Pattern, Unit of Work, ASP.NET Core Identity roles, Stripe Checkout payments with webhook verification, QR check-ins, audit logging, and English + Arabic localization with RTL support.</p>
-          <div class="tags">
-            <span class="tag">C#</span><span class="tag">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
-            <span class="tag">Bootstrap</span><span class="tag">Stripe</span><span class="tag">Identity</span><span class="tag">AutoMapper</span><span class="tag">QR Code</span>
-          </div>
-          <p>
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/GymManagementSystem_MVC" target="_blank">→ view repository on GitHub</a>
-            &nbsp;·&nbsp;
-            <a class="repo-link" href="https://fitgym.runasp.net/" target="_blank">→ live demo</a>
-          </p>
-          <div class="project-screenshots">
-            <table style="width:100%; border-spacing:10px; margin-top:16px;">
-              <tr>
-                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Home Page</span></td>
-                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Admin Dashboard</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="endpoint">
-        <div class="ep-head">
-          <span class="method get">GET</span>
-          <span class="path">/projects/<span class="slug">restaurant-desktop-app</span></span>
-          <span class="status">200 live in production</span>
-        </div>
-        <div class="ep-body">
-          <p>Full desktop restaurant management system in C# and WPF — currently deployed and in active daily use at a real restaurant, covering orders, billing, held orders, and menu management. Custom ESC/POS thermal printing pipeline for the Epson TM-T88V with automatic printer detection and multi-tier fallback, raw Win32 printer API integration, a length-sorted Arabic-to-English translation layer for reliable receipt printing, and a Floyd-Steinberg dithered logo converted to ESC/POS raster format.</p>
-          <div class="tags">
-            <span class="tag">C#</span><span class="tag">WPF</span><span class="tag">.NET</span><span class="tag">ESC/POS</span><span class="tag">Win32 API</span>
-          </div>
-          <p><a class="repo-link" href="https://github.com/EngMohamedNowar/RestaurantPOS_DesktopApplication" target="_blank">→ view repository on GitHub</a></p>
-          <div class="project-screenshots">
-            <table style="width:100%; border-spacing:10px; margin-top:16px;">
-              <tr>
-                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">POS Admin</span></td>
-                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Daily Report</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="endpoint">
-        <div class="ep-head">
-          <span class="method post">POST</span>
-          <span class="path">/projects/<span class="slug">plant-disease-detection</span></span>
-          <span class="status">200 shipped</span>
-        </div>
-        <div class="ep-body">
-          <p>Python/Django backend for a web/mobile app that detects plant diseases from user-uploaded images via an AI classification model. Provides REST endpoints for care tips, reminders, and a seed store alongside the AI integration.</p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">REST API</span><span class="tag">AI Integration</span>
-          </div>
-          <p><a class="repo-link" href="https://github.com/EngMohamedNowar/PlantCareSystem" target="_blank">→ view repository on GitHub</a></p>
-        </div>
-      </div>
-
-      <div class="endpoint">
-        <div class="ep-head">
-          <span class="method post">POST</span>
-          <span class="path">/projects/<span class="slug">cinema-ticket-reservation-api</span></span>
-          <span class="status">200 shipped</span>
-        </div>
-        <div class="ep-body">
-          <p>Python/Django REST API for managing movie schedules, seat selection, and ticket booking. JWT authentication with role-based permissions, and a relational schema modeling users, movies, screenings, seats, and reservations.</p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">SQL Server</span>
-          </div>
-          <p><a class="repo-link" href="https://github.com/EngMohamedNowar/CinemaTicketsReservationAPI" target="_blank">→ view repository on GitHub</a></p>
-        </div>
-      </div>
-
-      <div class="endpoint">
-        <div class="ep-head">
-          <span class="method get">GET</span>
-          <span class="path">/projects/<span class="slug">meals-rater-api</span></span>
-          <span class="status">200 shipped</span>
-        </div>
-        <div class="ep-body">
-          <p>Python/Django REST API for meal rating with token-based authentication and custom permission classes. Includes pagination, filtering, and search for optimized data retrieval.</p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">REST API</span><span class="tag">Token Auth</span>
-          </div>
-          <p><a class="repo-link" href="https://github.com/EngMohamedNowar/MealsRater_API" target="_blank">→ view repository on GitHub</a></p>
-        </div>
-      </div>
-
-      <div class="endpoint">
+      <article class="endpoint">
         <div class="ep-head">
           <span class="method post">POST</span>
           <span class="path">/projects/<span class="slug">my-tasks-todo-app</span></span>
           <span class="status">200 shipped</span>
         </div>
         <div class="ep-body">
-          <p>Notion-style desktop task manager built with WPF + .NET 8 and SQLite. Features sub-tasks with progress tracking, recurring tasks, a Pomodoro focus timer with session history, a dashboard with weekly charts, live accent theming, multi-select, archive, and undo delete. Clean MVVM + Repository pattern with 50 unit tests.</p>
+          <p class="desc">Notion-style desktop task manager built with WPF + .NET 8 and SQLite — clean MVVM + Repository pattern with <strong style="color:var(--text)">50 unit tests</strong>.</p>
+          <ul class="highlights">
+            <li><b>Sub-tasks with progress</b>, recurring tasks, Pomodoro focus timer with session history</li>
+            <li><b>Dashboard with weekly charts</b>, live accent theming, multi-select, archive and undo-delete</li>
+          </ul>
           <div class="tags">
-            <span class="tag">C#</span><span class="tag">.NET 8</span><span class="tag">WPF</span><span class="tag">EF Core</span><span class="tag">SQLite</span><span class="tag">MVVM</span><span class="tag">xUnit</span>
+            <span class="tag core">C#</span><span class="tag core">.NET 8</span><span class="tag">WPF</span><span class="tag">EF Core</span><span class="tag">SQLite</span><span class="tag">MVVM</span><span class="tag">xUnit</span>
           </div>
-          <p><a class="repo-link" href="https://github.com/EngMohamedNowar/TodoApp" target="_blank">→ view repository on GitHub</a></p>
-          <div class="project-screenshots">
-            <table style="width:100%; border-spacing:10px; margin-top:16px;">
-              <tr>
-                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Main View</span></td>
-                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Dashboard</span></td>
-              </tr>
-            </table>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/TodoApp" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
+          <div class="gallery">
+            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" alt="Todo app — main view"></a><figcaption>Main View</figcaption></figure>
+            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" alt="Todo app — dashboard"></a><figcaption>Dashboard</figcaption></figure>
           </div>
         </div>
-      </div>
+      </article>
+
+      <article class="endpoint">
+        <div class="ep-head">
+          <span class="method post">POST</span>
+          <span class="path">/projects/<span class="slug">plant-disease-detection</span></span>
+          <span class="status">200 shipped</span>
+        </div>
+        <div class="ep-body">
+          <p class="desc">Python/Django backend for a web/mobile app that detects plant diseases from user-uploaded images via an AI classification model, with REST endpoints for care tips, reminders, and a seed store.</p>
+          <div class="tags">
+            <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag">Django REST Framework</span><span class="tag">AI Integration</span>
+          </div>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/PlantCareSystem" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="endpoint">
+        <div class="ep-head">
+          <span class="method post">POST</span>
+          <span class="path">/projects/<span class="slug">cinema-ticket-reservation-api</span></span>
+          <span class="status">200 shipped</span>
+        </div>
+        <div class="ep-body">
+          <p class="desc">Python/Django REST API for movie schedules, seat selection, and ticket booking — JWT authentication with role-based permissions and a relational schema modeling users, movies, screenings, seats, and reservations.</p>
+          <div class="tags">
+            <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">SQL Server</span>
+          </div>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/CinemaTicketsReservationAPI" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="endpoint">
+        <div class="ep-head">
+          <span class="method get">GET</span>
+          <span class="path">/projects/<span class="slug">meals-rater-api</span></span>
+          <span class="status">200 shipped</span>
+        </div>
+        <div class="ep-body">
+          <p class="desc">Python/Django REST API for meal rating with token-based authentication and custom permission classes, plus pagination, filtering, and search for optimized data retrieval.</p>
+          <div class="tags">
+            <span class="tag core">Python</span><span class="tag core">Django</span><span class="tag">Django REST Framework</span><span class="tag">Token Auth</span>
+          </div>
+          <div class="ep-links">
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/MealsRater_API" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
+        </div>
+      </article>
 
     </div>
   </div>
 </section>
 
-<section id="education">
+<section id="education" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">05</span>
@@ -638,7 +775,7 @@
   </div>
 </section>
 
-<section id="certificates">
+<section id="certificates" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">06</span>
@@ -646,48 +783,48 @@
       <div class="rule"></div>
     </div>
     <div class="cert-grid">
-      <a class="cert-card" href="https://drive.google.com/file/d/1KATof9qObGF7jttGQBih6Z8Zl4Jj4Iqj/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/bachelor-certificate.jpg" alt="B.Sc. Graduation Certificate" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/1KATof9qObGF7jttGQBih6Z8Zl4Jj4Iqj/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/bachelor-certificate.jpg" alt="B.Sc. Graduation Certificate"></div>
         <div class="cert-meta"><div class="cert-title">B.Sc. Graduation Certificate</div><div class="cert-issuer">Egyptian E-Learning University · 2025</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1EYLlRJlzx50N_8i8D6bMJNSKNTpoiuOB/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/route-aspnet-core.jpg" alt="ASP.NET Core Back-End" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/1EYLlRJlzx50N_8i8D6bMJNSKNTpoiuOB/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/route-aspnet-core.jpg" alt="ASP.NET Core Back-End certificate"></div>
         <div class="cert-meta"><div class="cert-title">ASP.NET Core Back-End</div><div class="cert-issuer">Route Academy · Dec 2025 – Jul 2026</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1Uql1cZfbJ_mJwTDXv5ZWomS8w9iw30lJ/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/huawei-hcia-ai.jpg" alt="HCIA-AI V3.5" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/1Uql1cZfbJ_mJwTDXv5ZWomS8w9iw30lJ/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/huawei-hcia-ai.jpg" alt="HCIA-AI V3.5 certificate"></div>
         <div class="cert-meta"><div class="cert-title">HCIA-AI V3.5</div><div class="cert-issuer">Huawei · Score 96% · 2024</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/19Fk6P6v0B3IubjQlkJDMwB6HSV3vRBOm/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/nti.jpg" alt="AI Talent Academy Track" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/19Fk6P6v0B3IubjQlkJDMwB6HSV3vRBOm/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/nti.jpg" alt="AI Talent Academy Track certificate"></div>
         <div class="cert-meta"><div class="cert-title">AI Talent Academy Track</div><div class="cert-issuer">NTI × Huawei · 80 hrs · Score 96%</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/13mJhYLAQvHMASVqRJ1wvc61cuEPA7h6g/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/iti-python.jpg" alt="Full Stack Python" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/13mJhYLAQvHMASVqRJ1wvc61cuEPA7h6g/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/iti-python.jpg" alt="Full Stack Python certificate"></div>
         <div class="cert-meta"><div class="cert-title">Full Stack Python</div><div class="cert-issuer">ITI · 120 Hours · 2024</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1m_PpMnaFMPOwi3jKf3DjCYNt4sfYoS3r/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/mastering-oop.jpg" alt="Mastering OOP using C++" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/1m_PpMnaFMPOwi3jKf3DjCYNt4sfYoS3r/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/mastering-oop.jpg" alt="Mastering OOP using C++ certificate"></div>
         <div class="cert-meta"><div class="cert-title">Mastering OOP using C++</div><div class="cert-issuer">ITI Platform · Oct 2025</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1aBJj-ccxO_rRc7DQUeFpHM9x783MTAe7/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/clean-code.jpg" alt="Principles of Clean Code" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/1aBJj-ccxO_rRc7DQUeFpHM9x783MTAe7/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/clean-code.jpg" alt="Principles of Clean Code certificate"></div>
         <div class="cert-meta"><div class="cert-title">Principles of Clean Code</div><div class="cert-issuer">ITI Platform · Oct 2025</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1cxs0XJfog1LW_tvE4f6Igs_CmpSj8fjY/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/database.jpg" alt="Database Fundamentals" /></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/1cxs0XJfog1LW_tvE4f6Igs_CmpSj8fjY/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/database.jpg" alt="Database Fundamentals certificate"></div>
         <div class="cert-meta"><div class="cert-title">Database Fundamentals</div><div class="cert-issuer">ITI Platform · Oct 2024</div></div>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1kPOu0tpstFxc67gnUsDttiSiu0XVFjQ5/view?usp=sharing" target="_blank">
-        <div class="cert-img"><img loading="lazy" src="assets/certificates/military-service.jpg" alt="Military Service Certificate" /></div>
-        <div class="cert-meta"><div class="cert-title">Military Service</div><div class="cert-issuer">Egypt</div></div>
+      <a class="cert-card" href="https://drive.google.com/file/d/1kPOu0tpstFxc67gnUsDttiSiu0XVFjQ5/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/military-service.jpg" alt="Military Service certificate"></div>
+        <div class="cert-meta"><div class="cert-title">Military Service</div><div class="cert-issuer">Egypt · Exempted</div></div>
       </a>
     </div>
-    <p class="cert-all"><a href="https://drive.google.com/drive/folders/1r_ONbtYPHxP2p0TOfOcmKEdz4MIbd0Jt?usp=sharing" target="_blank">→ view all certificates on Google Drive</a></p>
+    <p class="cert-all"><a href="https://drive.google.com/drive/folders/1r_ONbtYPHxP2p0TOfOcmKEdz4MIbd0Jt?usp=sharing" target="_blank" rel="noopener">→ view all certificates on Google Drive</a></p>
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">07</span>
@@ -701,53 +838,91 @@
         <span class="status">200 available</span>
       </div>
       <div class="contact-fields">
-        <div class="cf"><span class="k">"email"</span><a class="v" href="mailto:mohamednowar2002@gmail.com">"mohamednowar2002@gmail.com"</a></div>
-        <div class="cf"><span class="k">"phone"</span><a class="v" href="tel:+201557722675">"+20 155 772 2675"</a></div>
-        <div class="cf"><span class="k">"github"</span><a class="v" href="https://github.com/EngMohamedNowar" target="_blank">"github.com/EngMohamedNowar"</a></div>
-        <div class="cf"><span class="k">"linkedin"</span><a class="v" href="https://www.linkedin.com/in/mohamednowar/" target="_blank">"linkedin.com/in/mohamednowar"</a></div>
+        <div class="cf"><span class="k">"email"</span><a class="v" href="mailto:mohamednowar2002@gmail.com">"mohamednowar2002@gmail.com"</a><button class="copy-btn" data-copy="mohamednowar2002@gmail.com" type="button">copy</button></div>
+        <div class="cf"><span class="k">"phone"</span><a class="v" href="tel:+201557722675">"+20 155 772 2675"</a><button class="copy-btn" data-copy="+201557722675" type="button">copy</button></div>
+        <div class="cf"><span class="k">"github"</span><a class="v" href="https://github.com/EngMohamedNowar" target="_blank" rel="noopener">"github.com/EngMohamedNowar"</a></div>
+        <div class="cf"><span class="k">"linkedin"</span><a class="v" href="https://www.linkedin.com/in/mohamednowar/" target="_blank" rel="noopener">"linkedin.com/in/mohamednowar"</a></div>
         <div class="cf"><span class="k">"languages"</span><span class="v">"Arabic (Native), English (Professional)"</span></div>
+        <div class="cf"><span class="k">"soft_skills"</span><span class="v">"Problem Solving · Attention to Detail · Team Collaboration · Fast Self-Learner"</span></div>
+        <div class="cf"><span class="k">"military"</span><span class="v">"Exempted (Sole Son)"</span></div>
+        <div class="cf"><span class="k">"status"</span><span class="v" style="color:var(--teal)">"open to remote opportunities"</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 Mohamed Nowar — built for the backend, one endpoint at a time.
+  <div class="wrap">
+    © 2026 Mohamed Nowar — built for the backend, one endpoint at a time.
+    · <a href="#">back to top ↑</a>
+  </div>
 </footer>
 
 <script>
 (function(){
-  const links = document.querySelectorAll('.navlinks a');
-  const sections = [];
-  links.forEach(a => {
-    const id = a.getAttribute('href').replace('#','');
-    const el = document.getElementById(id);
-    if(el) sections.push({id, el, link:a});
+  var burger = document.querySelector('.hamburger');
+  var links = document.getElementById('navlinks');
+  burger.addEventListener('click', function(){
+    var open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    links.classList.toggle('open', !open);
+  });
+  links.addEventListener('click', function(e){
+    if(e.target.tagName === 'A' && window.innerWidth <= 720){
+      burger.setAttribute('aria-expanded','false');
+      links.classList.remove('open');
+    }
   });
 
-  function update(){
-    const atBottom = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
-    let current = sections[0];
-    for(const s of sections){
-      if(s.el.getBoundingClientRect().top <= window.innerHeight * 0.4) current = s;
+  var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.navlinks a'));
+  var sections = navAnchors.map(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    return el ? {el:el, link:a} : null;
+  }).filter(Boolean);
+
+  function updateNav(){
+    var current = sections[0];
+    for(var i=0;i<sections.length;i++){
+      if(sections[i].el.getBoundingClientRect().top <= window.innerHeight * 0.4) current = sections[i];
     }
-    if(atBottom) current = sections[sections.length - 1];
-    links.forEach(a => a.classList.remove('active'));
+    if((window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 60)) current = sections[sections.length-1];
+    navAnchors.forEach(function(a){ a.classList.remove('active'); });
     if(current) current.link.classList.add('active');
   }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  window.addEventListener('resize', updateNav);
+  updateNav();
 
-  window.addEventListener('scroll', update, {passive:true});
-  update();
-
-  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    const revealEls = document.querySelectorAll('.sec-head, .about-grid, .stack-card, .commit, .endpoint, .edu-card, .cert-card, .contact-card');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
       });
-    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
+
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var val = btn.getAttribute('data-copy');
+      var done = function(){
+        var old = btn.textContent;
+        btn.textContent = 'copied ✓';
+        btn.style.color = 'var(--teal)';
+        setTimeout(function(){ btn.textContent = old; btn.style.color = ''; }, 1600);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(val).then(done, done);
+      } else {
+        var t = document.createElement('textarea');
+        t.value = val; document.body.appendChild(t); t.select();
+        try{ document.execCommand('copy'); }catch(e){}
+        document.body.removeChild(t); done();
+      }
+    });
+  });
 })();
 </script>
 

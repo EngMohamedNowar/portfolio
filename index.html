@@ -221,6 +221,27 @@
   .cf .v{color:var(--text-dim); word-break:break-all; min-width:0;}
   .cf a.v:hover{color:var(--amber);}
 
+  /* CERTIFICATES */
+  .cert-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .cert-card{
+    display:block; background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; overflow:hidden; transition:border-color .2s, transform .2s;
+  }
+  .cert-card:hover{border-color:var(--amber); transform:translateY(-3px);}
+  .cert-img{aspect-ratio:16/11; overflow:hidden; background:#f2f2f2; border-bottom:1px solid var(--border);}
+  .cert-img img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block;}
+  .cert-meta{padding:12px 14px;}
+  .cert-title{font-family:var(--mono); font-size:13px; font-weight:700;}
+  .cert-issuer{font-size:12px; color:var(--text-dimmer); margin-top:3px;}
+  .cert-all{margin-top:20px; font-family:var(--mono); font-size:13px;}
+  .cert-all a{color:var(--amber);}
+  .cert-all a:hover{text-decoration:underline;}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1; transform:none; transition:none;}}
+
   footer{padding:36px 0 50px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-dimmer);}
 
   @media(max-width:720px){
@@ -236,6 +257,10 @@
     h1.name{font-size:32px;}
     .about-grid{grid-template-columns:1fr;}
     .stack-grid{grid-template-columns:1fr;}
+    .cert-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:480px){
+    .cert-grid{grid-template-columns:1fr;}
   }
 
   /* SMOOTH SCROLL OFFSET FOR NAV */
@@ -287,6 +312,7 @@
       <a href="#experience">experience</a>
       <a href="#projects">projects</a>
       <a href="#education">education</a>
+      <a href="#certificates">certificates</a>
       <a href="#contact">contact</a>
     </div>
   </div>
@@ -481,7 +507,7 @@
           <span class="status">200 shipped</span>
         </div>
         <div class="ep-body">
-          <p>Full ASP.NET Core 10.0 MVC system for member management, trainer scheduling, session booking, and membership plans. Three-layer architecture (Presentation / Business Logic / Data Access) with Repository Pattern, Unit of Work, and DI. AutoMapper for ViewModel↔Entity mapping, ASP.NET Core Identity with role-based access (SuperAdmin, Admin, Member), and business rules for session capacity, booking eligibility, and membership lifecycle. Registration with auto Member profile creation. Stripe Checkout integration for membership payments with webhook verification. Professional dark-themed UI with animated hero, scroll-triggered navbar, grouped admin dropdowns, and responsive mobile design. English + Arabic localization with RTL support. QR code check-ins, audit logging, body measurement tracking, notification system with bell icon, and 40+ Razor views with a consistent design system.</p>
+          <p>Full ASP.NET Core 10.0 MVC system for member management, trainer scheduling, session booking, and membership plans. Three-layer architecture with Repository Pattern, Unit of Work, ASP.NET Core Identity roles, Stripe Checkout payments with webhook verification, QR check-ins, audit logging, and English + Arabic localization with RTL support.</p>
           <div class="tags">
             <span class="tag">C#</span><span class="tag">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
             <span class="tag">Bootstrap</span><span class="tag">Stripe</span><span class="tag">Identity</span><span class="tag">AutoMapper</span><span class="tag">QR Code</span>
@@ -494,16 +520,8 @@
           <div class="project-screenshots">
             <table style="width:100%; border-spacing:10px; margin-top:16px;">
               <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Home Page</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/04-Login-Page.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Login</span></td>
-              </tr>
-              <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Admin Dashboard</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/08-Members-Management.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Members</span></td>
-              </tr>
-              <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/13-Sessions-Schedule.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Sessions Schedule</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/14-Membership-Plans.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Membership Plans</span></td>
+                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Home Page</span></td>
+                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Admin Dashboard</span></td>
               </tr>
             </table>
           </div>
@@ -525,20 +543,8 @@
           <div class="project-screenshots">
             <table style="width:100%; border-spacing:10px; margin-top:16px;">
               <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/01-login.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Login</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">POS Admin</span></td>
-              </tr>
-              <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/05-categories.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Categories</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/07-warehouse.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Warehouse</span></td>
-              </tr>
-              <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/08-offers.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Offers</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Daily Report</span></td>
-              </tr>
-              <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/29-order-tracking.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Order Tracking</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/28-settings.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Settings</span></td>
+                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">POS Admin</span></td>
+                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Daily Report</span></td>
               </tr>
             </table>
           </div>
@@ -605,16 +611,8 @@
           <div class="project-screenshots">
             <table style="width:100%; border-spacing:10px; margin-top:16px;">
               <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Main View</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Dashboard</span></td>
-              </tr>
-              <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/Timer.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Focus Timer</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/add%20task.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">New Task</span></td>
-              </tr>
-              <tr>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/Status.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Focus Stats</span></td>
-                <td style="text-align:center;"><img src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/theme-picker.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Theme Picker</span></td>
+                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Main View</span></td>
+                <td style="text-align:center;"><img loading="lazy" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" style="width:100%; max-width:400px; border-radius:8px; border:1px solid var(--border);" /><br/><span style="font-family:var(--mono); font-size:11px; color:var(--text-dimmer);">Dashboard</span></td>
               </tr>
             </table>
           </div>
@@ -640,10 +638,59 @@
   </div>
 </section>
 
-<section id="contact">
+<section id="certificates">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">06</span>
+      <span class="sec-title">certificates<span class="path">.list()</span></span>
+      <div class="rule"></div>
+    </div>
+    <div class="cert-grid">
+      <a class="cert-card" href="https://drive.google.com/file/d/1KATof9qObGF7jttGQBih6Z8Zl4Jj4Iqj/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/bachelor-certificate.jpg" alt="B.Sc. Graduation Certificate" /></div>
+        <div class="cert-meta"><div class="cert-title">B.Sc. Graduation Certificate</div><div class="cert-issuer">Egyptian E-Learning University · 2025</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/1EYLlRJlzx50N_8i8D6bMJNSKNTpoiuOB/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/route-aspnet-core.jpg" alt="ASP.NET Core Back-End" /></div>
+        <div class="cert-meta"><div class="cert-title">ASP.NET Core Back-End</div><div class="cert-issuer">Route Academy · Dec 2025 – Jul 2026</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/1Uql1cZfbJ_mJwTDXv5ZWomS8w9iw30lJ/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/huawei-hcia-ai.jpg" alt="HCIA-AI V3.5" /></div>
+        <div class="cert-meta"><div class="cert-title">HCIA-AI V3.5</div><div class="cert-issuer">Huawei · Score 96% · 2024</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/19Fk6P6v0B3IubjQlkJDMwB6HSV3vRBOm/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/nti.jpg" alt="AI Talent Academy Track" /></div>
+        <div class="cert-meta"><div class="cert-title">AI Talent Academy Track</div><div class="cert-issuer">NTI × Huawei · 80 hrs · Score 96%</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/13mJhYLAQvHMASVqRJ1wvc61cuEPA7h6g/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/iti-python.jpg" alt="Full Stack Python" /></div>
+        <div class="cert-meta"><div class="cert-title">Full Stack Python</div><div class="cert-issuer">ITI · 120 Hours · 2024</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/1m_PpMnaFMPOwi3jKf3DjCYNt4sfYoS3r/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/mastering-oop.jpg" alt="Mastering OOP using C++" /></div>
+        <div class="cert-meta"><div class="cert-title">Mastering OOP using C++</div><div class="cert-issuer">ITI Platform · Oct 2025</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/1aBJj-ccxO_rRc7DQUeFpHM9x783MTAe7/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/clean-code.jpg" alt="Principles of Clean Code" /></div>
+        <div class="cert-meta"><div class="cert-title">Principles of Clean Code</div><div class="cert-issuer">ITI Platform · Oct 2025</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/1cxs0XJfog1LW_tvE4f6Igs_CmpSj8fjY/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/database.jpg" alt="Database Fundamentals" /></div>
+        <div class="cert-meta"><div class="cert-title">Database Fundamentals</div><div class="cert-issuer">ITI Platform · Oct 2024</div></div>
+      </a>
+      <a class="cert-card" href="https://drive.google.com/file/d/1kPOu0tpstFxc67gnUsDttiSiu0XVFjQ5/view?usp=sharing" target="_blank">
+        <div class="cert-img"><img loading="lazy" src="assets/certificates/military-service.jpg" alt="Military Service Certificate" /></div>
+        <div class="cert-meta"><div class="cert-title">Military Service</div><div class="cert-issuer">Egypt</div></div>
+      </a>
+    </div>
+    <p class="cert-all"><a href="https://drive.google.com/drive/folders/1r_ONbtYPHxP2p0TOfOcmKEdz4MIbd0Jt?usp=sharing" target="_blank">→ view all certificates on Google Drive</a></p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">07</span>
       <span class="sec-title">contact<span class="path">.reach()</span></span>
       <div class="rule"></div>
     </div>
@@ -691,6 +738,16 @@
 
   window.addEventListener('scroll', update, {passive:true});
   update();
+
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const revealEls = document.querySelectorAll('.sec-head, .about-grid, .stack-card, .commit, .endpoint, .edu-card, .cert-card, .contact-card');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
 })();
 </script>
 

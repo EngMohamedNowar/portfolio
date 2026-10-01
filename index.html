@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohamed Nowar — .NET Backend Developer | ASP.NET Core &amp; Clean Architecture</title>
-<meta name="description" content="Mohamed Nowar — .NET Backend Developer in Cairo, Egypt. Building robust, scalable REST APIs with C#, ASP.NET Core, Entity Framework Core and SQL Server — Clean Architecture, JWT auth, unit testing. Python/Django as a secondary stack. Open to remote work.">
+<meta name="description" content="Mohamed Nowar — .NET Backend Developer in Cairo, Egypt. Building robust, scalable REST APIs with C#, ASP.NET Core, Entity Framework Core and SQL Server — Clean Architecture, JWT auth, unit testing. Python/Django as a secondary stack. Open to on-site, hybrid, remote and freelance work.">
 <meta name="author" content="Mohamed Nowar">
 <meta name="theme-color" content="#12151b">
 <link rel="canonical" href="https://engmohamednowar.github.io/portfolio/">
 
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Mohamed Nowar — Backend Developer">
-<meta property="og:description" content=".NET Backend Developer building scalable REST APIs with ASP.NET Core, EF Core &amp; Clean Architecture. Open to remote.">
+<meta property="og:description" content=".NET Backend Developer building scalable REST APIs with ASP.NET Core, EF Core &amp; Clean Architecture. Open to on-site, hybrid, remote or freelance work.">
 <meta property="og:url" content="https://engmohamednowar.github.io/portfolio/">
 <meta property="og:image" content="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -187,11 +187,11 @@
   .dot{width:10px; height:10px; border-radius:50%;}
   .dot.r{background:#e05a4e;} .dot.y{background:#e0b04e;} .dot.g{background:#4ea06a;}
   .term-title{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--text-dimmer);}
-  .term-body{padding:24px 26px; font-family:var(--mono); font-size:13.5px; overflow-x:auto;}
-  .term-line{color:var(--text-dim); margin-bottom:4px;}
+  .term-body{padding:24px 26px; font-family:var(--mono); font-size:13.5px; overflow-x:auto; overscroll-behavior-x:contain;}
+  .term-line{color:var(--text-dim); margin-bottom:4px; white-space:pre;}
   .term-line .prompt{color:var(--teal);}
   .term-line .cmd{color:var(--text);}
-  .term-out{color:var(--text-dim); margin-top:2px; white-space:pre-wrap;}
+  .term-out{color:var(--text-dim); margin-top:2px; white-space:pre;}
   .json-key{color:var(--blue);}
   .json-str{color:var(--amber);}
   .json-punc{color:var(--text-dimmer);}
@@ -325,7 +325,7 @@
   .cf{display:flex; gap:10px; padding:9px 0; border-bottom:1px dashed var(--border); min-width:0; align-items:center;}
   .cf:last-child{border-bottom:none;}
   .cf .k{color:var(--blue); min-width:110px; flex-shrink:0;}
-  .cf .v{color:var(--text-dim); word-break:break-all; min-width:0;}
+  .cf .v{color:var(--text-dim); word-break:normal; overflow-wrap:break-word; min-width:0;}
   .cf a.v:hover{color:var(--amber);}
   .copy-btn{
     margin-left:auto; font-family:var(--mono); font-size:11px; padding:4px 9px;
@@ -349,6 +349,32 @@
   .cert-all{margin-top:22px; font-family:var(--mono); font-size:13px;}
   .cert-all a{color:var(--amber); border-bottom:1px solid transparent; transition:border-color .2s;}
   .cert-all a:hover{border-color:var(--amber);}
+
+  .projects-note{
+    margin-top:18px; padding:13px 16px; border-left:3px solid var(--amber);
+    background:rgba(232,163,61,.07); border-radius:0 8px 8px 0;
+    font-family:var(--mono); font-size:12.5px; line-height:1.75; color:var(--text-dim);
+  }
+  .projects-note b{color:var(--text); font-weight:700;}
+
+  .gh-stats{
+    margin-top:26px; display:grid; grid-template-columns:repeat(4,1fr) auto;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
+  }
+  .gh-cell{padding:16px 20px; border-right:1px solid var(--border);}
+  .gh-cell b{display:block; font-family:var(--mono); font-size:23px; font-weight:800; color:var(--amber); line-height:1.25;}
+  .gh-cell span{font-size:12px; color:var(--text-dimmer); white-space:nowrap;}
+  .gh-link{
+    display:flex; align-items:center; padding:16px 24px; font-family:var(--mono); font-size:12.5px;
+    color:var(--teal); background:var(--surface-2); white-space:nowrap; transition:color .2s;
+  }
+  .gh-link:hover{color:var(--amber);}
+  @media(max-width:860px){
+    .gh-stats{grid-template-columns:repeat(2,1fr);}
+    .gh-cell{border-bottom:1px solid var(--border);}
+    .gh-cell span{white-space:normal;}
+    .gh-link{grid-column:1/-1; justify-content:center; border-top:0;}
+  }
 
   footer{padding:36px 0 48px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-dimmer); border-top:1px solid var(--border);}
   footer a{color:var(--amber);}
@@ -398,6 +424,7 @@
   }
   @media(max-width:720px){
     nav.scrolled .wrap{height:64px;}
+    .term-body{font-size:11.5px; padding:18px 16px;}
     .hamburger{display:flex;}
     .nav-cta{display:none;}
     .navlinks{
@@ -450,7 +477,14 @@
       transition:opacity .45s ease .48s, transform .45s cubic-bezier(.22,1,.36,1) .48s;
     }
     .navlinks.open .m-foot{opacity:1; transform:none;}
-    .m-foot .btn.primary{justify-content:center; padding:14px; font-size:14.5px; letter-spacing:.5px;}
+    .m-foot .btn.primary{
+      justify-content:center; padding:14px; font-size:14.5px; letter-spacing:.5px;
+      animation:ctaPulse 3s ease-out infinite;
+      transition:background .2s, transform .15s;
+    }
+    .m-foot .btn.primary:active{transform:scale(.97); background:#f2b455;}
+    .m-foot .btn{justify-content:center; padding:13px; font-size:14px;}
+    .m-foot .btn:active{transform:scale(.97);}
     .m-socials{display:flex; flex-wrap:wrap; gap:10px;}
     .m-socials a{
       flex:1 1 44%; text-align:center; font-family:var(--mono); font-size:12.5px;
@@ -483,6 +517,7 @@
     .js .hero .hero-cta, .js .hero .hero-meta{animation:none !important;}
     nav, nav .wrap, .navlinks a{transition:none !important;}
     .nav-cta{animation:none;}
+    .m-foot .btn.primary{animation:none;}
     .m-status::before{animation:none;}
     *{scroll-snap-type:none !important;}
   }
@@ -512,13 +547,14 @@
         <a href="#contact"><span class="idx">07</span>contact</a>
         <div class="m-foot">
           <a class="btn primary" href="#contact">hire me →</a>
+          <a class="btn" href="https://drive.google.com/uc?export=download&amp;id=1m7qyOY4r74TFyKAg62BSZF_d7aHlchXY" target="_blank" rel="noopener">↓ download CV</a>
           <div class="m-socials">
             <a href="mailto:mohamednowar2002@gmail.com">email</a>
             <a href="tel:+201557722675">phone</a>
             <a href="https://github.com/EngMohamedNowar" target="_blank" rel="noopener">github</a>
             <a href="https://www.linkedin.com/in/mohamednowar/" target="_blank" rel="noopener">linkedin</a>
           </div>
-          <span class="m-status">Open to remote · Cairo, Egypt</span>
+          <span class="m-status">Open to work &amp; freelance</span>
         </div>
       </div>
       <a class="btn primary nav-cta" href="#contact">hire me</a>
@@ -543,7 +579,7 @@
   <span class="json-key">"stack"</span><span class="json-punc">:</span> <span class="json-punc">[</span><span class="json-str">"ASP.NET Core"</span><span class="json-punc">,</span> <span class="json-str">"EF Core"</span><span class="json-punc">,</span> <span class="json-str">"SQL Server"</span><span class="json-punc">]</span><span class="json-punc">,</span>
   <span class="json-key">"secondary"</span><span class="json-punc">:</span> <span class="json-str">"Python / Django"</span><span class="json-punc">,</span>
   <span class="json-key">"location"</span><span class="json-punc">:</span> <span class="json-str">"Cairo, Egypt"</span><span class="json-punc">,</span>
-  <span class="json-key">"open_to_remote"</span><span class="json-punc">:</span> <span class="json-str">true</span>
+  <span class="json-key">"open_to"</span><span class="json-punc">:</span> <span class="json-punc">[</span><span class="json-str">"on-site"</span><span class="json-punc">,</span> <span class="json-str">"hybrid"</span><span class="json-punc">,</span> <span class="json-str">"remote"</span><span class="json-punc">,</span> <span class="json-str">"freelance"</span><span class="json-punc">]</span>
 <span class="json-punc">}</span><span class="caret"></span></div>
       </div>
     </div>
@@ -553,13 +589,14 @@
 
     <div class="hero-cta">
       <a class="btn primary" href="#projects">→ view projects</a>
+      <a class="btn" href="https://drive.google.com/uc?export=download&amp;id=1m7qyOY4r74TFyKAg62BSZF_d7aHlchXY" target="_blank" rel="noopener">↓ download CV</a>
       <a class="btn" href="#contact">GET /contact</a>
       <a class="btn ghost" href="https://github.com/EngMohamedNowar" target="_blank" rel="noopener">GitHub ↗</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/mohamednowar/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
 
     <div class="hero-meta">
-      <span>📍 Cairo, Egypt · Open to Remote</span>
+      <span>📍 Cairo, Egypt · Open to Work &amp; Freelance</span>
       <a href="tel:+201557722675">+20 155 772 2675</a>
       <a href="mailto:mohamednowar2002@gmail.com">mohamednowar2002@gmail.com</a>
     </div>
@@ -922,6 +959,16 @@
         </div>
       </article>
 
+      <p class="projects-note">The Python/Django endpoints above are compact <b>REST API samples</b> — token auth, permissions, pagination and schema design in minimal repos. My primary focus is <b>.NET</b>: CoffeeStore &amp; NAPOLI POS above are full production-grade systems.</p>
+
+    </div>
+
+    <div class="gh-stats">
+      <div class="gh-cell"><b data-gh="repos">14</b><span>public repositories</span></div>
+      <div class="gh-cell"><b data-gh="followers">3</b><span>GitHub followers</span></div>
+      <div class="gh-cell"><b>8</b><span>featured projects</span></div>
+      <div class="gh-cell"><b>2023</b><span>on GitHub since</span></div>
+      <a class="gh-link" href="https://github.com/EngMohamedNowar" target="_blank" rel="noopener">→ github.com/EngMohamedNowar</a>
     </div>
   </div>
 </section>
@@ -1007,7 +1054,8 @@
         <div class="cf"><span class="k">"languages"</span><span class="v">"Arabic (Native), English (Professional)"</span></div>
         <div class="cf"><span class="k">"soft_skills"</span><span class="v">"Problem Solving · Attention to Detail · Team Collaboration · Fast Self-Learner"</span></div>
         <div class="cf"><span class="k">"military"</span><span class="v">"Exempted (Sole Son)"</span></div>
-        <div class="cf"><span class="k">"status"</span><span class="v" style="color:var(--teal)">"open to remote opportunities"</span></div>
+        <div class="cf"><span class="k">"cv"</span><a class="v" style="color:var(--amber)" href="https://drive.google.com/uc?export=download&amp;id=1m7qyOY4r74TFyKAg62BSZF_d7aHlchXY" target="_blank" rel="noopener">"download PDF ↓"</a></div>
+        <div class="cf"><span class="k">"status"</span><span class="v" style="color:var(--teal)">"open to all work &amp; freelance — on-site, hybrid or remote"</span></div>
       </div>
     </div>
   </div>
@@ -1124,6 +1172,8 @@
   stagger('.endpoints', '.endpoint', 60);
   stagger('.gallery', 'figure', 70);
   stagger('.cert-grid', '.cert-card', 55);
+  stagger('.projects-note', null, 0);
+  stagger('.gh-stats', '.gh-cell', 70);
   stagger('.edu-card', null, 0);
   stagger('.contact-card', null, 0);
 
@@ -1178,6 +1228,19 @@
       }
     });
   });
+
+  if(window.fetch){
+    fetch('https://api.github.com/users/EngMohamedNowar', {headers:{'Accept':'application/vnd.github+json'}})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(u){
+        if(!u) return;
+        var a = document.querySelector('[data-gh="repos"]');
+        var b = document.querySelector('[data-gh="followers"]');
+        if(a && typeof u.public_repos === 'number') a.textContent = u.public_repos;
+        if(b && typeof u.followers === 'number') b.textContent = u.followers;
+      })
+      .catch(function(){});
+  }
 })();
 </script>
 

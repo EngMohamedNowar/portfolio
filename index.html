@@ -210,18 +210,26 @@
   .ico-links{display:inline-flex; gap:8px; align-items:center;}
   .ico{
     display:inline-flex; align-items:center; justify-content:center;
-    width:31px; height:31px; border:1px solid var(--border); border-radius:9px;
-    color:var(--text-dim); background:var(--surface);
-    transition:color .2s, border-color .2s, transform .2s;
+    width:32px; height:32px; border:1px solid rgba(232,163,61,.35); border-radius:9px;
+    color:var(--amber); background:rgba(232,163,61,.06);
+    transition:color .2s, border-color .2s, transform .2s, box-shadow .2s, background .2s;
   }
-  .hero-meta .ico{border-bottom:1px solid var(--border);}
-  .hero-meta .phone{
-    display:inline-flex; align-items:center; gap:7px;
-    color:var(--amber); font-weight:700; letter-spacing:.3px;
+  .hero-meta .ico{border-bottom:1px solid rgba(232,163,61,.35);}
+  .ico:hover, .ico:focus-visible{
+    color:var(--amber); border-color:var(--amber); background:rgba(232,163,61,.14);
+    transform:translateY(-2px); box-shadow:0 4px 14px rgba(232,163,61,.18);
   }
-  .hero-meta .phone svg{width:14px; height:14px; fill:currentColor;}
-  .hero-meta .phone:hover{color:var(--amber); border-color:var(--amber); opacity:.85;}
-  .ico:hover, .ico:focus-visible{color:var(--amber); border-color:var(--amber); transform:translateY(-2px);}
+  .ico:active{transform:scale(.9);}
+  .hero-loc{
+    display:inline-flex; align-items:center; padding:6px 13px;
+    border:1px solid var(--border); border-radius:20px; background:var(--surface);
+    transition:color .2s, border-color .2s, background .2s, transform .15s, box-shadow .2s;
+  }
+  .hero-loc:hover{
+    color:var(--text); border-color:rgba(232,163,61,.5); background:rgba(232,163,61,.07);
+    box-shadow:0 2px 12px rgba(232,163,61,.12);
+  }
+  .hero-loc:active{transform:scale(.96);}
   .ico svg{width:15px; height:15px; fill:currentColor;}
 
   .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:34px;}
@@ -375,18 +383,50 @@
   .projects-note b{color:var(--text); font-weight:700;}
 
   .api-groups{
-    margin-top:16px; display:grid; gap:14px;
-    background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius);
-    padding:18px;
+    margin-top:16px; border:1px solid var(--border); border-radius:var(--radius);
+    overflow:hidden; background:var(--surface);
   }
-  .ag{display:grid; gap:7px;}
-  .ag-t{font-family:var(--mono); font-size:12px; font-weight:800; color:var(--text); letter-spacing:.8px; text-transform:uppercase;}
+  .ag-head{
+    display:flex; align-items:center; gap:10px; padding:11px 16px;
+    background:var(--surface-2); border-bottom:1px solid var(--border);
+    font-family:var(--mono); font-size:11px; letter-spacing:.6px; color:var(--text-dimmer);
+  }
+  .ag-head b{color:var(--amber); font-weight:800;}
+  .ag-head .ag-badge{
+    margin-left:auto; padding:1.5px 9px; border:1px solid rgba(232,163,61,.35); border-radius:20px;
+    color:var(--amber); background:rgba(232,163,61,.07); font-size:10.5px; font-weight:700;
+  }
+  .ag{border-bottom:1px solid var(--border);}
+  .ag:last-child{border-bottom:0;}
+  .ag-t{
+    display:flex; align-items:center; gap:9px; padding:13px 16px 5px;
+    font-family:var(--mono); font-size:12.5px; font-weight:800; color:var(--text); letter-spacing:.8px;
+  }
+  .ag-t::before{
+    content:''; width:0; height:0; flex:none;
+    border-left:5px solid var(--text-dimmer); border-top:4px solid transparent; border-bottom:4px solid transparent;
+  }
+  .ag-count{
+    font-size:10px; font-weight:600; color:var(--text-dimmer);
+    background:var(--surface-2); border:1px solid var(--border); border-radius:20px; padding:1px 7px;
+  }
   .ag-row{
-    display:flex; align-items:center; gap:10px;
-    background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:7px 10px;
+    display:flex; align-items:center; gap:12px; margin:7px 16px; padding:9px 12px;
+    background:var(--surface-2); border:1px solid var(--border); border-radius:8px;
+    transition:border-color .2s, transform .2s, box-shadow .2s;
   }
-  .ag-row code{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); white-space:nowrap; overflow-x:auto; overscroll-behavior-x:contain;}
+  .ag-row:hover{border-color:rgba(232,163,61,.45); transform:translateX(3px); box-shadow:0 2px 10px rgba(0,0,0,.15);}
+  .ag-row code{
+    flex:1; font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
+    white-space:nowrap; overflow-x:auto; overscroll-behavior-x:contain;
+  }
   .ag-row .method{flex:none;}
+  .ag-row::after{
+    content:''; flex:none; width:12px; height:12px; margin-left:auto;
+    background:currentColor; opacity:.4;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
 
   .other-head{
     margin-top:8px; padding-top:26px; border-top:1px dashed var(--border);
@@ -642,9 +682,9 @@
     </div>
 
     <div class="hero-meta">
-      <span>📍 Cairo, Egypt · Open to junior .NET backend roles (full-time / freelance)</span>
-      <a class="phone" href="tel:+201557722675"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>+20 155 772 2675</a>
+      <span class="hero-loc">📍 Cairo, Egypt · Open to junior .NET backend roles (full-time / freelance)</span>
       <span class="ico-links">
+        <a class="ico" href="tel:+201557722675" aria-label="Phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
         <a class="ico" href="mailto:mohamednowar2002@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></a>
         <a class="ico" href="https://github.com/EngMohamedNowar" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
         <a class="ico" href="https://www.linkedin.com/in/mohamednowar/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
@@ -840,32 +880,33 @@
             <li><b>Stripe Checkout with verified webhooks</b>, basket persistence, delivery methods and a full order lifecycle</li>
           </ul>
           <div class="api-groups" aria-label="API surface">
-            <div class="ag"><span class="ag-t">Accounts</span>
+            <div class="ag-head"><b>swagger-ui</b> — /swagger · e-commerce REST surface<span class="ag-badge">17 endpoints</span></div>
+            <div class="ag"><span class="ag-t">Accounts <span class="ag-count">4</span></span>
               <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/register</code></span>
               <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/login</code></span>
               <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/refresh-token</code></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Accounts/me</code></span>
             </div>
-            <div class="ag"><span class="ag-t">Basket</span>
+            <div class="ag"><span class="ag-t">Basket <span class="ag-count">3</span></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Basket/{basketId}</code></span>
               <span class="ag-row"><span class="method put">PUT</span><code>/api/Basket</code></span>
               <span class="ag-row"><span class="method del">DELETE</span><code>/api/Basket/{basketId}</code></span>
             </div>
-            <div class="ag"><span class="ag-t">Brands · Types</span>
+            <div class="ag"><span class="ag-t">Brands · Types <span class="ag-count">2</span></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Brands</code></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Types</code></span>
             </div>
-            <div class="ag"><span class="ag-t">Products</span>
+            <div class="ag"><span class="ag-t">Products <span class="ag-count">2</span></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Products</code></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Products/{id}</code></span>
             </div>
-            <div class="ag"><span class="ag-t">Orders</span>
+            <div class="ag"><span class="ag-t">Orders <span class="ag-count">4</span></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Orders</code></span>
               <span class="ag-row"><span class="method post">POST</span><code>/api/Orders</code></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Orders/{id}</code></span>
               <span class="ag-row"><span class="method get">GET</span><code>/api/Orders/delivery-methods</code></span>
             </div>
-            <div class="ag"><span class="ag-t">Payments</span>
+            <div class="ag"><span class="ag-t">Payments <span class="ag-count">2</span></span>
               <span class="ag-row"><span class="method post">POST</span><code>/api/Payments/{orderId}</code></span>
               <span class="ag-row"><span class="method post">POST</span><code>/api/Payments/webhook</code></span>
             </div>

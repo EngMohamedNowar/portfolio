@@ -220,16 +220,17 @@
     transform:translateY(-2px); box-shadow:0 4px 14px rgba(232,163,61,.18);
   }
   .ico:active{transform:scale(.9);}
-  .hero-loc{
+  .hero-meta .hero-loc{
     display:inline-flex; align-items:center; padding:6px 13px;
+    color:var(--text-dim);
     border:1px solid var(--border); border-radius:20px; background:var(--surface);
     transition:color .2s, border-color .2s, background .2s, transform .15s, box-shadow .2s;
   }
-  .hero-loc:hover{
-    color:var(--text); border-color:rgba(232,163,61,.5); background:rgba(232,163,61,.07);
-    box-shadow:0 2px 12px rgba(232,163,61,.12);
+  .hero-meta .hero-loc:hover, .hero-meta .hero-loc:focus-visible{
+    color:var(--amber); border-color:var(--amber); background:rgba(232,163,61,.1);
+    transform:translateY(-2px); box-shadow:0 4px 14px rgba(232,163,61,.16);
   }
-  .hero-loc:active{transform:scale(.96);}
+  .hero-meta .hero-loc:active{transform:scale(.96);}
   .ico svg{width:15px; height:15px; fill:currentColor;}
 
   .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:34px;}
@@ -682,7 +683,7 @@
     </div>
 
     <div class="hero-meta">
-      <span class="hero-loc">📍 Cairo, Egypt · Open to junior .NET backend roles (full-time / freelance)</span>
+      <a class="hero-loc" href="https://maps.google.com/?q=Cairo,+Egypt" target="_blank" rel="noopener">📍 Cairo, Egypt · Open to junior .NET backend roles (full-time / freelance)</a>
       <span class="ico-links">
         <a class="ico" href="tel:+201557722675" aria-label="Phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
         <a class="ico" href="mailto:mohamednowar2002@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></a>

@@ -735,7 +735,7 @@
     <div class="stats">
       <div class="stat"><b>7</b><span>shipped projects</span></div>
       <div class="stat"><b>1</b><span>in progress</span></div>
-      <div class="stat"><b>551</b><span>unit &amp; integration tests</span></div>
+      <div class="stat"><b>583</b><span>unit &amp; integration tests</span></div>
       <div class="stat"><b>1</b><span>in active use</span></div>
     </div>
   </div>
@@ -1001,20 +1001,28 @@
           <span class="status">200 in progress</span>
         </div>
         <div class="ep-body">
-          <p class="desc">Coffee-store catalogue &amp; basket API built with <strong style="color:var(--text)">.NET 10</strong> and Clean Architecture — <strong style="color:var(--text)">currently in active development</strong>.</p>
+          <p class="desc">Coffee e-commerce API built with <strong style="color:var(--text)">.NET 10</strong>, Clean Architecture and CQRS — catalogue, Redis baskets, order lifecycle and <strong style="color:var(--text)">Stripe card payments</strong> with signed webhooks.</p>
           <ul class="highlights">
             <li><b>Strict dependency flow</b>: Api → Infrastructure → Application → Domain, with Repository + Unit of Work, the Specification pattern, and a Result type instead of exceptions</li>
+            <li><b>Orders as a real aggregate</b>: static <code>Create</code> factory, immutable price/address snapshots, and a status state machine that rejects illegal transitions</li>
+            <li><b>Stripe payments</b>: PaymentIntent create/reuse, ownership checks, double-pay prevention, webhook signature verification — payment succeeded → order confirmed + <code>PaidAtUtc</code></li>
             <li><b>Two DbContexts</b> (catalogue + ASP.NET Identity) with per-context migrations, soft delete via global query filters, FluentValidation and JWT bearer auth</li>
-            <li><b>SQL Server + Redis</b> (cache &amp; baskets) orchestrated with <b>docker-compose</b>, Swagger, user-secrets and healthchecked services</li>
-            <li><b>150 xUnit tests</b> (counted from source) covering the specification evaluator, Result type and product services against an in-memory database</li>
+            <li><b>SQL Server + Redis</b> (response cache &amp; baskets) orchestrated with <b>docker-compose</b>, Swagger, user-secrets and healthchecked services</li>
+            <li><b>182 xUnit tests</b> (counted from source) across API, Application, Domain and Infrastructure layers, with coverage collected in CI</li>
           </ul>
           <div class="tags">
             <span class="tag core">C#</span><span class="tag core">.NET 10</span><span class="tag core">ASP.NET Core Web API</span>
             <span class="tag">Clean Architecture</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
-            <span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">JWT</span><span class="tag">FluentValidation</span><span class="tag">xUnit</span>
+            <span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">JWT</span><span class="tag">FluentValidation</span>
+            <span class="tag">Stripe</span><span class="tag">Webhooks</span><span class="tag core">xUnit</span>
           </div>
           <div class="ep-links">
             <a class="repo-link" href="https://github.com/EngMohamedNowar/CoffeeStore" target="_blank" rel="noopener">→ view repository on GitHub</a>
+          </div>
+          <div class="gallery">
+            <figure><a href="assets/screenshots/swagger-endpoints-1.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-1.png" alt="Coffee Store Swagger - addresses, authentication and baskets"></a><figcaption>Addresses · Auth · Baskets</figcaption></figure>
+            <figure><a href="assets/screenshots/swagger-endpoints-2.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-2.png" alt="Coffee Store Swagger - baskets, delivery methods and orders"></a><figcaption>Delivery · Orders</figcaption></figure>
+            <figure><a href="assets/screenshots/swagger-endpoints-3.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-3.png" alt="Coffee Store Swagger - orders, payments and products"></a><figcaption>Payments · Products</figcaption></figure>
           </div>
         </div>
       </article>

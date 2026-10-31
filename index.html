@@ -839,6 +839,187 @@
     .stack-card:hover, .stat:hover, .edu-card:hover, .tag:hover{transform:none;}
   }
 
+  /* =========================================================
+     PROJECTS — advanced case-study view
+     ========================================================= */
+  .proj-toolbar{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 18px; margin:-6px 0 22px;}
+  .pt-filters{position:relative; display:flex; flex-wrap:wrap; gap:4px; padding:4px; background:var(--surface); border:1px solid var(--border); border-radius:11px;}
+  .pf{
+    position:relative; z-index:1; display:inline-flex; align-items:center; gap:7px;
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
+    background:none; border:0; padding:7px 12px; border-radius:8px; cursor:pointer; transition:color .25s;
+  }
+  .pf:hover{color:var(--text);}
+  .pf .n{font-size:10.5px; line-height:1.5; color:var(--text-dimmer); background:var(--surface-2); border:1px solid var(--border); padding:0 6px; border-radius:20px; transition:color .25s, background .25s, border-color .25s;}
+  .pf[aria-pressed="true"]{color:#12151b; font-weight:700;}
+  .pf[aria-pressed="true"] .n{color:#12151b; background:rgba(18,21,27,.16); border-color:transparent;}
+  .no-js .pf[aria-pressed="true"]{background:var(--amber);}
+  .pf-ink{
+    position:absolute; z-index:0; left:0; top:0; width:0; height:0; border-radius:8px;
+    background:linear-gradient(180deg, #f2b455, var(--amber)); box-shadow:0 6px 18px -6px rgba(232,163,61,.65);
+    transition:transform .45s cubic-bezier(.22,1,.36,1), width .45s cubic-bezier(.22,1,.36,1), height .45s;
+  }
+  .pt-query{font-family:var(--mono); font-size:12px; color:var(--text-dimmer); white-space:nowrap;}
+  .pt-query .m{color:var(--blue); font-weight:800; margin-right:2px;}
+  .pt-query .q{color:var(--text-dim);}
+  .pt-query .q b{color:#ffd27a; font-weight:600;}
+  .pt-query .ok{color:var(--teal);}
+  .pt-query.flash .ok{animation:qFlash .7s ease;}
+  @keyframes qFlash{0%{opacity:.2;} 100%{opacity:1;}}
+
+  .endpoint.is-hidden, .proj-group.is-hidden{display:none;}
+  .endpoint.is-entering{animation:cardIn .55s cubic-bezier(.22,1,.36,1) both;}
+  @keyframes cardIn{from{opacity:0; transform:translateY(16px) scale(.985);} to{opacity:1; transform:none;}}
+
+  .ep-head .pidx{font-family:var(--mono); font-size:11px; color:var(--text-dimmer); letter-spacing:.5px;}
+  .ep-head .pidx::after{content:' /'; opacity:.5;}
+
+  .proj-metrics{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.015), transparent);}
+  .pm{position:relative; padding:14px 20px; border-right:1px solid var(--border); min-width:0;}
+  .pm:last-child{border-right:0;}
+  .pm b{display:block; font-family:var(--mono); font-size:19px; font-weight:800; color:var(--text); line-height:1.25; letter-spacing:-.3px; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .pm b.hl{color:var(--amber);}
+  .pm span{display:block; font-family:var(--mono); font-size:11px; color:var(--text-dimmer); margin-top:2px;}
+  .pm::after{content:''; position:absolute; left:20px; bottom:-1px; height:2px; width:0; background:var(--amber); transition:width .4s cubic-bezier(.22,1,.36,1);}
+  .pm:hover::after{width:28px;}
+
+  .proj-tabs{
+    position:relative; display:flex; gap:2px; padding:0 12px;
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:rgba(0,0,0,.14);
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .proj-tabs::-webkit-scrollbar{display:none;}
+  .ptab{
+    display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dimmer);
+    background:none; border:0; padding:12px 10px; cursor:pointer; transition:color .2s;
+  }
+  .ptab::before{content:'./'; opacity:.45;}
+  .ptab:hover{color:var(--text);}
+  .ptab[aria-selected="true"]{color:var(--text);}
+  .ptab[aria-selected="true"]::before{color:var(--amber); opacity:1;}
+  .ptab .cnt{font-size:10px; color:var(--text-dimmer); background:var(--surface-2); border:1px solid var(--border); border-radius:20px; padding:0 6px; line-height:1.6;}
+  .ptab:focus-visible{outline-offset:-4px;}
+  .tab-ink{position:absolute; left:0; bottom:-1px; height:2px; width:0; background:var(--amber); box-shadow:0 0 12px rgba(232,163,61,.7); transition:transform .4s cubic-bezier(.22,1,.36,1), width .4s cubic-bezier(.22,1,.36,1);}
+  .proj .ep-body{border-top:0; transition:height .45s cubic-bezier(.22,1,.36,1);}
+  .proj .ep-body.animating{overflow:hidden;}
+  .tab-panel[hidden]{display:none;}
+  .js .tab-panel.shown{animation:panelIn .45s cubic-bezier(.22,1,.36,1) both;}
+  @keyframes panelIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;}}
+  .no-js .tab-panel + .tab-panel{margin-top:18px; padding-top:4px; border-top:1px dashed var(--border);}
+  .proj .tab-panel > .api-groups:first-child, .proj .tab-panel > .gallery:first-child{margin-top:18px;}
+  .proj .tab-panel > .tags{margin-bottom:2px;}
+
+  .proj-foot{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px 16px; padding:12px 20px; border-top:1px solid var(--border); background:rgba(0,0,0,.14);}
+  .proj-foot .ep-links{margin:0; gap:8px;}
+  .proj-foot .repo-link{
+    display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:7px;
+    border:1px solid var(--border); background:var(--surface-2); color:var(--text-dim);
+    transition:color .2s, border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .proj-foot .repo-link svg{width:14px; height:14px; fill:currentColor;}
+  .proj-foot .repo-link:hover{color:var(--amber); border-color:var(--amber); transform:translateY(-1px); box-shadow:0 6px 16px -8px rgba(232,163,61,.5);}
+  .proj-foot .repo-link.live{color:var(--teal); border-color:rgba(75,179,160,.35); background:rgba(75,179,160,.07);}
+  .proj-foot .repo-link.live:hover{color:var(--teal); border-color:var(--teal); box-shadow:0 6px 16px -8px rgba(75,179,160,.6);}
+  .stackline{font-family:var(--mono); font-size:11.5px; color:var(--text-dimmer);}
+
+  /* Architecture diagram (Coffee Store) */
+  .arch{display:grid; grid-template-columns:repeat(4,1fr); gap:30px; margin:20px 0 8px;}
+  .arch-node{position:relative; padding:13px 14px; background:var(--surface-2); border:1px solid var(--border); border-radius:9px; transition:border-color .25s, transform .25s;}
+  .arch-node:hover{transform:translateY(-2px); border-color:var(--text-dimmer);}
+  .arch-node b{display:block; font-family:var(--mono); font-size:12.5px; margin-bottom:5px;}
+  .arch-node span{display:block; font-family:var(--mono); font-size:11px; line-height:1.65; color:var(--text-dimmer);}
+  .a-api b{color:var(--blue);} .a-infra b{color:var(--teal);} .a-app b{color:var(--amber);} .a-dom b{color:var(--purple);}
+  .arch-node:not(:last-child)::after{
+    content:''; position:absolute; top:50%; right:-30px; width:30px; height:2px; margin-top:-1px;
+    background:repeating-linear-gradient(90deg, var(--amber) 0 5px, transparent 5px 10px); background-size:20px 2px;
+    animation:flowX .9s linear infinite;
+  }
+  .arch-node:not(:last-child)::before{
+    content:''; position:absolute; top:50%; right:-31px; margin-top:-4px;
+    border-left:6px solid var(--amber); border-top:4px solid transparent; border-bottom:4px solid transparent;
+  }
+  @keyframes flowX{from{background-position:0 0;} to{background-position:20px 0;}}
+  @keyframes flowY{from{background-position:0 0;} to{background-position:0 20px;}}
+  .arch-note{font-family:var(--mono); font-size:11.5px; color:var(--text-dimmer); margin:10px 0 2px;}
+  .arch-note::before{content:'// '; color:var(--teal);}
+
+  /* Python mini cards */
+  .proj-group{display:flex; flex-direction:column; gap:16px;}
+  .proj-mini-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .endpoint.mini{display:flex; flex-direction:column;}
+  .endpoint.mini .ep-head{display:grid; grid-template-columns:auto 1fr; gap:10px; padding:15px 16px 4px;}
+  .endpoint.mini .ep-head .status{justify-self:end;}
+  .endpoint.mini .ep-head .path{grid-column:1/-1; min-width:0; font-size:12.5px; overflow-wrap:anywhere;}
+  .endpoint.mini .path .slug{font-size:13.5px;}
+  .endpoint.mini .ep-body{flex:1; display:flex; flex-direction:column; border-top:0; padding:0 16px 16px;}
+  .endpoint.mini p.desc{font-size:13px; line-height:1.65; margin:8px 0 14px;}
+  .endpoint.mini .tag{font-size:11px; padding:4px 8px;}
+  .endpoint.mini .ep-links{margin-top:auto; padding-top:14px;}
+  .proj-group .other-head{margin-top:10px;}
+  .proj-group .projects-note{margin-top:2px;}
+
+  /* Lightbox */
+  .lb{border:0; padding:0; margin:auto; background:transparent; color:var(--text); max-width:min(1120px,94vw); max-height:94vh; overflow:visible;}
+  .lb::backdrop{background:rgba(6,8,11,.84); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);}
+  .lb[open]{animation:lbIn .38s cubic-bezier(.22,1,.36,1);}
+  @keyframes lbIn{from{opacity:0; transform:translateY(14px) scale(.97);} to{opacity:1; transform:none;}}
+  .lb figure{background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.9);}
+  .lb-bar{display:flex; align-items:center; gap:8px; padding:10px 12px 10px 14px; background:var(--surface-2); border-bottom:1px solid var(--border); font-family:var(--mono); font-size:12px; color:var(--text-dimmer);}
+  .lb-bar .t{margin-left:8px; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text-dim);}
+  .lb-bar .t b{color:#ffd27a; font-weight:600;}
+  .lb-x{font-family:var(--mono); font-size:11px; color:var(--text-dimmer); background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:4px 9px; cursor:pointer; transition:color .2s, border-color .2s;}
+  .lb-x:hover{color:var(--amber); border-color:var(--amber);}
+  .lb-stage{position:relative; background:#0b0d11;}
+  .lb-stage img{display:block; margin:0 auto; max-width:100%; max-height:calc(94vh - 52px); width:auto; height:auto;}
+  .lb-stage img.swap{animation:imgIn .35s ease both;}
+  @keyframes imgIn{from{opacity:0;} to{opacity:1;}}
+  .lb-nav{
+    position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%;
+    display:grid; place-items:center; cursor:pointer; font-size:22px; line-height:1;
+    color:var(--text); background:rgba(18,21,27,.75); border:1px solid var(--border);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:border-color .2s, color .2s, transform .2s;
+  }
+  .lb-nav:hover{border-color:var(--amber); color:var(--amber); transform:translateY(-50%) scale(1.06);}
+  .lb-nav.prev{left:12px;} .lb-nav.next{right:12px;}
+  .lb-nav[hidden]{display:none;}
+  .gallery a{cursor:zoom-in; display:block;}
+
+  @media(max-width:820px){
+    .proj-mini-grid{grid-template-columns:1fr;}
+    .arch{grid-template-columns:1fr 1fr; gap:30px 30px;}
+    .arch-node:nth-child(2)::after, .arch-node:nth-child(2)::before{display:none;}
+  }
+  @media(max-width:720px){
+    .proj-toolbar{flex-direction:column; align-items:stretch;}
+    .pt-filters{overflow-x:auto; flex-wrap:nowrap; scrollbar-width:none;}
+    .pt-filters::-webkit-scrollbar{display:none;}
+    .pf{flex:none;}
+    .proj-metrics{grid-template-columns:repeat(2,1fr);}
+    .pm{padding:12px 14px; border-bottom:1px solid var(--border);}
+    .pm:nth-child(2n){border-right:0;}
+    .pm:nth-last-child(-n+2){border-bottom:0;}
+    .pm b{font-size:17px;}
+    .proj-foot{padding:12px 14px;}
+    .arch{grid-template-columns:1fr; gap:26px;}
+    .arch-node:not(:last-child)::after, .arch-node:nth-child(2)::after{
+      display:block; top:auto; bottom:-26px; right:auto; left:50%; width:2px; height:26px; margin:0 0 0 -1px;
+      background:repeating-linear-gradient(180deg, var(--amber) 0 5px, transparent 5px 10px); background-size:2px 20px;
+      animation-name:flowY;
+    }
+    .arch-node:not(:last-child)::before, .arch-node:nth-child(2)::before{
+      display:block; top:auto; right:auto; bottom:-27px; left:50%; margin:0 0 0 -4px;
+      border-top:6px solid var(--amber); border-left:4px solid transparent; border-right:4px solid transparent; border-bottom:0;
+    }
+    .lb-nav{width:38px; height:38px; font-size:19px;}
+    .ep-head .pidx{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pf-ink, .tab-ink, .proj .ep-body{transition:none !important;}
+    .endpoint.is-entering, .js .tab-panel.shown, .lb[open], .lb-stage img.swap{animation:none !important;}
+    .arch-node::after{animation:none !important;}
+  }
+
   @media (prefers-reduced-motion: reduce){
     .caret{animation:none;}
     html{scroll-behavior:auto;}
@@ -1106,236 +1287,328 @@
       <span class="sec-title">projects<span class="path">.routes</span></span>
       <div class="rule"></div>
     </div>
+
+    <div class="proj-toolbar">
+      <div class="pt-filters" role="group" aria-label="Filter projects">
+        <span class="pf-ink" aria-hidden="true"></span>
+        <button type="button" class="pf" data-filter="all" aria-pressed="true">all <span class="n">8</span></button>
+        <button type="button" class="pf" data-filter="dotnet" aria-pressed="false">.NET <span class="n">5</span></button>
+        <button type="button" class="pf" data-filter="api" aria-pressed="false">web api <span class="n">5</span></button>
+        <button type="button" class="pf" data-filter="desktop" aria-pressed="false">desktop <span class="n">2</span></button>
+        <button type="button" class="pf" data-filter="python" aria-pressed="false">python <span class="n">3</span></button>
+      </div>
+      <div class="pt-query" aria-live="polite"><span class="m">GET</span> <span class="q">/projects</span> <span class="arrow">→</span> <span class="ok">200 · 8 items</span></div>
+    </div>
+
     <div class="endpoints">
 
-      <article class="endpoint featured">
+      <article class="endpoint featured proj" data-cat="dotnet api">
         <div class="ep-head">
+          <span class="pidx">01</span>
           <span class="method post">POST</span>
           <span class="path">/projects/<span class="slug">ecommerce-api</span></span>
           <span class="status">200 shipped</span>
         </div>
+        <div class="proj-metrics">
+          <div class="pm"><b class="hl" data-count="16">16</b><span>xUnit tests</span></div>
+          <div class="pm"><b data-count="17">17</b><span>REST endpoints</span></div>
+          <div class="pm"><b data-count="6">6</b><span>resource groups</span></div>
+          <div class="pm"><b>JWT</b><span>+ refresh tokens</span></div>
+        </div>
         <div class="ep-body">
-          <p class="desc"><strong style="color:var(--text)">E-commerce REST API</strong> — full storefront backend: JWT auth with refresh tokens, basket, catalogue, orders and <strong style="color:var(--text)">Stripe payments with webhooks</strong>, on ASP.NET Core + EF Core + SQL Server.</p>
-          <ul class="highlights">
-            <li><b>16 xUnit tests</b> for order creation and payment processing (NSubstitute mocking)</li>
-            <li><b>Clean Architecture</b> with the repository pattern; JWT + refresh-token flow and role-based authorization for customer and admin</li>
-            <li><b>Stripe Checkout with verified webhooks</b>, basket persistence, delivery methods and a full order lifecycle</li>
-          </ul>
-          <div class="api-groups" aria-label="API surface">
-            <div class="ag-head"><b>swagger-ui</b> — /swagger · e-commerce REST surface<span class="ag-badge">17 endpoints</span></div>
-            <div class="ag"><span class="ag-t">Accounts <span class="ag-count">4</span></span>
-              <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/register</code></span>
-              <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/login</code></span>
-              <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/refresh-token</code></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Accounts/me</code></span>
-            </div>
-            <div class="ag"><span class="ag-t">Basket <span class="ag-count">3</span></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Basket/{basketId}</code></span>
-              <span class="ag-row"><span class="method put">PUT</span><code>/api/Basket</code></span>
-              <span class="ag-row"><span class="method del">DELETE</span><code>/api/Basket/{basketId}</code></span>
-            </div>
-            <div class="ag"><span class="ag-t">Brands · Types <span class="ag-count">2</span></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Brands</code></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Types</code></span>
-            </div>
-            <div class="ag"><span class="ag-t">Products <span class="ag-count">2</span></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Products</code></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Products/{id}</code></span>
-            </div>
-            <div class="ag"><span class="ag-t">Orders <span class="ag-count">4</span></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Orders</code></span>
-              <span class="ag-row"><span class="method post">POST</span><code>/api/Orders</code></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Orders/{id}</code></span>
-              <span class="ag-row"><span class="method get">GET</span><code>/api/Orders/delivery-methods</code></span>
-            </div>
-            <div class="ag"><span class="ag-t">Payments <span class="ag-count">2</span></span>
-              <span class="ag-row"><span class="method post">POST</span><code>/api/Payments/{orderId}</code></span>
-              <span class="ag-row"><span class="method post">POST</span><code>/api/Payments/webhook</code></span>
+          <div class="tab-panel" data-tab="overview">
+            <p class="desc"><strong style="color:var(--text)">E-commerce REST API</strong> — full storefront backend: JWT auth with refresh tokens, basket, catalogue, orders and <strong style="color:var(--text)">Stripe payments with webhooks</strong>, on ASP.NET Core + EF Core + SQL Server.</p>
+            <ul class="highlights">
+              <li><b>16 xUnit tests</b> for order creation and payment processing (NSubstitute mocking)</li>
+              <li><b>Clean Architecture</b> with the repository pattern; JWT + refresh-token flow and role-based authorization for customer and admin</li>
+              <li><b>Stripe Checkout with verified webhooks</b>, basket persistence, delivery methods and a full order lifecycle</li>
+            </ul>
+            <div class="tags">
+              <span class="tag core">C#</span><span class="tag core">ASP.NET Core Web API</span><span class="tag core">EF Core</span><span class="tag core">SQL Server</span>
+              <span class="tag core">JWT</span><span class="tag">Stripe</span><span class="tag">Webhooks</span><span class="tag">Clean Architecture</span>
+              <span class="tag core">xUnit</span><span class="tag core">NSubstitute</span><span class="tag">Swagger</span>
             </div>
           </div>
-          <div class="tags">
-            <span class="tag core">C#</span><span class="tag core">ASP.NET Core Web API</span><span class="tag core">EF Core</span><span class="tag core">SQL Server</span>
-            <span class="tag core">JWT</span><span class="tag">Stripe</span><span class="tag">Webhooks</span><span class="tag">Clean Architecture</span>
-            <span class="tag core">xUnit</span><span class="tag core">NSubstitute</span><span class="tag">Swagger</span>
+          <div class="tab-panel" data-tab="api surface" data-count="17">
+            <div class="api-groups" aria-label="API surface">
+              <div class="ag-head"><b>swagger-ui</b> — /swagger · e-commerce REST surface<span class="ag-badge">17 endpoints</span></div>
+              <div class="ag"><span class="ag-t">Accounts <span class="ag-count">4</span></span>
+                <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/register</code></span>
+                <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/login</code></span>
+                <span class="ag-row"><span class="method post">POST</span><code>/api/Accounts/refresh-token</code></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Accounts/me</code></span>
+              </div>
+              <div class="ag"><span class="ag-t">Basket <span class="ag-count">3</span></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Basket/{basketId}</code></span>
+                <span class="ag-row"><span class="method put">PUT</span><code>/api/Basket</code></span>
+                <span class="ag-row"><span class="method del">DELETE</span><code>/api/Basket/{basketId}</code></span>
+              </div>
+              <div class="ag"><span class="ag-t">Brands · Types <span class="ag-count">2</span></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Brands</code></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Types</code></span>
+              </div>
+              <div class="ag"><span class="ag-t">Products <span class="ag-count">2</span></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Products</code></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Products/{id}</code></span>
+              </div>
+              <div class="ag"><span class="ag-t">Orders <span class="ag-count">4</span></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Orders</code></span>
+                <span class="ag-row"><span class="method post">POST</span><code>/api/Orders</code></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Orders/{id}</code></span>
+                <span class="ag-row"><span class="method get">GET</span><code>/api/Orders/delivery-methods</code></span>
+              </div>
+              <div class="ag"><span class="ag-t">Payments <span class="ag-count">2</span></span>
+                <span class="ag-row"><span class="method post">POST</span><code>/api/Payments/{orderId}</code></span>
+                <span class="ag-row"><span class="method post">POST</span><code>/api/Payments/webhook</code></span>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="proj-foot">
           <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/ECommerce_API" target="_blank" rel="noopener">→ view repository on GitHub</a>
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/ECommerce_API" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>source</a>
           </div>
+          <span class="stackline">C# · ASP.NET Core · SQL Server</span>
         </div>
       </article>
 
-      <article class="endpoint featured">
+      <article class="endpoint featured proj" data-cat="dotnet desktop">
         <div class="ep-head">
+          <span class="pidx">02</span>
           <span class="method get">GET</span>
           <span class="path">/projects/<span class="slug">restaurant-desktop-app</span></span>
-          <span class="status">200 in active use</span>
+          <span class="status live-dot">200 in active use</span>
+        </div>
+        <div class="proj-metrics">
+          <div class="pm"><b class="hl" data-count="385">385</b><span>unit &amp; integration tests</span></div>
+          <div class="pm"><b>.NET 10</b><span>WPF · SQLite</span></div>
+          <div class="pm"><b>Daily</b><span>in a real restaurant</span></div>
+          <div class="pm"><b>ESC/POS</b><span>thermal printing</span></div>
         </div>
         <div class="ep-body">
-          <p class="desc"><strong style="color:var(--text)">NAPOLI Pizza POS</strong> — a production-ready restaurant point-of-sale desktop app built with C# / WPF / <strong style="color:var(--text)">.NET 10</strong> and SQLite, <strong style="color:var(--text)">deployed and in daily use at a real restaurant</strong>. Offline-first, MIT-licensed.</p>
-          <ul class="highlights">
-            <li><b>Full POS flow</b>: dine-in / takeaway / delivery, held orders, discounts, tax &amp; service fee, real-time order summary</li>
-            <li><b>Recipe-driven inventory</b> with auto product costing, stock movements, low-stock alerts and automatic deduction on checkout</li>
-            <li><b>Shifts &amp; accounting</b>: open/close workflow, cash-drawer reconciliation, profit/loss reports, below-cost sale detection, Excel export (ClosedXML)</li>
-            <li><b>Security</b>: hardware-bound license keys (HMAC-SHA256 + WMI fingerprint), PIN login with salted PBKDF2, Admin/Cashier roles</li>
-            <li><b>ESC/POS thermal printing</b>: Epson TM-T88V auto-detect, cash-drawer kick, Arabic receipts via a translation layer, Floyd–Steinberg dithered logo</li>
-            <li><b>385 unit &amp; integration tests</b> (counted from source — 349 [Fact] + 36 [InlineData] cases): checkout atomicity, migrations &amp; seeding, reporting math, license validation</li>
-          </ul>
-          <div class="tags">
-            <span class="tag core">C#</span><span class="tag core">.NET 10</span><span class="tag core">WPF</span>
-            <span class="tag">SQLite</span><span class="tag">MVVM</span><span class="tag">ESC/POS</span><span class="tag">Win32 API</span>
-            <span class="tag">ClosedXML</span><span class="tag">xUnit</span><span class="tag">Coverlet</span>
+          <div class="tab-panel" data-tab="overview">
+            <p class="desc"><strong style="color:var(--text)">NAPOLI Pizza POS</strong> — a production-ready restaurant point-of-sale desktop app built with C# / WPF / <strong style="color:var(--text)">.NET 10</strong> and SQLite, <strong style="color:var(--text)">deployed and in daily use at a real restaurant</strong>. Offline-first, MIT-licensed.</p>
+            <ul class="highlights">
+              <li><b>Full POS flow</b>: dine-in / takeaway / delivery, held orders, discounts, tax &amp; service fee, real-time order summary</li>
+              <li><b>Recipe-driven inventory</b> with auto product costing, stock movements, low-stock alerts and automatic deduction on checkout</li>
+              <li><b>Shifts &amp; accounting</b>: open/close workflow, cash-drawer reconciliation, profit/loss reports, below-cost sale detection, Excel export (ClosedXML)</li>
+              <li><b>Security</b>: hardware-bound license keys (HMAC-SHA256 + WMI fingerprint), PIN login with salted PBKDF2, Admin/Cashier roles</li>
+              <li><b>ESC/POS thermal printing</b>: Epson TM-T88V auto-detect, cash-drawer kick, Arabic receipts via a translation layer, Floyd–Steinberg dithered logo</li>
+              <li><b>385 unit &amp; integration tests</b> (counted from source — 349 [Fact] + 36 [InlineData] cases): checkout atomicity, migrations &amp; seeding, reporting math, license validation</li>
+            </ul>
+            <div class="tags">
+              <span class="tag core">C#</span><span class="tag core">.NET 10</span><span class="tag core">WPF</span>
+              <span class="tag">SQLite</span><span class="tag">MVVM</span><span class="tag">ESC/POS</span><span class="tag">Win32 API</span>
+              <span class="tag">ClosedXML</span><span class="tag">xUnit</span><span class="tag">Coverlet</span>
+            </div>
           </div>
+          <div class="tab-panel" data-tab="screenshots" data-count="2">
+            <div class="gallery">
+              <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" alt="Restaurant POS — admin point of sale screen"></a><figcaption>POS Admin</figcaption></figure>
+              <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" alt="Restaurant POS — daily report"></a><figcaption>Daily Report</figcaption></figure>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
           <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/RestaurantPOS_DesktopApplication" target="_blank" rel="noopener">→ view repository on GitHub</a>
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/RestaurantPOS_DesktopApplication" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>source</a>
           </div>
-          <div class="gallery">
-            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/03-pos-admin.png" alt="Restaurant POS — admin point of sale screen"></a><figcaption>POS Admin</figcaption></figure>
-            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/RestaurantPOS_DesktopApplication/main/PizzaPOS/screenshots/19-report-daily.png" alt="Restaurant POS — daily report"></a><figcaption>Daily Report</figcaption></figure>
-          </div>
+          <span class="stackline">C# · WPF · SQLite · MVVM</span>
         </div>
       </article>
 
-      <article class="endpoint featured">
+      <article class="endpoint featured proj" data-cat="dotnet api">
         <div class="ep-head">
+          <span class="pidx">03</span>
           <span class="method post">POST</span>
           <span class="path">/projects/<span class="slug">coffee-store-api</span></span>
           <span class="status">200 in progress</span>
         </div>
+        <div class="proj-metrics">
+          <div class="pm"><b class="hl" data-count="182">182</b><span>xUnit tests</span></div>
+          <div class="pm"><b data-count="4">4</b><span>architecture layers</span></div>
+          <div class="pm"><b data-count="2">2</b><span>DbContexts</span></div>
+          <div class="pm"><b>CQRS</b><span>Redis · Docker</span></div>
+        </div>
         <div class="ep-body">
-          <p class="desc">Coffee e-commerce API built with <strong style="color:var(--text)">.NET 10</strong>, Clean Architecture and CQRS — catalogue, Redis baskets, order lifecycle and <strong style="color:var(--text)">Stripe card payments</strong> with signed webhooks.</p>
-          <ul class="highlights">
-            <li><b>Strict dependency flow</b>: Api → Infrastructure → Application → Domain, with Repository + Unit of Work, the Specification pattern, and a Result type instead of exceptions</li>
-            <li><b>Orders as a real aggregate</b>: static <code>Create</code> factory, immutable price/address snapshots, and a status state machine that rejects illegal transitions</li>
-            <li><b>Stripe payments</b>: PaymentIntent create/reuse, ownership checks, double-pay prevention, webhook signature verification — payment succeeded → order confirmed + <code>PaidAtUtc</code></li>
-            <li><b>Two DbContexts</b> (catalogue + ASP.NET Identity) with per-context migrations, soft delete via global query filters, FluentValidation and JWT bearer auth</li>
-            <li><b>SQL Server + Redis</b> (response cache &amp; baskets) orchestrated with <b>docker-compose</b>, Swagger, user-secrets and healthchecked services</li>
-            <li><b>182 xUnit tests</b> (counted from source) across API, Application, Domain and Infrastructure layers, with coverage collected in CI</li>
-          </ul>
-          <div class="tags">
-            <span class="tag core">C#</span><span class="tag core">.NET 10</span><span class="tag core">ASP.NET Core Web API</span>
-            <span class="tag">Clean Architecture</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
-            <span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">JWT</span><span class="tag">FluentValidation</span>
-            <span class="tag">Stripe</span><span class="tag">Webhooks</span><span class="tag core">xUnit</span>
+          <div class="tab-panel" data-tab="overview">
+            <p class="desc">Coffee e-commerce API built with <strong style="color:var(--text)">.NET 10</strong>, Clean Architecture and CQRS — catalogue, Redis baskets, order lifecycle and <strong style="color:var(--text)">Stripe card payments</strong> with signed webhooks.</p>
+            <ul class="highlights">
+              <li><b>Strict dependency flow</b>: Api → Infrastructure → Application → Domain, with Repository + Unit of Work, the Specification pattern, and a Result type instead of exceptions</li>
+              <li><b>Orders as a real aggregate</b>: static <code>Create</code> factory, immutable price/address snapshots, and a status state machine that rejects illegal transitions</li>
+              <li><b>Stripe payments</b>: PaymentIntent create/reuse, ownership checks, double-pay prevention, webhook signature verification — payment succeeded → order confirmed + <code>PaidAtUtc</code></li>
+              <li><b>Two DbContexts</b> (catalogue + ASP.NET Identity) with per-context migrations, soft delete via global query filters, FluentValidation and JWT bearer auth</li>
+              <li><b>SQL Server + Redis</b> (response cache &amp; baskets) orchestrated with <b>docker-compose</b>, Swagger, user-secrets and healthchecked services</li>
+              <li><b>182 xUnit tests</b> (counted from source) across API, Application, Domain and Infrastructure layers, with coverage collected in CI</li>
+            </ul>
+            <div class="tags">
+              <span class="tag core">C#</span><span class="tag core">.NET 10</span><span class="tag core">ASP.NET Core Web API</span>
+              <span class="tag">Clean Architecture</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
+              <span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">JWT</span><span class="tag">FluentValidation</span>
+              <span class="tag">Stripe</span><span class="tag">Webhooks</span><span class="tag core">xUnit</span>
+            </div>
           </div>
+          <div class="tab-panel" data-tab="architecture">
+            <div class="arch" aria-label="Dependency flow: Api, Infrastructure, Application, Domain">
+              <div class="arch-node a-api"><b>Api</b><span>Controllers · JWT bearer · Swagger</span></div>
+              <div class="arch-node a-infra"><b>Infrastructure</b><span>EF Core · Repository + UoW · Redis · Stripe</span></div>
+              <div class="arch-node a-app"><b>Application</b><span>CQRS · FluentValidation · Result type</span></div>
+              <div class="arch-node a-dom"><b>Domain</b><span>Order aggregate · state machine · snapshots</span></div>
+            </div>
+            <p class="arch-note">strict one-way dependency flow · tested at every layer (182 tests)</p>
+          </div>
+          <div class="tab-panel" data-tab="screenshots" data-count="3">
+            <div class="gallery">
+              <figure><a href="assets/screenshots/swagger-endpoints-1.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-1.png" alt="Coffee Store Swagger - addresses, authentication and baskets"></a><figcaption>Addresses · Auth · Baskets</figcaption></figure>
+              <figure><a href="assets/screenshots/swagger-endpoints-2.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-2.png" alt="Coffee Store Swagger - baskets, delivery methods and orders"></a><figcaption>Delivery · Orders</figcaption></figure>
+              <figure><a href="assets/screenshots/swagger-endpoints-3.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-3.png" alt="Coffee Store Swagger - orders, payments and products"></a><figcaption>Payments · Products</figcaption></figure>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
           <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/CoffeeStore" target="_blank" rel="noopener">→ view repository on GitHub</a>
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/CoffeeStore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>source</a>
           </div>
-          <div class="gallery">
-            <figure><a href="assets/screenshots/swagger-endpoints-1.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-1.png" alt="Coffee Store Swagger - addresses, authentication and baskets"></a><figcaption>Addresses · Auth · Baskets</figcaption></figure>
-            <figure><a href="assets/screenshots/swagger-endpoints-2.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-2.png" alt="Coffee Store Swagger - baskets, delivery methods and orders"></a><figcaption>Delivery · Orders</figcaption></figure>
-            <figure><a href="assets/screenshots/swagger-endpoints-3.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/screenshots/swagger-endpoints-3.png" alt="Coffee Store Swagger - orders, payments and products"></a><figcaption>Payments · Products</figcaption></figure>
-          </div>
+          <span class="stackline">.NET 10 · Clean Architecture · CQRS</span>
         </div>
       </article>
 
-      <article class="endpoint featured">
+      <article class="endpoint featured proj" data-cat="dotnet">
         <div class="ep-head">
+          <span class="pidx">04</span>
           <span class="method put">PUT</span>
           <span class="path">/projects/<span class="slug">gym-management-system</span></span>
-          <span class="status">200 live demo</span>
+          <span class="status live-dot">200 live demo</span>
+        </div>
+        <div class="proj-metrics">
+          <div class="pm"><b class="hl" data-count="40" data-suffix="+">40+</b><span>Razor views</span></div>
+          <div class="pm"><b data-count="3">3</b><span>Identity roles</span></div>
+          <div class="pm"><b>EN / AR</b><span>full RTL support</span></div>
+          <div class="pm"><b>Stripe</b><span>membership checkout</span></div>
         </div>
         <div class="ep-body">
-          <p class="desc">Full ASP.NET Core 10.0 MVC system for member management, trainer scheduling, session booking, and membership plans — three-layer architecture with Repository Pattern, Unit of Work and DI.</p>
-          <ul class="highlights">
-            <li><b>Stripe Checkout</b> for membership payments with webhook verification</li>
-            <li><b>ASP.NET Core Identity</b> with SuperAdmin / Admin / Member roles and business rules for capacity, booking eligibility and membership lifecycle</li>
-            <li><b>QR code check-ins</b>, audit logging, notifications, body-measurement tracking across 40+ Razor views</li>
-            <li><b>English + Arabic</b> localization with full RTL support and a consistent dark design system</li>
-          </ul>
-          <div class="tags">
-            <span class="tag core">C#</span><span class="tag core">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
-            <span class="tag">Bootstrap</span><span class="tag">Stripe</span><span class="tag">Identity</span><span class="tag">AutoMapper</span><span class="tag">QR Code</span>
+          <div class="tab-panel" data-tab="overview">
+            <p class="desc">Full ASP.NET Core 10.0 MVC system for member management, trainer scheduling, session booking, and membership plans — three-layer architecture with Repository Pattern, Unit of Work and DI.</p>
+            <ul class="highlights">
+              <li><b>Stripe Checkout</b> for membership payments with webhook verification</li>
+              <li><b>ASP.NET Core Identity</b> with SuperAdmin / Admin / Member roles and business rules for capacity, booking eligibility and membership lifecycle</li>
+              <li><b>QR code check-ins</b>, audit logging, notifications, body-measurement tracking across 40+ Razor views</li>
+              <li><b>English + Arabic</b> localization with full RTL support and a consistent dark design system</li>
+            </ul>
+            <div class="tags">
+              <span class="tag core">C#</span><span class="tag core">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
+              <span class="tag">Bootstrap</span><span class="tag">Stripe</span><span class="tag">Identity</span><span class="tag">AutoMapper</span><span class="tag">QR Code</span>
+            </div>
           </div>
+          <div class="tab-panel" data-tab="screenshots" data-count="2">
+            <div class="gallery">
+              <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" alt="Gym management system — home page"></a><figcaption>Home Page</figcaption></figure>
+              <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" alt="Gym management system — admin dashboard"></a><figcaption>Admin Dashboard</figcaption></figure>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
           <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/GymManagementSystem_MVC" target="_blank" rel="noopener">→ view repository on GitHub</a>
-            <a class="repo-link" href="https://fitgym.runasp.net/" target="_blank" rel="noopener">→ live demo ↗</a>
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/GymManagementSystem_MVC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>source</a>
+            <a class="repo-link live" href="https://fitgym.runasp.net/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3zM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>live demo</a>
           </div>
-          <div class="gallery">
-            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/01-Home-Hero.png" alt="Gym management system — home page"></a><figcaption>Home Page</figcaption></figure>
-            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/GymManagementSystem_MVC/main/screenshots/06-Admin-Dashboard-Overview.png" alt="Gym management system — admin dashboard"></a><figcaption>Admin Dashboard</figcaption></figure>
-          </div>
+          <span class="stackline">ASP.NET Core MVC · Identity · Stripe</span>
         </div>
       </article>
 
-      <article class="endpoint">
+      <article class="endpoint proj" data-cat="dotnet desktop">
         <div class="ep-head">
+          <span class="pidx">05</span>
           <span class="method post">POST</span>
           <span class="path">/projects/<span class="slug">my-tasks-todo-app</span></span>
           <span class="status">200 shipped</span>
         </div>
+        <div class="proj-metrics">
+          <div class="pm"><b class="hl" data-count="50">50</b><span>unit tests</span></div>
+          <div class="pm"><b>.NET 8</b><span>WPF · SQLite</span></div>
+          <div class="pm"><b>MVVM</b><span>+ repository</span></div>
+          <div class="pm"><b>Pomodoro</b><span>focus timer</span></div>
+        </div>
         <div class="ep-body">
-          <p class="desc">Notion-style desktop task manager built with WPF + .NET 8 and SQLite — clean MVVM + Repository pattern with <strong style="color:var(--text)">50 unit tests</strong>.</p>
-          <ul class="highlights">
-            <li><b>Sub-tasks with progress</b>, recurring tasks, Pomodoro focus timer with session history</li>
-            <li><b>Dashboard with weekly charts</b>, live accent theming, multi-select, archive and undo-delete</li>
-          </ul>
-          <div class="tags">
-            <span class="tag core">C#</span><span class="tag core">.NET 8</span><span class="tag">WPF</span><span class="tag">EF Core</span><span class="tag">SQLite</span><span class="tag">MVVM</span><span class="tag">xUnit</span>
+          <div class="tab-panel" data-tab="overview">
+            <p class="desc">Notion-style desktop task manager built with WPF + .NET 8 and SQLite — clean MVVM + Repository pattern with <strong style="color:var(--text)">50 unit tests</strong>.</p>
+            <ul class="highlights">
+              <li><b>Sub-tasks with progress</b>, recurring tasks, Pomodoro focus timer with session history</li>
+              <li><b>Dashboard with weekly charts</b>, live accent theming, multi-select, archive and undo-delete</li>
+            </ul>
+            <div class="tags">
+              <span class="tag core">C#</span><span class="tag core">.NET 8</span><span class="tag">WPF</span><span class="tag">EF Core</span><span class="tag">SQLite</span><span class="tag">MVVM</span><span class="tag">xUnit</span>
+            </div>
           </div>
+          <div class="tab-panel" data-tab="screenshots" data-count="2">
+            <div class="gallery">
+              <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" alt="Todo app — main view"></a><figcaption>Main View</figcaption></figure>
+              <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" alt="Todo app — dashboard"></a><figcaption>Dashboard</figcaption></figure>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
           <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/TodoApp" target="_blank" rel="noopener">→ view repository on GitHub</a>
+            <a class="repo-link" href="https://github.com/EngMohamedNowar/TodoApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>source</a>
           </div>
-          <div class="gallery">
-            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/main.png" alt="Todo app — main view"></a><figcaption>Main View</figcaption></figure>
-            <figure><a href="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/EngMohamedNowar/TodoApp/main/screenshots/dashboard.png" alt="Todo app — dashboard"></a><figcaption>Dashboard</figcaption></figure>
-          </div>
+          <span class="stackline">C# · WPF · EF Core</span>
         </div>
       </article>
 
-      <div class="other-head">other projects<span class="path"> — Python / Django REST samples</span></div>
-
-      <article class="endpoint">
-        <div class="ep-head">
-          <span class="method post">POST</span>
-          <span class="path">/projects/<span class="slug">plant-disease-detection</span></span>
-          <span class="status">200 shipped</span>
+      <div class="proj-group" data-group="python">
+        <div class="other-head">other projects<span class="path"> — Python / Django REST samples</span></div>
+        <div class="proj-mini-grid">
+          <article class="endpoint mini" data-cat="python api">
+            <div class="ep-head">
+              <span class="method post">POST</span>
+              <span class="status">200 shipped</span>
+              <span class="path">/projects/<span class="slug">plant-disease-detection</span></span>
+            </div>
+            <div class="ep-body">
+              <p class="desc">Python/Django backend for a web/mobile app that detects plant diseases from user-uploaded images via an AI classification model, with REST endpoints for care tips, reminders, and a seed store.</p>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">AI Integration</span>
+              </div>
+              <div class="ep-links">
+                <a class="repo-link" href="https://github.com/EngMohamedNowar/PlantCareSystem" target="_blank" rel="noopener">→ view repository</a>
+              </div>
+            </div>
+          </article>
+          <article class="endpoint mini" data-cat="python api">
+            <div class="ep-head">
+              <span class="method post">POST</span>
+              <span class="status">200 shipped</span>
+              <span class="path">/projects/<span class="slug">cinema-ticket-reservation-api</span></span>
+            </div>
+            <div class="ep-body">
+              <p class="desc">Python/Django REST API for movie schedules, seat selection, and ticket booking — JWT authentication with role-based permissions and a relational schema modeling users, movies, screenings, seats, and reservations.</p>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">SQL Server</span>
+              </div>
+              <div class="ep-links">
+                <a class="repo-link" href="https://github.com/EngMohamedNowar/CinemaTicketsReservationAPI" target="_blank" rel="noopener">→ view repository</a>
+              </div>
+            </div>
+          </article>
+          <article class="endpoint mini" data-cat="python api">
+            <div class="ep-head">
+              <span class="method get">GET</span>
+              <span class="status">200 shipped</span>
+              <span class="path">/projects/<span class="slug">meals-rater-api</span></span>
+            </div>
+            <div class="ep-body">
+              <p class="desc">Python/Django REST API for meal rating with token-based authentication and custom permission classes, plus pagination, filtering, and search for optimized data retrieval.</p>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">Token Auth</span>
+              </div>
+              <div class="ep-links">
+                <a class="repo-link" href="https://github.com/EngMohamedNowar/MealsRater_API" target="_blank" rel="noopener">→ view repository</a>
+              </div>
+            </div>
+          </article>
         </div>
-        <div class="ep-body">
-          <p class="desc">Python/Django backend for a web/mobile app that detects plant diseases from user-uploaded images via an AI classification model, with REST endpoints for care tips, reminders, and a seed store.</p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">AI Integration</span>
-          </div>
-          <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/PlantCareSystem" target="_blank" rel="noopener">→ view repository on GitHub</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="endpoint">
-        <div class="ep-head">
-          <span class="method post">POST</span>
-          <span class="path">/projects/<span class="slug">cinema-ticket-reservation-api</span></span>
-          <span class="status">200 shipped</span>
-        </div>
-        <div class="ep-body">
-          <p class="desc">Python/Django REST API for movie schedules, seat selection, and ticket booking — JWT authentication with role-based permissions and a relational schema modeling users, movies, screenings, seats, and reservations.</p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">JWT</span><span class="tag">SQL Server</span>
-          </div>
-          <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/CinemaTicketsReservationAPI" target="_blank" rel="noopener">→ view repository on GitHub</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="endpoint">
-        <div class="ep-head">
-          <span class="method get">GET</span>
-          <span class="path">/projects/<span class="slug">meals-rater-api</span></span>
-          <span class="status">200 shipped</span>
-        </div>
-        <div class="ep-body">
-          <p class="desc">Python/Django REST API for meal rating with token-based authentication and custom permission classes, plus pagination, filtering, and search for optimized data retrieval.</p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">Token Auth</span>
-          </div>
-          <div class="ep-links">
-            <a class="repo-link" href="https://github.com/EngMohamedNowar/MealsRater_API" target="_blank" rel="noopener">→ view repository on GitHub</a>
-          </div>
-        </div>
-      </article>
-
-      <p class="projects-note">The Python/Django endpoints in this section are compact <b>REST API samples</b> — token auth, permissions, pagination and schema design in minimal repos. My primary focus is <b>.NET</b>: every project above is a full .NET system.</p>
+        <p class="projects-note">The Python/Django endpoints in this section are compact <b>REST API samples</b> — token auth, permissions, pagination and schema design in minimal repos. My primary focus is <b>.NET</b>: every project above is a full .NET system.</p>
+      </div>
 
     </div>
 
@@ -1740,6 +2013,204 @@
   }, {passive:true});
   window.addEventListener('resize', motionScroll);
   motionScroll();
+
+  /* ============ PROJECTS: filters · tabs · metrics · lightbox ============ */
+  (function projects(){
+    var list = document.querySelector('#projects .endpoints');
+    if(!list) return;
+    var cards = Array.prototype.slice.call(list.querySelectorAll('.endpoint[data-cat]'));
+    var hasCat = function(c, f){ return f === 'all' || c.getAttribute('data-cat').split(' ').indexOf(f) > -1; };
+
+    // --- Tabs (built from .tab-panel[data-tab]; without JS every panel stays visible)
+    var tabSets = [];
+    document.querySelectorAll('#projects .proj').forEach(function(card, ci){
+      var panels = Array.prototype.slice.call(card.querySelectorAll('.tab-panel'));
+      if(panels.length < 2) return;
+      var body = panels[0].parentNode;
+      var bar = document.createElement('div');
+      bar.className = 'proj-tabs'; bar.setAttribute('role', 'tablist');
+      bar.setAttribute('aria-label', (card.querySelector('.slug') || {}).textContent + ' details');
+      var ink = document.createElement('span'); ink.className = 'tab-ink'; ink.setAttribute('aria-hidden', 'true');
+      var tabs = panels.map(function(p, i){
+        var id = 'proj' + ci + '-' + i;
+        var t = document.createElement('button');
+        t.type = 'button'; t.className = 'ptab'; t.id = id + '-tab';
+        t.setAttribute('role', 'tab'); t.setAttribute('aria-controls', id);
+        t.innerHTML = p.getAttribute('data-tab') + (p.getAttribute('data-count') ? ' <span class="cnt">' + p.getAttribute('data-count') + '</span>' : '');
+        p.id = id; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', t.id); p.tabIndex = 0;
+        bar.appendChild(t);
+        return t;
+      });
+      bar.appendChild(ink);
+      card.insertBefore(bar, body);
+      var current = 0;
+      function placeInk(){
+        var t = tabs[current];
+        if(!t.offsetWidth) return;
+        ink.style.width = t.offsetWidth + 'px';
+        ink.style.transform = 'translateX(' + t.offsetLeft + 'px)';
+      }
+      function select(i, opts){
+        opts = opts || {};
+        var h0 = body.offsetHeight;
+        current = i;
+        tabs.forEach(function(t, k){
+          var on = k === i;
+          t.setAttribute('aria-selected', String(on));
+          t.tabIndex = on ? 0 : -1;
+          panels[k].hidden = !on;
+          panels[k].classList.toggle('shown', on && !opts.instant);
+        });
+        placeInk();
+        if(opts.focus) tabs[i].focus();
+        if(!opts.instant && !reduceMotion && h0){
+          var h1 = body.offsetHeight;
+          body.classList.add('animating');
+          body.style.height = h0 + 'px';
+          void body.offsetHeight;
+          body.style.height = h1 + 'px';
+          clearTimeout(body._t);
+          body._t = setTimeout(function(){ body.style.height = ''; body.classList.remove('animating'); }, 470);
+        }
+      }
+      tabs.forEach(function(t, i){ t.addEventListener('click', function(){ if(i !== current) select(i); }); });
+      bar.addEventListener('keydown', function(e){
+        var n = tabs.length, i = current;
+        if(e.key === 'ArrowRight') i = (current + 1) % n;
+        else if(e.key === 'ArrowLeft') i = (current - 1 + n) % n;
+        else if(e.key === 'Home') i = 0;
+        else if(e.key === 'End') i = n - 1;
+        else return;
+        e.preventDefault(); select(i, {focus:true});
+      });
+      select(0, {instant:true});
+      tabSets.push(placeInk);
+    });
+
+    // --- Filters
+    var group = document.querySelector('#projects .pt-filters');
+    var query = document.querySelector('#projects .pt-query');
+    if(group){
+      var btns = Array.prototype.slice.call(group.querySelectorAll('.pf'));
+      var ink = group.querySelector('.pf-ink');
+      btns.forEach(function(b){
+        var f = b.getAttribute('data-filter');
+        b.querySelector('.n').textContent = cards.filter(function(c){ return hasCat(c, f); }).length;
+      });
+      var active = btns[0];
+      function placeFilterInk(){
+        if(!active.offsetWidth) return;
+        ink.style.width = active.offsetWidth + 'px';
+        ink.style.height = active.offsetHeight + 'px';
+        ink.style.transform = 'translate(' + active.offsetLeft + 'px,' + active.offsetTop + 'px)';
+      }
+      function apply(btn){
+        active = btn;
+        var f = btn.getAttribute('data-filter'), shown = 0;
+        btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+        placeFilterInk();
+        cards.forEach(function(c){
+          if(!hasCat(c, f)){ c.classList.add('is-hidden'); return; }
+          c.classList.remove('is-hidden', 'reveal', 'is-entering');
+          c.classList.add('in');
+          if(!reduceMotion){
+            c.style.animationDelay = (shown * 60) + 'ms';
+            void c.offsetWidth;
+            c.classList.add('is-entering');
+          }
+          shown++;
+        });
+        document.querySelectorAll('#projects .proj-group').forEach(function(g){
+          var any = g.querySelector('.endpoint[data-cat]:not(.is-hidden)');
+          g.classList.toggle('is-hidden', !any);
+          if(any) g.querySelectorAll('.reveal').forEach(function(el){ el.classList.remove('reveal'); el.classList.add('in'); });
+        });
+        if(query){
+          query.innerHTML = '<span class="m">GET</span> <span class="q">/projects' +
+            (f === 'all' ? '' : '?stack=<b>' + btn.firstChild.textContent.trim() + '</b>') +
+            '</span> <span class="arrow">→</span> <span class="ok">200 · ' + shown + (shown === 1 ? ' item' : ' items') + '</span>';
+          query.classList.remove('flash'); void query.offsetWidth; query.classList.add('flash');
+        }
+        requestAnimationFrame(function(){ tabSets.forEach(function(fn){ fn(); }); });
+      }
+      btns.forEach(function(b){ b.addEventListener('click', function(){ if(b !== active) apply(b); }); });
+      placeFilterInk();
+      tabSets.push(placeFilterInk);
+    }
+    var relayout = function(){ tabSets.forEach(function(fn){ fn(); }); };
+    window.addEventListener('resize', relayout);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+
+    // --- Metric count-up when the strip enters the viewport
+    var metricEls = document.querySelectorAll('#projects .pm b[data-count]');
+    function runCount(b){
+      var target = parseInt(b.getAttribute('data-count'), 10), suf = b.getAttribute('data-suffix') || '';
+      if(reduceMotion){ b.textContent = target + suf; return; }
+      var t0 = 0, dur = 1100;
+      (function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        b.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suf;
+        if(p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+    if('IntersectionObserver' in window && !reduceMotion){
+      var mo = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ runCount(e.target); mo.unobserve(e.target); } });
+      }, {threshold:0.6});
+      metricEls.forEach(function(b){ b.textContent = '0' + (b.getAttribute('data-suffix') || ''); mo.observe(b); });
+    }
+
+    // --- Screenshot lightbox (native <dialog>; links still work if unsupported)
+    var lb = document.createElement('dialog');
+    if(typeof lb.showModal !== 'function') return;
+    lb.className = 'lb'; lb.setAttribute('aria-label', 'Screenshot viewer');
+    lb.innerHTML =
+      '<figure><div class="lb-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>' +
+      '<span class="t"></span><span class="c"></span><button type="button" class="lb-x" aria-label="Close viewer">esc ✕</button></div>' +
+      '<div class="lb-stage"><img alt=""><button type="button" class="lb-nav prev" aria-label="Previous screenshot">‹</button>' +
+      '<button type="button" class="lb-nav next" aria-label="Next screenshot">›</button></div></figure>';
+    document.body.appendChild(lb);
+    var lbImg = lb.querySelector('img'), lbT = lb.querySelector('.t'), lbC = lb.querySelector('.c');
+    var prev = lb.querySelector('.prev'), next = lb.querySelector('.next');
+    var set = [], idx = 0, slug = '';
+    function show(i){
+      idx = (i + set.length) % set.length;
+      var a = set[idx], im = a.querySelector('img'), cap = a.parentNode.querySelector('figcaption');
+      lbImg.classList.remove('swap'); void lbImg.offsetWidth; lbImg.classList.add('swap');
+      lbImg.src = a.href; lbImg.alt = im ? im.alt : '';
+      lbT.innerHTML = '<b>' + slug + '</b> / ' + (cap ? cap.textContent : '');
+      lbC.textContent = (idx + 1) + ' / ' + set.length;
+      prev.hidden = next.hidden = set.length < 2;
+    }
+    document.querySelectorAll('#projects .gallery').forEach(function(g){
+      var links = Array.prototype.slice.call(g.querySelectorAll('a'));
+      var s = (g.closest('.endpoint').querySelector('.slug') || {}).textContent || '';
+      links.forEach(function(a, i){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          set = links; slug = s; show(i);
+          lb.showModal();
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    });
+    prev.addEventListener('click', function(){ show(idx - 1); });
+    next.addEventListener('click', function(){ show(idx + 1); });
+    lb.querySelector('.lb-x').addEventListener('click', function(){ lb.close(); });
+    lb.addEventListener('click', function(e){ if(e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight'){ e.preventDefault(); show(idx + 1); }
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); show(idx - 1); }
+    });
+    lb.addEventListener('close', function(){ document.body.style.overflow = ''; });
+    var sx = 0;
+    lb.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - sx;
+      if(Math.abs(dx) > 50 && set.length > 1) show(idx + (dx < 0 ? 1 : -1));
+    }, {passive:true});
+  })();
 
   if(window.fetch){
     fetch('https://api.github.com/users/EngMohamedNowar', {headers:{'Accept':'application/vnd.github+json'}})

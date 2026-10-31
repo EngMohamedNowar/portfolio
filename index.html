@@ -1078,68 +1078,6 @@
   .proj .tab-panel > .gallery-wrap:first-child{margin-top:34px;}
   .proj .tab-panel > .gallery-wrap .gallery{margin-top:0;}
 
-  /* Certificates: bento grid */
-  .cert-summary{display:flex; flex-wrap:wrap; gap:8px 22px; margin:-10px 0 22px; font-family:var(--mono); font-size:12px; color:var(--text-dimmer);}
-  .cert-summary b{color:var(--amber); font-weight:800; font-size:14px; margin-right:4px; font-variant-numeric:tabular-nums;}
-  .cert-grid{grid-template-columns:repeat(3,1fr); grid-auto-flow:dense; perspective:1200px;}
-  .cert-card{
-    position:relative; display:flex; flex-direction:column;
-    transform-style:preserve-3d; will-change:transform;
-    transition:transform .5s cubic-bezier(.22,1,.36,1), border-color .25s, box-shadow .4s;
-  }
-  .cert-card:hover{transform:translateY(-4px); box-shadow:0 30px 50px -28px rgba(0,0,0,.95), 0 0 0 1px rgba(232,163,61,.2);}
-  .cert-card.big{grid-column:span 2; grid-row:span 2;}
-  .cert-card .cert-img{position:relative; flex:none; min-height:0; background:#eef0f3;}
-  .cert-card.big .cert-img{flex:1;}
-  .cert-card .cert-meta{flex:1;}
-  .cert-card.big .cert-img{aspect-ratio:auto; min-height:260px;}
-  .cert-card .cert-img::after{
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(180deg, transparent 55%, rgba(18,21,27,.55));
-    transition:opacity .4s;
-  }
-  .cert-card:hover .cert-img::after{opacity:.25;}
-  .cert-meta{position:relative; padding:13px 15px 15px;}
-  .cert-card.big .cert-meta{padding:18px 20px 20px;}
-  .cert-card.big .cert-title{font-size:17px;}
-  .cert-top{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:7px;}
-  .cert-kind{font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; padding:2px 8px; border-radius:20px; border:1px solid currentColor;}
-  .k-train{color:var(--teal);} .k-deg{color:var(--purple);} .k-cert{color:var(--amber);} .k-course{color:var(--blue);}
-  .cert-kind{background:color-mix(in srgb, currentColor 9%, transparent);}
-  .cert-year{font-family:var(--mono); font-size:11px; color:var(--text-dimmer);}
-  .cert-chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;}
-  .cert-chips span{font-family:var(--mono); font-size:10.5px; color:var(--text-dim); padding:2px 8px; border-radius:6px; background:var(--surface-2); border:1px solid var(--border);}
-  .cert-chips span.hl{color:#ffd27a; border-color:rgba(232,163,61,.4); background:rgba(232,163,61,.08);}
-  .cert-card::before{
-    content:'preview ⤢'; position:absolute; z-index:3; top:10px; right:10px;
-    font-family:var(--mono); font-size:10.5px; color:#12151b; background:var(--amber);
-    padding:3px 9px; border-radius:20px; box-shadow:0 6px 16px -6px rgba(0,0,0,.6);
-    opacity:0; transform:translateY(-6px); transition:opacity .3s, transform .3s cubic-bezier(.22,1,.36,1);
-  }
-  .cert-card:hover::before, .cert-card:focus-visible::before{opacity:1; transform:none;}
-  .cert-glare{
-    position:absolute; inset:0; z-index:2; border-radius:inherit; pointer-events:none;
-    background:radial-gradient(500px circle at var(--gx,50%) var(--gy,0%), rgba(255,255,255,.16), transparent 40%);
-    opacity:0; transition:opacity .35s; mix-blend-mode:soft-light;
-  }
-  .cert-card:hover .cert-glare{opacity:1;}
-  .cert-card.spot::after{display:none;}
-  .js .cert-card.reveal:not(.in){transform:perspective(900px) rotateX(16deg) translateY(36px) scale(.97); transform-origin:50% 100%;}
-  .cert-all-tile{
-    display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; gap:4px;
-    min-height:180px; padding:20px; border-radius:var(--radius); position:relative; overflow:hidden;
-    border:1px dashed rgba(232,163,61,.45); background:
-      radial-gradient(120% 90% at 100% 0%, rgba(232,163,61,.12), transparent 60%), var(--surface);
-    transition:border-color .25s, transform .35s cubic-bezier(.22,1,.36,1), background .3s;
-  }
-  .cert-all-tile:hover{border-style:solid; border-color:var(--amber); transform:translateY(-4px);}
-  .cat-icon{width:40px; height:40px; border-radius:10px; display:grid; place-items:center; margin-bottom:auto; color:var(--amber); border:1px solid rgba(232,163,61,.4); background:rgba(232,163,61,.08); transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
-  .cat-icon svg{width:19px; height:19px; fill:currentColor;}
-  .cert-all-tile:hover .cat-icon{transform:rotate(-8deg) scale(1.1);}
-  .cat-title{font-family:var(--mono); font-weight:800; font-size:14px; color:var(--text);}
-  .cat-sub{font-family:var(--mono); font-size:11.5px; color:var(--amber);}
-  .cert-all{display:none;}
-
   /* Lightbox external link (certificates) */
   .lb-ext{font-family:var(--mono); font-size:11px; color:#12151b; background:var(--amber); border-radius:6px; padding:4px 10px; white-space:nowrap; transition:background .2s;}
   .lb-ext:hover{background:#f2b455;}
@@ -1163,6 +1101,268 @@
     .js .gallery figure.reveal:not(.in) img{clip-path:none;}
     .js .cert-card.reveal:not(.in){transform:none;}
     .cert-card, .cert-card:hover{transform:none !important;}
+  }
+
+  /* =========================================================
+     CERTIFICATES — README-style timeline + cards
+     ========================================================= */
+  .cert-badge-row{text-align:center; margin:-8px 0 18px;}
+  .cert-badge{
+    display:inline-flex; border-radius:6px; overflow:hidden; position:relative;
+    font-family:var(--mono); font-size:11px; font-weight:800; letter-spacing:1.3px; text-transform:uppercase;
+    box-shadow:0 10px 24px -14px rgba(66,133,244,.8); transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+  }
+  .cert-badge span{display:inline-flex; align-items:center; gap:8px; padding:8px 13px; color:#fff;}
+  .cert-badge .l{background:#3b4048;} .cert-badge .r{background:#4285F4;}
+  .cert-badge svg{width:13px; height:13px; fill:currentColor;}
+  .cert-badge::after{content:''; position:absolute; inset:0; background:linear-gradient(105deg, transparent 35%, rgba(255,255,255,.35) 50%, transparent 65%); transform:translateX(-120%); animation:badgeShine 4.5s ease-in-out 1.5s infinite;}
+  @keyframes badgeShine{0%,60%{transform:translateX(-120%);} 85%,100%{transform:translateX(120%);}}
+  .cert-badge:hover{transform:translateY(-2px); box-shadow:0 16px 30px -14px rgba(66,133,244,.95);}
+
+  /* Timeline */
+  .ctl{
+    position:relative; overflow:hidden; margin-bottom:16px; padding:16px 20px 18px;
+    background:linear-gradient(180deg, rgba(54,188,247,.04), transparent 60%), var(--surface);
+    border:1px solid var(--border); border-radius:14px;
+  }
+  .ctl::before{
+    content:''; position:absolute; top:0; left:0; width:35%; height:2px;
+    background:linear-gradient(90deg, transparent, #A78BFA, #36BCF7, transparent);
+    animation:ctlTop 6s linear infinite;
+  }
+  @keyframes ctlTop{from{transform:translateX(-100%);} to{transform:translateX(300%);}}
+  .ctl-title{font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--text-dimmer);}
+  .ctl-track{position:relative; display:grid; grid-template-columns:repeat(8,1fr); height:150px; margin-top:6px;}
+  .ctl-line{position:absolute; left:6.25%; right:6.25%; top:50%; height:2px; margin-top:-1px; background:var(--border); border-radius:2px;}
+  .ctl-line i{position:absolute; inset:0; border-radius:inherit; background:linear-gradient(90deg,#A78BFA,#F59E0B,#F43F5E,#60A5FA,#FBBF24,#4ADE80,#2DD4BF,#36BCF7); transform:scaleX(0); transform-origin:left; transition:transform 1.8s cubic-bezier(.65,0,.35,1) .2s;}
+  .ctl.in .ctl-line i, .no-js .ctl-line i{transform:scaleX(1);}
+  .ctl-runner{position:absolute; top:50%; left:0; width:8px; height:8px; margin:-4px 0 0 -4px; border-radius:50%; background:#fff; box-shadow:0 0 0 3px rgba(255,255,255,.15), 0 0 14px 3px rgba(54,188,247,.8); opacity:0;}
+  .ctl.in .ctl-runner{animation:ctlRun 7s cubic-bezier(.45,0,.55,1) 2.1s infinite;}
+  @keyframes ctlRun{0%{left:0; opacity:0;} 6%{opacity:1;} 94%{opacity:1;} 100%{left:100%; opacity:0;}}
+  .ctl-item{position:relative; background:none; border:0; padding:0; cursor:pointer; color:inherit; font:inherit;}
+  .ctl-dot{
+    position:absolute; left:50%; top:50%; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%;
+    border:2px solid var(--c); background:var(--surface); box-shadow:0 0 0 4px var(--surface), 0 0 12px color-mix(in srgb, var(--c) 60%, transparent);
+    transform:scale(0); transition:transform .5s cubic-bezier(.34,1.56,.64,1) calc(.35s + var(--i) * .2s);
+  }
+  .ctl-dot::after{content:''; position:absolute; inset:3px; border-radius:50%; background:var(--c);}
+  .ctl-dot::before{content:''; position:absolute; inset:-2px; border-radius:50%; border:2px solid var(--c); opacity:0;}
+  .ctl-item:hover .ctl-dot::before, .ctl-item:focus-visible .ctl-dot::before{animation:dotPing 1.2s ease-out infinite;}
+  @keyframes dotPing{0%{transform:scale(1); opacity:.8;} 100%{transform:scale(2.4); opacity:0;}}
+  .ctl-lbl{
+    position:absolute; left:50%; width:max-content; max-width:130px; display:flex; flex-direction:column; align-items:center; text-align:center; line-height:1.3;
+    top:calc(50% + 18px); transform:translate(-50%, 8px); opacity:0;
+    transition:opacity .5s ease calc(.5s + var(--i) * .2s), transform .5s cubic-bezier(.22,1,.36,1) calc(.5s + var(--i) * .2s);
+  }
+  .ctl-item.up .ctl-lbl{top:auto; bottom:calc(50% + 18px); transform:translate(-50%, -8px);}
+  .ctl.in .ctl-dot, .no-js .ctl-dot{transform:none;}
+  .ctl.in .ctl-lbl, .no-js .ctl-lbl{opacity:1; transform:translate(-50%, 0);}
+  .ctl-lbl .d{font-family:var(--mono); font-size:9.5px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; color:var(--c);}
+  .ctl-lbl .n{font-size:12px; font-weight:700; color:var(--text); margin-top:2px; transition:color .2s;}
+  .ctl-lbl .o{font-size:10px; color:var(--text-dimmer);}
+  .ctl-item:hover .ctl-lbl .n, .ctl-item:focus-visible .ctl-lbl .n{color:var(--c);}
+  .ctl-item:focus-visible{outline:none;}
+  .ctl-item:focus-visible .ctl-dot{outline:2px solid var(--amber); outline-offset:4px;}
+
+  /* Cards */
+  .cc-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; perspective:1400px;}
+  .cc{
+    --c:#36BCF7; position:relative; display:flex; flex-direction:column; isolation:isolate;
+    padding:12px; border-radius:16px; background:var(--surface); border:1px solid var(--border);
+    transform-style:preserve-3d;
+    transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .4s, border-color .3s;
+  }
+  .cc::before{
+    content:''; position:absolute; inset:-1px; border-radius:inherit; padding:2px; pointer-events:none; z-index:4;
+    background:conic-gradient(from var(--ang), transparent 0 82%, color-mix(in srgb, var(--c) 40%, transparent) 88%, var(--c) 94%, transparent 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    animation:beamSpin 8s linear infinite; animation-delay:calc(var(--i) * -1.1s);
+  }
+  .cc:hover{border-color:color-mix(in srgb, var(--c) 40%, var(--border)); box-shadow:0 34px 60px -34px color-mix(in srgb, var(--c) 55%, #000);}
+  .cc:hover::before{animation-duration:2.6s;}
+  .cc-media{position:relative; display:grid; place-items:center; aspect-ratio:568/300; border-radius:11px; overflow:hidden; background:#0d1117;}
+  .cc-bg{position:absolute; inset:-24px; width:calc(100% + 48px); height:calc(100% + 48px); max-width:none; object-fit:cover; filter:blur(16px) saturate(1.15) brightness(.5); transform:scale(1.08); transition:transform 1.2s cubic-bezier(.22,1,.36,1);}
+  .cc-media::after{content:''; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg, rgba(13,17,23,.25), rgba(13,17,23,.65)), color-mix(in srgb, var(--c) 7%, transparent);}
+  .cc-img{
+    position:absolute; inset:0; margin:auto; z-index:1; height:84%; width:auto; max-width:78%; object-fit:contain; border-radius:3px;
+    box-shadow:0 14px 28px -8px rgba(0,0,0,.7);
+    animation:ccFloat 6s ease-in-out infinite; animation-delay:calc(var(--i) * -.75s);
+    transition:scale .6s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes ccFloat{0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);}}
+  .cc:hover .cc-img{scale:1.05;}
+  .cc:hover .cc-bg{transform:scale(1.18);}
+  .cc-issuer{
+    position:absolute; z-index:2; top:10px; left:10px; display:inline-flex; align-items:center; gap:7px; max-width:70%;
+    font-size:10.5px; font-weight:600; color:#e6edf3; padding:4px 10px 4px 8px; border-radius:20px;
+    background:rgba(13,17,23,.78); border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .cc-issuer i{position:relative; flex:none; width:7px; height:7px; border-radius:50%; background:var(--c);}
+  .cc-issuer i::after{content:''; position:absolute; inset:0; border-radius:50%; background:var(--c); animation:issuerPing 2s ease-out infinite;}
+  @keyframes issuerPing{0%{transform:scale(1); opacity:.8;} 100%{transform:scale(2.8); opacity:0;}}
+  .cc-type{position:absolute; z-index:2; top:10px; right:10px; font-size:10.5px; font-weight:700; color:#0d1117; background:var(--c); padding:3px 10px; border-radius:20px; box-shadow:0 6px 14px -6px var(--c);}
+  .cc-score{position:absolute; z-index:2; right:12px; bottom:12px; width:60px; height:60px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(13,17,23,.88); line-height:1;}
+  .cc-score svg{position:absolute; inset:0; width:100%; height:100%; transform:rotate(-90deg);}
+  .cc-score circle{fill:none; stroke-width:3.5;}
+  .cc-score .trk{stroke:rgba(255,255,255,.1);}
+  .cc-score .val{stroke:var(--c); stroke-linecap:round; stroke-dasharray:163.4px; stroke-dashoffset:163.4px; transition:stroke-dashoffset 1.6s cubic-bezier(.22,1,.36,1) .4s; filter:drop-shadow(0 0 4px var(--c));}
+  .cc.in .cc-score .val, .no-js .cc-score .val{stroke-dashoffset:calc(163.4px * (1 - var(--p)));}
+  .cc-score b{position:relative; font-size:13px; font-weight:800; color:#fff;}
+  .cc-score small{position:relative; font-size:7px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#8b949e; margin-top:2px;}
+  .cc-shine{position:absolute; inset:0; z-index:3; pointer-events:none; background:linear-gradient(105deg, transparent 38%, rgba(255,255,255,.13) 50%, transparent 62%); transform:translateX(-110%); animation:ccShine 5.5s ease-in-out infinite; animation-delay:calc(var(--i) * .6s);}
+  @keyframes ccShine{0%{transform:translateX(-110%);} 45%,100%{transform:translateX(110%);}}
+  .cc-body{padding:14px 6px 2px; display:flex; flex-direction:column; flex:1;}
+  .cc-title{display:flex; align-items:center; gap:10px; font-family:var(--sans); font-size:15.5px; font-weight:700; color:var(--text); line-height:1.3;}
+  .cc-title::before{content:''; flex:none; width:3px; height:17px; border-radius:2px; background:var(--c); box-shadow:0 0 10px var(--c);}
+  .cc-sub{font-size:12px; color:var(--text-dimmer); margin:4px 0 12px 13px;}
+  .cc-foot{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto; padding-top:11px; border-top:1px solid var(--border);}
+  .cc-ver{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:#4ADE80; padding:3px 10px 3px 8px; border-radius:20px; background:rgba(74,222,128,.1); border:1px solid rgba(74,222,128,.35);}
+  .cc-ver svg{width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:22; stroke-dashoffset:22; transition:stroke-dashoffset .6s ease .9s;}
+  .cc.in .cc-ver svg, .no-js .cc-ver svg{stroke-dashoffset:0;}
+  .cc-view{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; color:var(--c);}
+  .cc-view b{display:inline-block; transition:transform .3s cubic-bezier(.22,1,.36,1);}
+  .cc:hover .cc-view b{transform:translateX(5px);}
+  .cc .cert-glare{position:absolute; inset:0; z-index:5; border-radius:inherit; pointer-events:none; background:radial-gradient(520px circle at var(--gx,50%) var(--gy,0%), rgba(255,255,255,.14), transparent 40%); opacity:0; transition:opacity .35s; mix-blend-mode:soft-light;}
+  .cc:hover .cert-glare{opacity:1;}
+  .cc.flash{animation:ccFlash 1.4s ease;}
+  @keyframes ccFlash{0%,100%{box-shadow:none;} 30%{box-shadow:0 0 0 3px var(--c), 0 0 40px -6px var(--c);}}
+  .js .cc.reveal:not(.in){transform:perspective(900px) rotateX(12deg) translateY(34px) scale(.97); transform-origin:50% 100%;}
+
+  @media(max-width:820px){
+    .cc-grid{grid-template-columns:1fr;}
+  }
+  @media(max-width:720px){
+    .ctl-track{grid-template-columns:1fr; grid-auto-rows:54px; height:auto; margin-top:12px;}
+    .ctl-line{left:15px; right:auto; top:27px; bottom:27px; width:2px; height:auto; margin:0;}
+    .ctl-line i{transform:scaleY(0); transform-origin:top; background:linear-gradient(180deg,#A78BFA,#F59E0B,#F43F5E,#60A5FA,#FBBF24,#4ADE80,#2DD4BF,#36BCF7);}
+    .ctl.in .ctl-line i, .no-js .ctl-line i{transform:scaleY(1);}
+    .ctl-runner{left:50%; top:0; margin:-4px 0 0 -4px;}
+    @keyframes ctlRunY{0%{top:0; opacity:0;} 6%{opacity:1;} 94%{opacity:1;} 100%{top:100%; opacity:0;}}
+    .ctl.in .ctl-runner{animation-name:ctlRunY;}
+    .ctl-dot{left:16px;}
+    .ctl-lbl, .ctl-item.up .ctl-lbl{top:50%; bottom:auto; left:44px; max-width:none; align-items:flex-start; text-align:left; transform:translate(-8px,-50%);}
+    .ctl.in .ctl-lbl, .ctl.in .ctl-item.up .ctl-lbl, .no-js .ctl-lbl{transform:translate(0,-50%);}
+    .ctl-lbl{flex-direction:row; flex-wrap:wrap; align-items:baseline; gap:2px 8px;}
+    .ctl-lbl .n{margin-top:0;}
+  }
+  @media(max-width:480px){
+    .cc{padding:10px;}
+    .cc-score{width:52px; height:52px;}
+  }
+
+  /* =========================================================
+     CONTACT — pitch, mailto composer, animated JSON card
+     ========================================================= */
+  .contact-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.12fr); gap:20px; align-items:start;}
+  .contact-grid .contact-card{padding:22px 22px;}
+  .contact-grid .contact-card .path{min-width:0;}
+  .contact-grid .contact-fields{font-size:13px;}
+  .contact-grid .cf{gap:8px; padding-left:30px;}
+  .contact-grid .cf .k{min-width:98px;}
+  .contact-pitch{
+    position:relative; overflow:hidden; isolation:isolate; padding:26px 26px 22px;
+    border:1px solid var(--border); border-radius:var(--radius);
+    background:radial-gradient(110% 80% at 0% 0%, rgba(232,163,61,.11), transparent 55%), radial-gradient(90% 70% at 100% 100%, rgba(75,179,160,.07), transparent 60%), var(--surface);
+  }
+  .contact-pitch::before{
+    content:''; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size:28px 28px;
+    -webkit-mask-image:radial-gradient(80% 70% at 0% 0%, #000, transparent 70%); mask-image:radial-gradient(80% 70% at 0% 0%, #000, transparent 70%);
+    animation:gridDrift 18s linear infinite;
+  }
+  @keyframes gridDrift{to{background-position:28px 28px, 28px 28px;}}
+  .cp-kicker{display:inline-flex; align-items:center; gap:10px; margin-bottom:14px; font-family:var(--mono); font-size:11.5px; color:var(--teal);}
+  .cp-dot{position:relative; width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px var(--teal);}
+  .cp-dot::before, .cp-dot::after{content:''; position:absolute; inset:0; border-radius:50%; border:1px solid var(--teal); animation:signal 3s cubic-bezier(.2,.6,.4,1) infinite;}
+  .cp-dot::after{animation-delay:1.5s;}
+  @keyframes signal{0%{transform:scale(1); opacity:.9;} 100%{transform:scale(5); opacity:0;}}
+  .cp-title{font-family:var(--mono); font-weight:800; font-size:clamp(24px,3.3vw,31px); line-height:1.18; letter-spacing:-.8px; margin-bottom:12px;}
+  .cp-title .hl{background:linear-gradient(90deg, var(--amber), #ffd27a, var(--amber)); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:hlFlow 4s linear infinite;}
+  @keyframes hlFlow{to{background-position:-200% 0;}}
+  .cp-title .w{display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.1em; margin-bottom:-.1em;}
+  .cp-title .w > span{display:inline-block;}
+  .js .cp-title .w > span{transform:translateY(110%); transition:transform .9s cubic-bezier(.22,1,.36,1) calc(var(--wi) * 80ms + 150ms);}
+  .js .contact-pitch.in .cp-title .w > span{transform:none;}
+  .cp-text{color:var(--text-dim); font-size:14.5px; max-width:46ch; margin-bottom:16px;}
+  .cp-clock{display:inline-flex; align-items:center; gap:8px; padding:5px 12px; border-radius:20px; border:1px solid var(--border); background:var(--surface-2); font-family:var(--mono); font-size:12px; color:var(--text-dim);}
+  .cp-clock svg{width:13px; height:13px; fill:var(--amber);}
+  .cp-clock b{color:var(--text); font-weight:700; font-variant-numeric:tabular-nums;}
+  .cp-clock b .sep{animation:blink 1s step-end infinite;}
+  .cp-clock small{color:var(--text-dimmer); font-size:10.5px;}
+  .cp-form{margin-top:18px; border:1px solid var(--border); border-radius:10px; background:rgba(0,0,0,.2); overflow:hidden;}
+  .cp-req{display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--surface-2); border-bottom:1px solid var(--border); font-family:var(--mono); font-size:12px; color:var(--text-dim); min-width:0;}
+  .cp-req code{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .cp-field{position:relative; display:block; padding:10px 14px 2px; border-bottom:1px dashed var(--border); cursor:text;}
+  .cp-field > span{display:block; font-family:var(--mono); font-size:11.5px; color:var(--blue); transition:color .25s;}
+  .cp-field input, .cp-field textarea{
+    display:block; width:100%; background:none; border:0; outline:0; resize:vertical; min-height:30px;
+    color:var(--text); font-family:var(--mono); font-size:13.5px; line-height:1.6; padding:5px 0 8px; caret-color:var(--amber);
+  }
+  .cp-field textarea{min-height:92px;}
+  .cp-field input::placeholder, .cp-field textarea::placeholder{color:var(--text-dimmer); opacity:.8;}
+  .cp-field::after{content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:linear-gradient(90deg, var(--amber), #ffd27a); transform:scaleX(0); transform-origin:left; transition:transform .45s cubic-bezier(.22,1,.36,1);}
+  .cp-field:focus-within::after{transform:scaleX(1);}
+  .cp-field:focus-within > span{color:var(--amber);}
+  .cp-field.invalid > span{color:var(--red);}
+  .cp-field.invalid::after{transform:scaleX(1); background:var(--red);}
+  .cp-field.shake{animation:shake .45s cubic-bezier(.36,.07,.19,.97);}
+  @keyframes shake{10%,90%{transform:translateX(-1px);} 20%,80%{transform:translateX(3px);} 30%,50%,70%{transform:translateX(-5px);} 40%,60%{transform:translateX(5px);}}
+  .cp-count{position:absolute; right:12px; top:11px; font-style:normal; font-family:var(--mono); font-size:10.5px; color:var(--text-dimmer); transition:color .2s;}
+  .cp-count.near{color:var(--amber);}
+  .cp-actions{display:flex; align-items:center; flex-wrap:wrap; gap:10px 14px; padding:12px 14px;}
+  .cp-send{gap:10px;}
+  .cp-send svg{width:15px; height:15px; fill:currentColor; transition:transform .45s cubic-bezier(.22,1,.36,1);}
+  .cp-send:hover svg{transform:translate(3px,-3px) rotate(-10deg);}
+  .cp-send.sent svg{animation:planeFly .9s cubic-bezier(.6,0,.4,1) forwards;}
+  @keyframes planeFly{0%{transform:none; opacity:1;} 30%{transform:translate(-5px,3px) rotate(6deg);} 100%{transform:translate(70px,-46px) rotate(-22deg); opacity:0;}}
+  .cp-hint{font-family:var(--mono); font-size:11px; color:var(--text-dimmer);}
+
+  /* JSON contact card upgrades */
+  .contact-card{position:relative;}
+  .contact-fields{counter-reset:ln; position:relative;}
+  .contact-fields::before, .contact-fields::after{display:block; font-family:var(--mono); color:var(--text-dimmer); font-size:14px;}
+  .contact-fields::before{content:'{';} .contact-fields::after{content:'}';}
+  .cf{position:relative; padding-left:34px; border-radius:6px; transition:background .25s;}
+  .cf::before{counter-increment:ln; content:counter(ln, decimal-leading-zero); position:absolute; left:4px; top:50%; transform:translateY(-50%); font-size:10.5px; color:var(--text-dimmer); opacity:.55;}
+  .cf::after{content:''; position:absolute; left:0; top:6px; bottom:6px; width:2px; border-radius:2px; background:var(--amber); transform:scaleY(0); transition:transform .3s cubic-bezier(.22,1,.36,1);}
+  .cf:hover{background:rgba(232,163,61,.05);}
+  .cf:hover::after{transform:scaleY(1);}
+  .js .contact-card .cf{opacity:0; transform:translateX(-10px);}
+  .js .contact-card.in .cf{opacity:1; transform:none; transition:opacity .5s ease calc(var(--ci) * 70ms + 250ms), transform .5s cubic-bezier(.22,1,.36,1) calc(var(--ci) * 70ms + 250ms), background .25s;}
+  .copy-btn{transition:color .2s, border-color .2s, transform .15s, background .2s;}
+  .copy-btn:active{transform:scale(.92);}
+  .copy-btn.ok{color:var(--teal); border-color:var(--teal); background:rgba(75,179,160,.08);}
+
+  /* Toast */
+  .toast{
+    position:fixed; left:50%; bottom:26px; z-index:80; display:inline-flex; align-items:center; gap:9px;
+    padding:10px 16px; border-radius:10px; background:rgba(24,29,38,.95); border:1px solid var(--border);
+    font-family:var(--mono); font-size:12.5px; color:var(--text); box-shadow:0 18px 40px -16px rgba(0,0,0,.9);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    opacity:0; transform:translate(-50%, 16px) scale(.96); pointer-events:none;
+    transition:opacity .3s, transform .4s cubic-bezier(.22,1,.36,1);
+  }
+  .toast.show{opacity:1; transform:translate(-50%, 0) scale(1);}
+  .toast::before{content:''; width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px var(--teal);}
+
+  @media(max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  @media(max-width:480px){ .contact-pitch{padding:20px 16px 16px;} .cp-field{padding:10px 12px 2px;} }
+
+  @media (prefers-reduced-motion: reduce){
+    .cert-badge::after, .ctl::before, .ctl.in .ctl-runner, .cc::before, .cc-img, .cc-issuer i::after, .cc-shine,
+    .contact-pitch::before, .cp-dot::before, .cp-dot::after, .cp-title .hl, .cp-clock b .sep{animation:none !important;}
+    .ctl-line i, .ctl-dot, .ctl-lbl, .cc-score .val, .cc-ver svg{transition:none !important;}
+    .ctl .ctl-line i{transform:none !important;}
+    .ctl .ctl-dot{transform:none !important;}
+    .ctl .ctl-lbl{opacity:1 !important;}
+    .cc .cc-score .val{stroke-dashoffset:calc(163.4px * (1 - var(--p)));}
+    .cc .cc-ver svg{stroke-dashoffset:0;}
+    .js .cc.reveal:not(.in){transform:none;}
+    .js .cp-title .w > span{transform:none !important;}
+    .js .contact-card .cf{opacity:1 !important; transform:none !important;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -1819,93 +2019,150 @@
       <span class="sec-title">certificates<span class="path">.list()</span></span>
       <div class="rule"></div>
     </div>
-    <div class="cert-summary">
-      <span><b>8</b> credentials</span>
-      <span><b>1</b> degree</span>
-      <span><b>3</b> training programs</span>
-      <span><b>96%</b> HCIA-AI score</span>
+
+    <div class="cert-badge-row">
+      <a class="cert-badge" href="https://drive.google.com/drive/folders/1r_ONbtYPHxP2p0TOfOcmKEdz4MIbd0Jt?usp=sharing" target="_blank" rel="noopener">
+        <span class="l"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 3h8.6l5.7 10-4.3 7.5H6.3L2 13 7.7 3zm1.2 2L4.3 13l2.9 5 4.6-8-2.9-5zm5.3 0h-3.4l4.6 8h6.8L14.2 5zM12.9 15l-2.9 5h7.3l2.9-5h-7.3z"/></svg>All certificates</span><span class="r">Google Drive</span>
+      </a>
     </div>
-    <div class="cert-grid">
-      <a class="cert-card big" href="https://drive.google.com/file/d/1EYLlRJlzx50N_8i8D6bMJNSKNTpoiuOB/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/route-aspnet-core.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/route-aspnet-core.jpg" alt="ASP.NET Core Back-End certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-train">training</span><span class="cert-year">2026</span></div>
-          <div class="cert-title">ASP.NET Core Back-End</div>
-          <div class="cert-issuer">Route Academy · Dec 2025 – Jul 2026</div>
-          <div class="cert-chips"><span>Web API</span><span>EF Core</span><span>JWT</span></div>
+
+    <div class="ctl" aria-label="Learning journey timeline">
+      <div class="ctl-title">Learning journey · 8 certificates · 2024 → 2026</div>
+      <div class="ctl-track">
+        <div class="ctl-line" aria-hidden="true"><i></i><b class="ctl-runner"></b></div>
+        <button type="button" class="ctl-item up" style="--c:#A78BFA; --i:0" data-key="python"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">Jul 2024</span><span class="n">Full Stack Python</span><span class="o">ITI</span></span></button>
+        <button type="button" class="ctl-item" style="--c:#F59E0B; --i:1" data-key="nti"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">Oct 2024</span><span class="n">AI Talent Track</span><span class="o">NTI × Huawei</span></span></button>
+        <button type="button" class="ctl-item up" style="--c:#F43F5E; --i:2" data-key="hcia"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">2024</span><span class="n">HCIA-AI V3.5</span><span class="o">Huawei</span></span></button>
+        <button type="button" class="ctl-item" style="--c:#60A5FA; --i:3" data-key="db"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">Oct 2024</span><span class="n">Database</span><span class="o">Mahara-Tech</span></span></button>
+        <button type="button" class="ctl-item up" style="--c:#FBBF24; --i:4" data-key="bsc"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">2025</span><span class="n">B.Sc. Degree</span><span class="o">EELU</span></span></button>
+        <button type="button" class="ctl-item" style="--c:#4ADE80; --i:5" data-key="oop"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">Oct 2025</span><span class="n">OOP in C++</span><span class="o">Mahara-Tech</span></span></button>
+        <button type="button" class="ctl-item up" style="--c:#2DD4BF; --i:6" data-key="cleancode"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">Oct 2025</span><span class="n">Clean Code</span><span class="o">Mahara-Tech</span></span></button>
+        <button type="button" class="ctl-item" style="--c:#36BCF7; --i:7" data-key="route"><span class="ctl-dot"></span><span class="ctl-lbl"><span class="d">Jul 2026</span><span class="n">ASP.NET Core</span><span class="o">Route</span></span></button>
+      </div>
+    </div>
+
+    <div class="cc-grid">
+      <a class="cc" style="--c:#FBBF24; --i:0" data-key="bsc" href="https://drive.google.com/file/d/1KATof9qObGF7jttGQBih6Z8Zl4Jj4Iqj/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/bachelor-certificate.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/bachelor-certificate.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/bachelor-certificate.jpg" alt="B.Sc. Graduation Certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>Egyptian E-Learning University</span>
+          <span class="cc-type">Degree</span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">B.Sc. Graduation Certificate</h3>
+          <p class="cc-sub">Bachelor's degree · 2025</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1KATof9qObGF7jttGQBih6Z8Zl4Jj4Iqj/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/bachelor-certificate.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/bachelor-certificate.jpg" alt="B.Sc. Graduation Certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-deg">degree</span><span class="cert-year">2025</span></div>
-          <div class="cert-title">B.Sc. Graduation Certificate</div>
-          <div class="cert-issuer">Egyptian E-Learning University</div>
+      <a class="cc" style="--c:#36BCF7; --i:1" data-key="route" href="https://drive.google.com/file/d/1EYLlRJlzx50N_8i8D6bMJNSKNTpoiuOB/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/route-aspnet-core.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/route-aspnet-core.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/route-aspnet-core.jpg" alt="ASP.NET Core Back-End certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>Route Academy</span>
+          <span class="cc-type">Diploma</span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">ASP.NET Core Back-End</h3>
+          <p class="cc-sub">Dec 2025 – Jul 2026 · Certificate of Achievement</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1Uql1cZfbJ_mJwTDXv5ZWomS8w9iw30lJ/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/huawei-hcia-ai.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/huawei-hcia-ai.jpg" alt="HCIA-AI V3.5 certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-cert">certification</span><span class="cert-year">2024</span></div>
-          <div class="cert-title">HCIA-AI V3.5</div>
-          <div class="cert-issuer">Huawei</div>
-          <div class="cert-chips"><span class="hl">score 96%</span></div>
+      <a class="cc" style="--c:#F43F5E; --i:2" data-key="hcia" href="https://drive.google.com/file/d/1Uql1cZfbJ_mJwTDXv5ZWomS8w9iw30lJ/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/huawei-hcia-ai.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/huawei-hcia-ai.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/huawei-hcia-ai.jpg" alt="HCIA-AI V3.5 certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>Huawei</span>
+          <span class="cc-type">Certification</span>
+          <span class="cc-score" style="--p:.96"><svg viewBox="0 0 60 60" aria-hidden="true"><circle class="trk" cx="30" cy="30" r="26"/><circle class="val" cx="30" cy="30" r="26"/></svg><b>96%</b><small>score</small></span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">HCIA-AI V3.5</h3>
+          <p class="cc-sub">Huawei Talent Online · 2024</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/19Fk6P6v0B3IubjQlkJDMwB6HSV3vRBOm/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/nti.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/nti.jpg" alt="AI Talent Academy Track certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-train">training</span><span class="cert-year">2024</span></div>
-          <div class="cert-title">AI Talent Academy Track</div>
-          <div class="cert-issuer">NTI × Huawei</div>
-          <div class="cert-chips"><span>80 hrs</span><span class="hl">96%</span></div>
+      <a class="cc" style="--c:#F59E0B; --i:3" data-key="nti" href="https://drive.google.com/file/d/19Fk6P6v0B3IubjQlkJDMwB6HSV3vRBOm/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/nti.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/nti.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/nti.jpg" alt="AI Talent Academy Track certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>NTI × Huawei</span>
+          <span class="cc-type">Bootcamp</span>
+          <span class="cc-score" style="--p:.96"><svg viewBox="0 0 60 60" aria-hidden="true"><circle class="trk" cx="30" cy="30" r="26"/><circle class="val" cx="30" cy="30" r="26"/></svg><b>96%</b><small>score</small></span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">AI Talent Academy Track</h3>
+          <p class="cc-sub">80 hours · Sep – Oct 2024</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/13mJhYLAQvHMASVqRJ1wvc61cuEPA7h6g/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/iti-python.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/iti-python.jpg" alt="Full Stack Python certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-train">training</span><span class="cert-year">2024</span></div>
-          <div class="cert-title">Full Stack Python</div>
-          <div class="cert-issuer">ITI</div>
-          <div class="cert-chips"><span>120 hrs</span></div>
+      <a class="cc" style="--c:#A78BFA; --i:4" data-key="python" href="https://drive.google.com/file/d/13mJhYLAQvHMASVqRJ1wvc61cuEPA7h6g/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/iti-python.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/iti-python.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/iti-python.jpg" alt="Full Stack Python certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>ITI</span>
+          <span class="cc-type">Training</span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">Full Stack Python</h3>
+          <p class="cc-sub">120 hours · Jul – Aug 2024</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1m_PpMnaFMPOwi3jKf3DjCYNt4sfYoS3r/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/mastering-oop.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/mastering-oop.jpg" alt="Mastering OOP using C++ certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-course">course</span><span class="cert-year">2025</span></div>
-          <div class="cert-title">Mastering OOP using C++</div>
-          <div class="cert-issuer">ITI Platform · Oct 2025</div>
+      <a class="cc" style="--c:#4ADE80; --i:5" data-key="oop" href="https://drive.google.com/file/d/1m_PpMnaFMPOwi3jKf3DjCYNt4sfYoS3r/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/mastering-oop.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/mastering-oop.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/mastering-oop.jpg" alt="Mastering OOP using C++ certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>ITI · Mahara-Tech</span>
+          <span class="cc-type">Course</span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">Mastering OOP using C++</h3>
+          <p class="cc-sub">Oct 2025</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1aBJj-ccxO_rRc7DQUeFpHM9x783MTAe7/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/clean-code.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/clean-code.jpg" alt="Principles of Clean Code certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-course">course</span><span class="cert-year">2025</span></div>
-          <div class="cert-title">Principles of Clean Code</div>
-          <div class="cert-issuer">ITI Platform · Oct 2025</div>
+      <a class="cc" style="--c:#2DD4BF; --i:6" data-key="cleancode" href="https://drive.google.com/file/d/1aBJj-ccxO_rRc7DQUeFpHM9x783MTAe7/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/clean-code.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/clean-code.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/clean-code.jpg" alt="Principles of Clean Code certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>ITI · Mahara-Tech</span>
+          <span class="cc-type">Course</span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">Principles of Clean Code</h3>
+          <p class="cc-sub">Oct 2025</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
       </a>
-      <a class="cert-card" href="https://drive.google.com/file/d/1cxs0XJfog1LW_tvE4f6Igs_CmpSj8fjY/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/database.jpg">
-        <div class="cert-img"><img loading="lazy" decoding="async" src="assets/certificates/database.jpg" alt="Database Fundamentals certificate"></div>
-        <div class="cert-meta">
-          <div class="cert-top"><span class="cert-kind k-course">course</span><span class="cert-year">2024</span></div>
-          <div class="cert-title">Database Fundamentals</div>
-          <div class="cert-issuer">ITI Platform · Oct 2024</div>
+      <a class="cc" style="--c:#60A5FA; --i:7" data-key="db" href="https://drive.google.com/file/d/1cxs0XJfog1LW_tvE4f6Igs_CmpSj8fjY/view?usp=sharing" target="_blank" rel="noopener" data-full="assets/certificates/database.jpg">
+        <div class="cc-media">
+          <img class="cc-bg" src="assets/certificates/database.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <img class="cc-img" src="assets/certificates/database.jpg" alt="Database Fundamentals certificate" loading="lazy" decoding="async">
+          <span class="cc-issuer"><i></i>ITI · Mahara-Tech</span>
+          <span class="cc-type">Course</span>
+          <span class="cc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="cc-body">
+          <h3 class="cc-title">Database Fundamentals</h3>
+          <p class="cc-sub">Oct 2024</p>
+          <div class="cc-foot"><span class="cc-ver"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Verified</span><span class="cc-view">View certificate <b>→</b></span></div>
         </div>
         <span class="cert-glare" aria-hidden="true"></span>
-      </a>
-      <a class="cert-all-tile" href="https://drive.google.com/drive/folders/1r_ONbtYPHxP2p0TOfOcmKEdz4MIbd0Jt?usp=sharing" target="_blank" rel="noopener">
-        <span class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span>
-        <span class="cat-title">view all certificates</span>
-        <span class="cat-sub">full folder on Google Drive ↗</span>
       </a>
     </div>
   </div>
@@ -1917,6 +2174,25 @@
       <span class="sec-tag">07</span>
       <span class="sec-title">contact<span class="path">.reach()</span></span>
       <div class="rule"></div>
+    </div>
+    <div class="contact-grid">
+    <div class="contact-pitch">
+      <p class="cp-kicker"><span class="cp-dot" aria-hidden="true"></span>open to work · junior .NET backend</p>
+      <h2 class="cp-title">Let's build something <span class="hl">reliable.</span></h2>
+      <p class="cp-text">Hiring for a .NET backend role, or need an API built? Write a message below and it lands straight in my inbox.</p>
+      <div class="cp-meta">
+        <span class="cp-clock" aria-label="Local time in Cairo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>Cairo <b class="t">--:--</b><small>local time</small></span>
+      </div>
+      <form class="cp-form" novalidate>
+        <div class="cp-req"><span class="method post">POST</span><code>mailto:mohamednowar2002@gmail.com</code></div>
+        <label class="cp-field"><span>"name"</span><input name="name" autocomplete="name" placeholder="Your name" required></label>
+        <label class="cp-field"><span>"subject"</span><input name="subject" placeholder="Backend role at …"></label>
+        <label class="cp-field"><span>"message"</span><textarea name="message" rows="4" maxlength="1500" placeholder="Hi Mohamed, …" required></textarea><em class="cp-count">0 / 1500</em></label>
+        <div class="cp-actions">
+          <button class="btn primary cp-send" type="submit"><span class="lbl">send message</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button>
+          <span class="cp-hint">opens your email app, pre-filled</span>
+        </div>
+      </form>
     </div>
     <div class="contact-card">
       <div class="ep-head">
@@ -1935,6 +2211,7 @@
         <div class="cf"><span class="k">"cv"</span><a class="v" style="color:var(--amber)" href="https://drive.google.com/uc?export=download&amp;id=1m7qyOY4r74TFyKAg62BSZF_d7aHlchXY" target="_blank" rel="noopener">"download PDF ↓"</a></div>
         <div class="cf"><span class="k">"status"</span><span class="v" style="color:var(--teal)">"open to junior .NET backend roles — full-time or freelance"</span></div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -2050,7 +2327,9 @@
   stagger('.endpoints', '.endpoint', 60);
   stagger('.gallery', 'figure', 70);
   stagger('.api-groups', '.ag-row', 35);
-  stagger('.cert-grid', '.cert-card', 55);
+  stagger('.cc-grid', '.cc', 70);
+  stagger('.ctl', null, 0);
+  stagger('.contact-pitch', null, 0);
   stagger('.projects-note', null, 0);
   stagger('.other-head', null, 0);
   stagger('.exp-note', null, 0);
@@ -2405,7 +2684,7 @@
     var set = [], idx = 0, slug = '';
     function show(i){
       idx = (i + set.length) % set.length;
-      var a = set[idx], im = a.querySelector('img'), cap = a.parentNode.querySelector('figcaption') || a.querySelector('.cert-title');
+      var a = set[idx], im = a.querySelector('img'), cap = a.parentNode.querySelector('figcaption') || a.querySelector('.cc-title');
       var full = a.getAttribute('data-full');
       lbExt.hidden = !full; if(full) lbExt.href = a.href;
       lbImg.classList.remove('swap'); void lbImg.offsetWidth; lbImg.classList.add('swap');
@@ -2426,7 +2705,7 @@
         });
       });
     });
-    var certLinks = Array.prototype.slice.call(document.querySelectorAll('#certificates .cert-card[data-full]'));
+    var certLinks = Array.prototype.slice.call(document.querySelectorAll('#certificates .cc[data-full]'));
     certLinks.forEach(function(a, i){
       a.addEventListener('click', function(e){
         if(e.ctrlKey || e.metaKey || e.shiftKey) return;
@@ -2497,7 +2776,7 @@
 
     // Certificate 3D tilt + glare (fine pointers only)
     if(finePointer && !reduceMotion){
-      document.querySelectorAll('#certificates .cert-card').forEach(function(card){
+      document.querySelectorAll('#certificates .cc').forEach(function(card){
         card.classList.remove('spot');
         var raf = 0;
         card.addEventListener('pointermove', function(e){
@@ -2505,9 +2784,9 @@
           var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
           if(raf) cancelAnimationFrame(raf);
           raf = requestAnimationFrame(function(){
-            var max = card.classList.contains('big') ? 4 : 8;
+            var max = 6;
             card.style.transition = 'transform .12s ease-out, border-color .25s, box-shadow .4s';
-            card.style.transform = 'perspective(900px) rotateX(' + ((.5 - y) * max).toFixed(2) + 'deg) rotateY(' + ((x - .5) * max).toFixed(2) + 'deg) translateY(-4px)';
+            card.style.transform = 'perspective(1000px) rotateX(' + ((.5 - y) * max).toFixed(2) + 'deg) rotateY(' + ((x - .5) * max).toFixed(2) + 'deg) translateY(-4px)';
             card.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
             card.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
           });
@@ -2540,6 +2819,118 @@
         });
       }, {threshold:.6});
       so.observe(sums[0].parentNode.parentNode);
+    }
+  })();
+
+  /* ============ CERT timeline + CONTACT composer ============ */
+  (function pass4(){
+    // Timeline → highlight + open matching certificate
+    document.querySelectorAll('#certificates .ctl-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        var card = document.querySelector('#certificates .cc[data-key="' + item.getAttribute('data-key') + '"]');
+        if(!card) return;
+        card.classList.remove('reveal'); card.classList.add('in');
+        card.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'center'});
+        card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+      });
+    });
+
+    // Toast
+    var toastEl = document.createElement('div');
+    toastEl.className = 'toast'; toastEl.setAttribute('role', 'status'); toastEl.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toastEl);
+    var toastT;
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(toastT);
+      toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 2200);
+    }
+    document.querySelectorAll('.copy-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        btn.classList.add('ok');
+        setTimeout(function(){ btn.classList.remove('ok'); }, 1600);
+        toast('copied to clipboard ✓');
+      });
+    });
+
+    // JSON rows: stagger index
+    document.querySelectorAll('.contact-card .cf').forEach(function(r, i){ r.style.setProperty('--ci', i); });
+
+    // Headline word mask reveal
+    var title = document.querySelector('.cp-title');
+    if(title){
+      var wi = 0;
+      Array.prototype.slice.call(title.childNodes).forEach(function(node){
+        if(node.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(function(part){
+            if(!part) return;
+            if(/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span'); w.className = 'w';
+            var inner = document.createElement('span'); inner.textContent = part; inner.style.setProperty('--wi', wi++);
+            w.appendChild(inner); frag.appendChild(w);
+          });
+          title.replaceChild(frag, node);
+        } else if(node.nodeType === 1){
+          var w2 = document.createElement('span'); w2.className = 'w';
+          node.style.setProperty('--wi', wi++);
+          title.replaceChild(w2, node); w2.appendChild(node);
+        }
+      });
+    }
+
+    // Live Cairo clock
+    var clock = document.querySelector('.cp-clock .t');
+    if(clock && window.Intl){
+      var fmt = new Intl.DateTimeFormat('en-GB', {timeZone:'Africa/Cairo', hour:'2-digit', minute:'2-digit', hour12:false});
+      var tick = function(){
+        var parts = fmt.format(new Date()).split(':');
+        clock.innerHTML = parts[0] + '<span class="sep">:</span>' + parts[1];
+      };
+      tick(); setInterval(tick, 15000);
+    }
+
+    // Mailto composer
+    var form = document.querySelector('.cp-form');
+    if(form){
+      var msg = form.querySelector('textarea'), count = form.querySelector('.cp-count');
+      var send = form.querySelector('.cp-send'), lbl = send.querySelector('.lbl');
+      msg.addEventListener('input', function(){
+        count.textContent = msg.value.length + ' / 1500';
+        count.classList.toggle('near', msg.value.length > 1350);
+      });
+      form.querySelectorAll('input, textarea').forEach(function(el){
+        el.addEventListener('input', function(){ el.parentNode.classList.remove('invalid'); el.removeAttribute('aria-invalid'); });
+      });
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var bad = [];
+        [form.elements.name, form.elements.message].forEach(function(el){
+          if(!el.value.trim()){
+            bad.push(el);
+            var f = el.parentNode;
+            f.classList.add('invalid'); el.setAttribute('aria-invalid', 'true');
+            f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake');
+          }
+        });
+        if(bad.length){ bad[0].focus(); toast('please fill in ' + bad.map(function(b){ return b.name; }).join(' & ')); return; }
+        var name = form.elements.name.value.trim();
+        var subject = form.elements.subject.value.trim() || ('Hello from ' + name);
+        var body = form.elements.message.value.trim() + '\n\n— ' + name;
+        var href = 'mailto:mohamednowar2002@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        send.classList.add('sent'); lbl.textContent = 'opening mail app…';
+        setTimeout(function(){ window.location.href = href; }, reduceMotion ? 0 : 650);
+        setTimeout(function(){ send.classList.remove('sent'); lbl.textContent = 'send message'; }, 2600);
+      });
+      if(finePointer && !reduceMotion){
+        send.classList.add('magnetic');
+        send.addEventListener('pointermove', function(e){
+          var r = send.getBoundingClientRect();
+          send.style.transform = 'translate(' + (((e.clientX - r.left) / r.width - .5) * 8).toFixed(1) + 'px,' + (((e.clientY - r.top) / r.height - .5) * 6).toFixed(1) + 'px)';
+        });
+        send.addEventListener('pointerleave', function(){ send.style.transform = ''; });
+      }
     }
   })();
 
